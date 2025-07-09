@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>True/False Quiz</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="quiz-container">
+    <div class="quiz-header">
+      <h2><i class="fas fa-question-circle"></i> True/False Quiz</h2>
+      
+      <div class="controls">
+        <div class="control-group">
+          <label for="fontSizeRange"><i class="fas fa-text-height"></i> Font size:</label>
+          <input type="range" min="14" max="30" value="18" id="fontSizeRange">
+          <span id="fontSizeValue">18px</span>
+        </div>
+        
+        <div class="control-group">
+          <label for="imgSizeRange"><i class="fas fa-image"></i> Image height:</label>
+          <input type="range" min="100" max="400" value="200" id="imgSizeRange">
+          <span id="imgSizeValue">200px</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="questions-container" id="questionsContainer">
+      <!-- Questions will be dynamically inserted here -->
+    </div>
+
+    <div class="quiz-footer">
+      <div class="progress-container">
+        <div class="progress-dots" id="progressDots"></div>
+        <div class="progress-text" id="progressText"></div>
+      </div>
+      
+      <div class="action-buttons">
+        <button id="prevBtn" class="nav-btn"><i class="fas fa-arrow-left"></i> Previous</button>
+        <button id="nextBtn" class="nav-btn">Next <i class="fas fa-arrow-right"></i></button>
+        <button id="checkBtn" class="action-btn check-btn"><i class="fas fa-check-double"></i> Check Answers</button>
+        <button id="showAnswersBtn" class="action-btn show-answers-btn"><i class="fas fa-lightbulb"></i> Show Answers</button>
+        <button id="resetBtn" class="action-btn reset-btn"><i class="fas fa-sync-alt"></i> Restart</button>
+      </div>
+      
+      <div class="result-container" id="resultContainer">
+        <div class="result" id="result"></div>
+        <div class="feedback" id="feedback"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

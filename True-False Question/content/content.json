@@ -1,0 +1,802 @@
+{
+    "introPage": {
+        "showIntroPage": false,
+        "startButtonText": "Start Quiz",
+        "introduction": ""
+    },
+    "progressType": "dots",
+    "passPercentage": 50,
+    "disableBackwardsNavigation": false,
+    "randomQuestions": false,
+    "endGame": {
+        "showResultPage": true,
+        "showSolutionButton": true,
+        "showRetryButton": true,
+        "noResultMessage": "Finished",
+        "message": "Your result:",
+        "scoreBarLabel": "You got @finals out of @totals points",
+        "overallFeedback": [
+            {
+                "from": 0,
+                "to": 100
+            }
+        ],
+        "solutionButtonText": "Show solution",
+        "retryButtonText": "Retry",
+        "finishButtonText": "Finish",
+        "submitButtonText": "Submit",
+        "showAnimations": false,
+        "skippable": false,
+        "skipButtonText": "Skip video"
+    },
+    "override": {
+        "checkButton": true
+    },
+    "texts": {
+        "prevButton": "Previous question",
+        "nextButton": "Next question",
+        "finishButton": "Finish",
+        "submitButton": "Submit",
+        "textualProgress": "Question: @current of @total questions",
+        "jumpToQuestion": "Question %d of %total",
+        "questionLabel": "Question",
+        "readSpeakerProgress": "Question @current of @total",
+        "unansweredText": "Unanswered",
+        "answeredText": "Answered",
+        "currentQuestionText": "Current question",
+        "navigationLabel": "Questions",
+        "questionSetInstruction": "Choose question to display"
+    },
+    "questions": [
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367dd20efca.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "b07ad098-3571-47cc-b296-df4b5d783529"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "true",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this a triangle ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "6024714e-8dd8-467b-8aad-1770dc3fd8f5"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e54001b3.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "0a084f12-e2f5-4ef0-b3da-d028d2f02cc3"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "false",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this milk ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "1b33c6d2-23b8-45cc-abd1-ed56407ff606"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367de2b8eb3.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "1b8f94de-2c22-4aba-bcb2-313fc214e11c"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "true",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this a circle ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "362fade1-450d-4171-8829-20936ebf830e"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e48c9d15.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "a5d00519-de15-42bb-a94a-26e0f470bab0"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "true",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this water ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "23d68797-05ff-44f6-9a98-40157b216343"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367df3f259a.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "c47a1912-097f-46b8-92cf-20fd03aa11fa"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "false",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this a square ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "b6443aca-1eb4-4351-b508-5425f682973c"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e3b122e6.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "15d66e96-5579-4a7b-be0b-8e2ee143ec90"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "true",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this milk ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "1af2d7bb-f5b1-4884-90cb-739d42ccfef1"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e0071073.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "59b08194-f60e-4d5a-a7b8-1583025c8e08"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "false",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this a heart ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "68dcb97d-7028-466a-8fe0-70b135ece355"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e3052183.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "bed2ee81-2bb5-4a64-8831-1d0d34331e22"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "false",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this coke ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "6b07fc51-f1ae-491b-84eb-5fa21d0e03af"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e0a61cb7.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "49ea4a9e-2a21-4b4f-9deb-71ce4f63364d"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "true",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this a star ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "9513ff7e-3074-4773-8447-616a251fb5e9"
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "decorative": false,
+                            "contentName": "H\u00ecnh",
+                            "expandImage": "Expand Image",
+                            "minimizeImage": "Minimize Image",
+                            "file": {
+                                "path": "images\/file-68367e261f567.png",
+                                "mime": "image\/png",
+                                "copyright": {
+                                    "license": "U"
+                                },
+                                "width": 1920,
+                                "height": 1080
+                            }
+                        },
+                        "library": "H5P.Image 1.1",
+                        "metadata": {
+                            "contentType": "Image",
+                            "license": "U",
+                            "title": "Untitled Image"
+                        },
+                        "subContentId": "9016e669-92e5-46ca-b891-0f90a6f4fec6"
+                    },
+                    "disableImageZooming": false
+                },
+                "correct": "false",
+                "behaviour": {
+                    "enableRetry": true,
+                    "enableSolutionsButton": true,
+                    "enableCheckButton": true,
+                    "confirmCheckDialog": false,
+                    "confirmRetryDialog": false,
+                    "autoCheck": false
+                },
+                "l10n": {
+                    "trueText": "True",
+                    "falseText": "False",
+                    "score": "You got @score of @total points",
+                    "checkAnswer": "Check",
+                    "submitAnswer": "Submit",
+                    "showSolutionButton": "Show solution",
+                    "tryAgain": "Retry",
+                    "wrongAnswerMessage": "Wrong answer",
+                    "correctAnswerMessage": "Correct answer",
+                    "scoreBarLabel": "You got :num out of :total points",
+                    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "confirmCheck": {
+                    "header": "Finish ?",
+                    "body": "Are you sure you wish to finish ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Finish"
+                },
+                "confirmRetry": {
+                    "header": "Retry ?",
+                    "body": "Are you sure you wish to retry ?",
+                    "cancelLabel": "Cancel",
+                    "confirmLabel": "Confirm"
+                },
+                "question": "<p>is this juice ?<\/p>"
+            },
+            "library": "H5P.TrueFalse 1.8",
+            "metadata": {
+                "contentType": "True\/False Question",
+                "license": "U",
+                "title": "Untitled True\/False Question"
+            },
+            "subContentId": "5500531f-da7f-41a2-8692-80ea4d275b87"
+        }
+    ]
+}
