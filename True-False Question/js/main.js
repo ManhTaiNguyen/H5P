@@ -78,11 +78,6 @@ function createQuestions() {
     questionEl.dataset.index = index;
     questionEl.dataset.answer = question.params.correct;
     
-    // Question text
-    const questionText = document.createElement('h3');
-    questionText.innerHTML = question.params.question;
-    questionEl.appendChild(questionText);
-    
     // Media (image)
     if (question.params.media && question.params.media.type) {
       const mediaContainer = document.createElement('div');
@@ -96,25 +91,10 @@ function createQuestions() {
       questionEl.appendChild(mediaContainer);
     }
     
-    // Audio controls (placeholder - would be dynamic in real implementation)
-    const audioContainer = document.createElement('div');
-    audioContainer.className = 'audio-container';
-    audioContainer.innerHTML = `
-      <audio id="audio-${index}" src=""></audio>
-      <div class="audio-controls">
-        <button class="audio-play" data-audio="audio-${index}">
-          <i class="fas fa-play"></i> Play
-        </button>
-        <button class="audio-pause" data-audio="audio-${index}">
-          <i class="fas fa-pause"></i> Pause
-        </button>
-        <div class="volume-control">
-          <i class="fas fa-volume-up"></i>
-          <input type="range" min="0" max="1" step="0.1" value="1" class="volume-slider" data-audio="audio-${index}">
-        </div>
-      </div>
-    `;
-    questionEl.appendChild(audioContainer);
+    // Question text
+    const questionText = document.createElement('h3');
+    questionText.innerHTML = question.params.question;
+    questionEl.appendChild(questionText);
     
     // Answer buttons
     const answerButtons = document.createElement('div');
@@ -327,53 +307,25 @@ function setupEventListeners() {
   showAnswersBtn.addEventListener('click', showAnswers);
   resetBtn.addEventListener('click', resetQuiz);
   
-  // Answer selection - cải tiến mới
   document.querySelectorAll('.answer-btn').forEach(button => {
     button.addEventListener('click', function() {
       const question = this.closest('.question');
       const feedbackEl = question.querySelector('.answer-feedback');
       
-      // Ẩn feedback trước khi chọn đáp án mới
       feedbackEl.style.display = 'none';
       
-      // Bỏ chọn tất cả các nút trong câu hỏi này
       question.querySelectorAll('.answer-btn').forEach(btn => {
         btn.classList.remove('selected');
       });
       
-      // Chọn nút hiện tại
       this.classList.add('selected');
       
-      // Cập nhật progress dot
       const index = parseInt(question.dataset.index);
       document.querySelector(`.progress-dot[data-index="${index}"]`).classList.add('answered');
       
-      // Tự động kiểm tra đáp án nếu cần (tuỳ chọn)
       if (quizData.autoCheck) {
         checkSingleAnswer(question);
       }
-    });
-  });
-  
-  // Audio controls
-  document.querySelectorAll('.audio-play').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const audioId = this.dataset.audio;
-      document.getElementById(audioId).play();
-    });
-  });
-  
-  document.querySelectorAll('.audio-pause').forEach(btn => {
-    btn.addEventListener('click', function() {
-      const audioId = this.dataset.audio;
-      document.getElementById(audioId).pause();
-    });
-  });
-  
-  document.querySelectorAll('.volume-slider').forEach(slider => {
-    slider.addEventListener('input', function() {
-      const audioId = this.dataset.audio;
-      document.getElementById(audioId).volume = this.value;
     });
   });
   
@@ -501,5 +453,39 @@ function createConfetti() {
   }, 5000);
 }
 
-// Initialize the quiz when the page loads
-document.addEventListener('DOMContentLoaded', initQuiz);
+// Ẩn intro, hiển thị quiz
+document.getElementById('startQuizBtn').addEventListener('click', () => {
+  document.getElementById('introScreen').style.display = 'none';
+  document.querySelector('.quiz-container').style.display = 'block';
+  initQuiz(); // Khởi tạo quiz sau khi nhấn bắt đầu
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelector('.quiz-container').style.display = 'none'; // Ẩn quiz ban đầu
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const trueBubble = document.querySelector('.speech-bubble.true');
+  const falseBubble = document.querySelector('.speech-bubble.false');
+  const orLabel = document.querySelector('.center-label');
+  
+  // Hiệu ứng khi di chuột vào TRUE
+  trueBubble.addEventListener('mouseenter', () => {
+    orLabel.style.color = 'var(--correct-color)';
+    orLabel.style.textShadow = '0 0 10px rgba(0, 184, 148, 0.5)';
+  });
+  
+  // Hiệu ứng khi di chuột vào FALSE
+  falseBubble.addEventListener('mouseenter', () => {
+    orLabel.style.color = 'var(--incorrect-color)';
+    orLabel.style.textShadow = '0 0 10px rgba(214, 48, 49, 0.5)';
+  });
+  
+  // Reset khi di chuột ra
+  [trueBubble, falseBubble].forEach(bubble => {
+    bubble.addEventListener('mouseleave', () => {
+      orLabel.style.color = 'var(--primary-color)';
+      orLabel.style.textShadow = '1px 1px 3px rgba(0,0,0,0.1)';
+    });
+  });
+});
