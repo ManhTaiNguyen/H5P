@@ -102,13 +102,13 @@ function createQuestions() {
     
     const trueButton = document.createElement('button');
     trueButton.className = 'answer-btn true-btn';
-    trueButton.innerHTML = `<i class="fas fa-check"></i> ${question.params.l10n.trueText}`;
+    trueButton.innerHTML = `${question.params.l10n.trueText}`;
     trueButton.dataset.answer = 'true';
     answerButtons.appendChild(trueButton);
     
     const falseButton = document.createElement('button');
     falseButton.className = 'answer-btn false-btn';
-    falseButton.innerHTML = `<i class="fas fa-times"></i> ${question.params.l10n.falseText}`;
+    falseButton.innerHTML = `${question.params.l10n.falseText}`;
     falseButton.dataset.answer = 'false';
     answerButtons.appendChild(falseButton);
     
@@ -314,11 +314,18 @@ function setupEventListeners() {
       
       feedbackEl.style.display = 'none';
       
-      question.querySelectorAll('.answer-btn').forEach(btn => {
-        btn.classList.remove('selected');
+      const allButtons = question.querySelectorAll('.answer-btn');
+      allButtons.forEach(btn => {
+        btn.classList.remove('selected', 'dimmed');
       });
-      
       this.classList.add('selected');
+
+      // Làm mờ nút còn lại
+      allButtons.forEach(btn => {
+        if (!btn.classList.contains('selected')) {
+          btn.classList.add('dimmed');
+        }
+      });
       
       const index = parseInt(question.dataset.index);
       document.querySelector(`.progress-dot[data-index="${index}"]`).classList.add('answered');
@@ -409,7 +416,32 @@ function checkAnswers() {
     const percentage = Math.round((score / questions.length) * 100);
     
     // Hiển thị kết quả
-    result.textContent = `${quizData.endGame.message} ${score} / ${questions.length}`;
+    result.innerHTML = `
+      <div class="result">You got ${score} of ${questions.length} points</div>
+      <div class="score-bar">
+        <div class="bar"></div>
+        <span class="star">⭐</span>
+        <span class="score-text">${score} / ${questions.length}</span>
+      </div>
+    `;
+    
+    // Animate score bar width
+    const barEl = document.querySelector('.score-bar .bar');
+    const starEl = document.querySelector('.score-bar .star');
+    const percent = Math.round((score / questions.length) * 100);
+
+    // Animate bar
+    setTimeout(() => {
+      barEl.style.width = percent + '%';
+    }, 100);
+
+    // Show star AFTER bar fills
+    setTimeout(() => {
+      if (percent >= quizData.passPercentage) {
+        starEl.classList.add('visible');
+      }
+    }, 1200);
+
     feedback.textContent = getFeedback(percentage);
     
     // Hiệu ứng hiển thị kết quả
@@ -487,5 +519,20 @@ document.addEventListener('DOMContentLoaded', function() {
       orLabel.style.color = 'var(--primary-color)';
       orLabel.style.textShadow = '1px 1px 3px rgba(0,0,0,0.1)';
     });
+  });
+});
+
+document.querySelectorAll('.answer-btn').forEach(button => {
+  button.addEventListener('click', function (e) {
+    const ripple = document.createElement('span');
+    ripple.classList.add('ripple');
+
+    const rect = this.getBoundingClientRect();
+    ripple.style.left = `${e.clientX - rect.left}px`;
+    ripple.style.top = `${e.clientY - rect.top}px`;
+
+    this.appendChild(ripple);
+
+    setTimeout(() => ripple.remove(), 600);
   });
 });
