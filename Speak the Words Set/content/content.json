@@ -1,0 +1,410 @@
+{
+    "introduction": {
+        "showIntroPage": false
+    },
+    "questions": [
+        {
+            "params": {
+                "media": {
+                    "disableImageZooming": false,
+                    "type": {
+                        "params": {
+                            "visuals": {
+                                "fit": true,
+                                "controls": true
+                            },
+                            "playback": {
+                                "autoplay": true,
+                                "loop": false
+                            },
+                            "l10n": {
+                                "name": "Video",
+                                "loading": "\u0110ang t\u1ea3i tr\u00ecnh ph\u00e1t video...",
+                                "noPlayers": "Kh\u00f4ng t\u00ecm th\u1ea5y tr\u00ecnh ph\u00e1t h\u1ed7 tr\u1ee3 \u0111\u1ecbnh d\u1ea1ng video n\u00e0y.",
+                                "noSources": "Video b\u1ecb thi\u1ebfu ngu\u1ed3n.",
+                                "aborted": "\u0110\u00e3 ng\u1eebng ph\u00e1t video.",
+                                "networkFailure": "L\u1ed7i m\u1ea1ng.",
+                                "cannotDecode": "Unable to decode media.",
+                                "formatNotSupported": "\u0110\u1ecbnh d\u1ea1ng c\u1ee7a video kh\u00f4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+                                "mediaEncrypted": "Media encrypted.",
+                                "unknownError": "L\u1ed7i kh\u00f4ng x\u00e1c \u0111\u1ecbnh.",
+                                "invalidYtId": "ID YouTube kh\u00f4ng h\u1ee3p l\u1ec7.",
+                                "unknownYtId": "Kh\u00f4ng t\u00ecm th\u1ea5y video n\u00e0o c\u00f3 ID YouTube n\u00e0y.",
+                                "restrictedYt": "Ng\u01b0\u1eddi s\u1edf h\u1eefu video n\u00e0y kh\u00f4ng cho ph\u00e9p nh\u00fang video n\u00e0y."
+                            },
+                            "sources": [
+                                {
+                                    "path": "videos\/sources-6835671ebfa77.mp4",
+                                    "mime": "video\/mp4",
+                                    "copyright": {
+                                        "license": "U"
+                                    }
+                                }
+                            ]
+                        },
+                        "library": "H5P.Video 1.6",
+                        "metadata": {
+                            "contentType": "Video",
+                            "license": "U",
+                            "title": "Untitled Video"
+                        },
+                        "subContentId": "408dd54a-4678-4ee5-804e-67d94b9e69c2"
+                    }
+                },
+                "incorrectAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi sai",
+                "correctAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang",
+                "inputLanguage": "en-US",
+                "l10n": {
+                    "retryLabel": "Th\u1eed l\u1ea1i",
+                    "showSolutionLabel": "Hi\u1ec3n th\u1ecb l\u1eddi gi\u1ea3i",
+                    "speakLabel": "Nh\u1ea5n \u0111\u1ec3 n\u00f3i",
+                    "listeningLabel": "\u0110ang nghe...",
+                    "correctAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang:",
+                    "userAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi c\u1ee7a b\u1ea1n \u0111\u00e3 \u0111\u01b0\u1ee3c hi\u1ec3u l\u00e0:",
+                    "noSound": "T\u00f4i kh\u00f4ng th\u1ec3 nghe th\u1ea5y b\u1ea1n, \u0111\u1ea3m b\u1ea3o micr\u00f4 c\u1ee7a b\u1ea1n \u0111\u01b0\u1ee3c b\u1eadt",
+                    "unsupportedBrowserHeader": "C\u00f3 v\u1ebb nh\u01b0 tr\u00ecnh duy\u1ec7t c\u1ee7a b\u1ea1n kh\u00f4ng h\u1ed7 tr\u1ee3 nh\u1eadn d\u1ea1ng gi\u1ecdng n\u00f3i",
+                    "unsupportedBrowserDetails": "Vui l\u00f2ng th\u1eed l\u1ea1i trong tr\u00ecnh duy\u1ec7t nh\u01b0 Chrome",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "question": "Nghe v\u00e0 l\u1eb7p l\u1ea1i",
+                "acceptedAnswers": [
+                    "coke"
+                ]
+            },
+            "library": "H5P.SpeakTheWords 1.5",
+            "subContentId": "0c9c79fc-ad88-45b2-a761-dd7b94237320",
+            "metadata": {
+                "contentType": "Speak the Words",
+                "license": "U",
+                "title": "Untitled Speak the Words"
+            }
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "visuals": {
+                                "fit": true,
+                                "controls": true
+                            },
+                            "playback": {
+                                "autoplay": true,
+                                "loop": false
+                            },
+                            "l10n": {
+                                "name": "Video",
+                                "loading": "\u0110ang t\u1ea3i tr\u00ecnh ph\u00e1t video...",
+                                "noPlayers": "Kh\u00f4ng t\u00ecm th\u1ea5y tr\u00ecnh ph\u00e1t h\u1ed7 tr\u1ee3 \u0111\u1ecbnh d\u1ea1ng video n\u00e0y.",
+                                "noSources": "Video b\u1ecb thi\u1ebfu ngu\u1ed3n.",
+                                "aborted": "\u0110\u00e3 ng\u1eebng ph\u00e1t video.",
+                                "networkFailure": "L\u1ed7i m\u1ea1ng.",
+                                "cannotDecode": "Unable to decode media.",
+                                "formatNotSupported": "\u0110\u1ecbnh d\u1ea1ng c\u1ee7a video kh\u00f4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+                                "mediaEncrypted": "Media encrypted.",
+                                "unknownError": "L\u1ed7i kh\u00f4ng x\u00e1c \u0111\u1ecbnh.",
+                                "invalidYtId": "ID YouTube kh\u00f4ng h\u1ee3p l\u1ec7.",
+                                "unknownYtId": "Kh\u00f4ng t\u00ecm th\u1ea5y video n\u00e0o c\u00f3 ID YouTube n\u00e0y.",
+                                "restrictedYt": "Ng\u01b0\u1eddi s\u1edf h\u1eefu video n\u00e0y kh\u00f4ng cho ph\u00e9p nh\u00fang video n\u00e0y."
+                            },
+                            "sources": [
+                                {
+                                    "path": "videos\/sources-68356727d802f.mp4",
+                                    "mime": "video\/mp4",
+                                    "copyright": {
+                                        "license": "U"
+                                    }
+                                }
+                            ]
+                        },
+                        "library": "H5P.Video 1.6",
+                        "metadata": {
+                            "contentType": "Video",
+                            "license": "U",
+                            "title": "Untitled Video"
+                        },
+                        "subContentId": "b859bc71-aacf-4ea2-a482-5c5f6f179032"
+                    },
+                    "disableImageZooming": false
+                },
+                "incorrectAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi sai",
+                "correctAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang",
+                "inputLanguage": "en-US",
+                "l10n": {
+                    "retryLabel": "Th\u1eed l\u1ea1i",
+                    "showSolutionLabel": "Hi\u1ec3n th\u1ecb l\u1eddi gi\u1ea3i",
+                    "speakLabel": "Nh\u1ea5n \u0111\u1ec3 n\u00f3i",
+                    "listeningLabel": "\u0110ang nghe...",
+                    "correctAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang:",
+                    "userAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi c\u1ee7a b\u1ea1n \u0111\u00e3 \u0111\u01b0\u1ee3c hi\u1ec3u l\u00e0:",
+                    "noSound": "T\u00f4i kh\u00f4ng th\u1ec3 nghe th\u1ea5y b\u1ea1n, \u0111\u1ea3m b\u1ea3o micr\u00f4 c\u1ee7a b\u1ea1n \u0111\u01b0\u1ee3c b\u1eadt",
+                    "unsupportedBrowserHeader": "C\u00f3 v\u1ebb nh\u01b0 tr\u00ecnh duy\u1ec7t c\u1ee7a b\u1ea1n kh\u00f4ng h\u1ed7 tr\u1ee3 nh\u1eadn d\u1ea1ng gi\u1ecdng n\u00f3i",
+                    "unsupportedBrowserDetails": "Vui l\u00f2ng th\u1eed l\u1ea1i trong tr\u00ecnh duy\u1ec7t nh\u01b0 Chrome",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "question": "Nghe v\u00e0 l\u1eb7p l\u1ea1i",
+                "acceptedAnswers": [
+                    "juice"
+                ]
+            },
+            "library": "H5P.SpeakTheWords 1.5",
+            "subContentId": "8d8c0735-179d-4847-88eb-750eebd1d48a",
+            "metadata": {
+                "contentType": "Speak the Words",
+                "license": "U",
+                "title": "Untitled Speak the Words"
+            }
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "visuals": {
+                                "fit": true,
+                                "controls": true
+                            },
+                            "playback": {
+                                "autoplay": true,
+                                "loop": false
+                            },
+                            "l10n": {
+                                "name": "Video",
+                                "loading": "\u0110ang t\u1ea3i tr\u00ecnh ph\u00e1t video...",
+                                "noPlayers": "Kh\u00f4ng t\u00ecm th\u1ea5y tr\u00ecnh ph\u00e1t h\u1ed7 tr\u1ee3 \u0111\u1ecbnh d\u1ea1ng video n\u00e0y.",
+                                "noSources": "Video b\u1ecb thi\u1ebfu ngu\u1ed3n.",
+                                "aborted": "\u0110\u00e3 ng\u1eebng ph\u00e1t video.",
+                                "networkFailure": "L\u1ed7i m\u1ea1ng.",
+                                "cannotDecode": "Unable to decode media.",
+                                "formatNotSupported": "\u0110\u1ecbnh d\u1ea1ng c\u1ee7a video kh\u00f4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+                                "mediaEncrypted": "Media encrypted.",
+                                "unknownError": "L\u1ed7i kh\u00f4ng x\u00e1c \u0111\u1ecbnh.",
+                                "invalidYtId": "ID YouTube kh\u00f4ng h\u1ee3p l\u1ec7.",
+                                "unknownYtId": "Kh\u00f4ng t\u00ecm th\u1ea5y video n\u00e0o c\u00f3 ID YouTube n\u00e0y.",
+                                "restrictedYt": "Ng\u01b0\u1eddi s\u1edf h\u1eefu video n\u00e0y kh\u00f4ng cho ph\u00e9p nh\u00fang video n\u00e0y."
+                            },
+                            "sources": [
+                                {
+                                    "path": "videos\/sources-6835673492908.mp4",
+                                    "mime": "video\/mp4",
+                                    "copyright": {
+                                        "license": "U"
+                                    }
+                                }
+                            ]
+                        },
+                        "library": "H5P.Video 1.6",
+                        "metadata": {
+                            "contentType": "Video",
+                            "license": "U",
+                            "title": "Untitled Video"
+                        },
+                        "subContentId": "97ab4dd7-91e3-4074-9f26-0939c709cab0"
+                    },
+                    "disableImageZooming": false
+                },
+                "incorrectAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi sai",
+                "correctAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang",
+                "inputLanguage": "en-US",
+                "l10n": {
+                    "retryLabel": "Th\u1eed l\u1ea1i",
+                    "showSolutionLabel": "Hi\u1ec3n th\u1ecb l\u1eddi gi\u1ea3i",
+                    "speakLabel": "Nh\u1ea5n \u0111\u1ec3 n\u00f3i",
+                    "listeningLabel": "\u0110ang nghe...",
+                    "correctAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang:",
+                    "userAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi c\u1ee7a b\u1ea1n \u0111\u00e3 \u0111\u01b0\u1ee3c hi\u1ec3u l\u00e0:",
+                    "noSound": "T\u00f4i kh\u00f4ng th\u1ec3 nghe th\u1ea5y b\u1ea1n, \u0111\u1ea3m b\u1ea3o micr\u00f4 c\u1ee7a b\u1ea1n \u0111\u01b0\u1ee3c b\u1eadt",
+                    "unsupportedBrowserHeader": "C\u00f3 v\u1ebb nh\u01b0 tr\u00ecnh duy\u1ec7t c\u1ee7a b\u1ea1n kh\u00f4ng h\u1ed7 tr\u1ee3 nh\u1eadn d\u1ea1ng gi\u1ecdng n\u00f3i",
+                    "unsupportedBrowserDetails": "Vui l\u00f2ng th\u1eed l\u1ea1i trong tr\u00ecnh duy\u1ec7t nh\u01b0 Chrome",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "question": "Nghe v\u00e0 l\u1eb7p l\u1ea1i",
+                "acceptedAnswers": [
+                    "milk"
+                ]
+            },
+            "library": "H5P.SpeakTheWords 1.5",
+            "subContentId": "c3ae3a12-5bc3-47c6-9c74-8fc14732ab6c",
+            "metadata": {
+                "contentType": "Speak the Words",
+                "license": "U",
+                "title": "Untitled Speak the Words"
+            }
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "visuals": {
+                                "fit": true,
+                                "controls": true
+                            },
+                            "playback": {
+                                "autoplay": true,
+                                "loop": false
+                            },
+                            "l10n": {
+                                "name": "Video",
+                                "loading": "\u0110ang t\u1ea3i tr\u00ecnh ph\u00e1t video...",
+                                "noPlayers": "Kh\u00f4ng t\u00ecm th\u1ea5y tr\u00ecnh ph\u00e1t h\u1ed7 tr\u1ee3 \u0111\u1ecbnh d\u1ea1ng video n\u00e0y.",
+                                "noSources": "Video b\u1ecb thi\u1ebfu ngu\u1ed3n.",
+                                "aborted": "\u0110\u00e3 ng\u1eebng ph\u00e1t video.",
+                                "networkFailure": "L\u1ed7i m\u1ea1ng.",
+                                "cannotDecode": "Unable to decode media.",
+                                "formatNotSupported": "\u0110\u1ecbnh d\u1ea1ng c\u1ee7a video kh\u00f4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+                                "mediaEncrypted": "Media encrypted.",
+                                "unknownError": "L\u1ed7i kh\u00f4ng x\u00e1c \u0111\u1ecbnh.",
+                                "invalidYtId": "ID YouTube kh\u00f4ng h\u1ee3p l\u1ec7.",
+                                "unknownYtId": "Kh\u00f4ng t\u00ecm th\u1ea5y video n\u00e0o c\u00f3 ID YouTube n\u00e0y.",
+                                "restrictedYt": "Ng\u01b0\u1eddi s\u1edf h\u1eefu video n\u00e0y kh\u00f4ng cho ph\u00e9p nh\u00fang video n\u00e0y."
+                            },
+                            "sources": [
+                                {
+                                    "path": "videos\/sources-6835673bd9759.mp4",
+                                    "mime": "video\/mp4",
+                                    "copyright": {
+                                        "license": "U"
+                                    }
+                                }
+                            ]
+                        },
+                        "library": "H5P.Video 1.6",
+                        "metadata": {
+                            "contentType": "Video",
+                            "license": "U",
+                            "title": "Untitled Video"
+                        },
+                        "subContentId": "95e066d6-dd9a-4147-a92d-8b17986e0802"
+                    },
+                    "disableImageZooming": false
+                },
+                "incorrectAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi sai",
+                "correctAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang",
+                "inputLanguage": "en-US",
+                "l10n": {
+                    "retryLabel": "Th\u1eed l\u1ea1i",
+                    "showSolutionLabel": "Hi\u1ec3n th\u1ecb l\u1eddi gi\u1ea3i",
+                    "speakLabel": "Nh\u1ea5n \u0111\u1ec3 n\u00f3i",
+                    "listeningLabel": "\u0110ang nghe...",
+                    "correctAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang:",
+                    "userAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi c\u1ee7a b\u1ea1n \u0111\u00e3 \u0111\u01b0\u1ee3c hi\u1ec3u l\u00e0:",
+                    "noSound": "T\u00f4i kh\u00f4ng th\u1ec3 nghe th\u1ea5y b\u1ea1n, \u0111\u1ea3m b\u1ea3o micr\u00f4 c\u1ee7a b\u1ea1n \u0111\u01b0\u1ee3c b\u1eadt",
+                    "unsupportedBrowserHeader": "C\u00f3 v\u1ebb nh\u01b0 tr\u00ecnh duy\u1ec7t c\u1ee7a b\u1ea1n kh\u00f4ng h\u1ed7 tr\u1ee3 nh\u1eadn d\u1ea1ng gi\u1ecdng n\u00f3i",
+                    "unsupportedBrowserDetails": "Vui l\u00f2ng th\u1eed l\u1ea1i trong tr\u00ecnh duy\u1ec7t nh\u01b0 Chrome",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "question": "Nghe v\u00e0 l\u1eb7p l\u1ea1i",
+                "acceptedAnswers": [
+                    "water"
+                ]
+            },
+            "library": "H5P.SpeakTheWords 1.5",
+            "subContentId": "b9173aae-ce9a-42a3-900c-9b3def9a55ff",
+            "metadata": {
+                "contentType": "Speak the Words",
+                "license": "U",
+                "title": "Untitled Speak the Words"
+            }
+        },
+        {
+            "params": {
+                "media": {
+                    "type": {
+                        "params": {
+                            "visuals": {
+                                "fit": true,
+                                "controls": true
+                            },
+                            "playback": {
+                                "autoplay": true,
+                                "loop": false
+                            },
+                            "l10n": {
+                                "name": "Video",
+                                "loading": "\u0110ang t\u1ea3i tr\u00ecnh ph\u00e1t video...",
+                                "noPlayers": "Kh\u00f4ng t\u00ecm th\u1ea5y tr\u00ecnh ph\u00e1t h\u1ed7 tr\u1ee3 \u0111\u1ecbnh d\u1ea1ng video n\u00e0y.",
+                                "noSources": "Video b\u1ecb thi\u1ebfu ngu\u1ed3n.",
+                                "aborted": "\u0110\u00e3 ng\u1eebng ph\u00e1t video.",
+                                "networkFailure": "L\u1ed7i m\u1ea1ng.",
+                                "cannotDecode": "Unable to decode media.",
+                                "formatNotSupported": "\u0110\u1ecbnh d\u1ea1ng c\u1ee7a video kh\u00f4ng \u0111\u01b0\u1ee3c h\u1ed7 tr\u1ee3.",
+                                "mediaEncrypted": "Media encrypted.",
+                                "unknownError": "L\u1ed7i kh\u00f4ng x\u00e1c \u0111\u1ecbnh.",
+                                "invalidYtId": "ID YouTube kh\u00f4ng h\u1ee3p l\u1ec7.",
+                                "unknownYtId": "Kh\u00f4ng t\u00ecm th\u1ea5y video n\u00e0o c\u00f3 ID YouTube n\u00e0y.",
+                                "restrictedYt": "Ng\u01b0\u1eddi s\u1edf h\u1eefu video n\u00e0y kh\u00f4ng cho ph\u00e9p nh\u00fang video n\u00e0y."
+                            },
+                            "sources": [
+                                {
+                                    "path": "videos\/sources-6835674263e54.mp4",
+                                    "mime": "video\/mp4",
+                                    "copyright": {
+                                        "license": "U"
+                                    }
+                                }
+                            ]
+                        },
+                        "library": "H5P.Video 1.6",
+                        "metadata": {
+                            "contentType": "Video",
+                            "license": "U",
+                            "title": "Untitled Video"
+                        },
+                        "subContentId": "b17e0d7e-b2ee-4a66-8acb-c3f1da374a0f"
+                    },
+                    "disableImageZooming": false
+                },
+                "incorrectAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi sai",
+                "correctAnswerText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang",
+                "inputLanguage": "en-US",
+                "l10n": {
+                    "retryLabel": "Th\u1eed l\u1ea1i",
+                    "showSolutionLabel": "Hi\u1ec3n th\u1ecb l\u1eddi gi\u1ea3i",
+                    "speakLabel": "Nh\u1ea5n \u0111\u1ec3 n\u00f3i",
+                    "listeningLabel": "\u0110ang nghe...",
+                    "correctAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi \u0111\u00fang:",
+                    "userAnswersText": "C\u00e2u tr\u1ea3 l\u1eddi c\u1ee7a b\u1ea1n \u0111\u00e3 \u0111\u01b0\u1ee3c hi\u1ec3u l\u00e0:",
+                    "noSound": "T\u00f4i kh\u00f4ng th\u1ec3 nghe th\u1ea5y b\u1ea1n, \u0111\u1ea3m b\u1ea3o micr\u00f4 c\u1ee7a b\u1ea1n \u0111\u01b0\u1ee3c b\u1eadt",
+                    "unsupportedBrowserHeader": "C\u00f3 v\u1ebb nh\u01b0 tr\u00ecnh duy\u1ec7t c\u1ee7a b\u1ea1n kh\u00f4ng h\u1ed7 tr\u1ee3 nh\u1eadn d\u1ea1ng gi\u1ecdng n\u00f3i",
+                    "unsupportedBrowserDetails": "Vui l\u00f2ng th\u1eed l\u1ea1i trong tr\u00ecnh duy\u1ec7t nh\u01b0 Chrome",
+                    "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+                    "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+                },
+                "question": "Nghe v\u00e0 l\u1eb7p l\u1ea1i",
+                "acceptedAnswers": [
+                    "milk tea"
+                ]
+            },
+            "library": "H5P.SpeakTheWords 1.5",
+            "subContentId": "1e83ebe8-91d4-4e0b-96f9-ec875834a2b3",
+            "metadata": {
+                "contentType": "Speak the Words",
+                "license": "U",
+                "title": "Untitled Speak the Words"
+            }
+        }
+    ],
+    "overallFeedback": [
+        {
+            "from": 0,
+            "to": 100
+        }
+    ],
+    "l10n": {
+        "introductionButtonLabel": "B\u1eaft \u0111\u1ea7u ch\u01b0\u01a1ng tr\u00ecnh!",
+        "solutionScreenResultsLabel": "K\u1ebft qu\u1ea3 c\u1ee7a b\u1ea1n:",
+        "showSolutionsButtonLabel": "Hi\u1ec3n th\u1ecb l\u1eddi gi\u1ea3i",
+        "retryButtonLabel": "Th\u1eed l\u1ea1i",
+        "finishButtonLabel": "C\u00e2u h\u1ecfi ti\u1ebfp theo",
+        "nextQuestionAriaLabel": "C\u00e2u h\u1ecfi tr\u01b0\u1edbc",
+        "previousQuestionAriaLabel": "Slide :num",
+        "navigationBarTitle": "Answered",
+        "answeredSlideAriaLabel": "Hi\u1ec7n th\u1eddi \u0111ang ho\u1ea1t \u0111\u1ed9ng",
+        "activeSlideAriaLabel": "Currently active"
+    }
+}

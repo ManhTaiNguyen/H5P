@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Speak the Words Set</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="container">
+    <div class="quiz-header-banner">
+      <img src="assets/logo/bkt logo for video ios app.png" alt="Logo" class="quiz-header-logo">
+
+      <div class="quiz-header-content">
+        <div class="quiz-header-text">
+          <h1>Speak the Words Set</h1>
+          <div class="quiz-header-instruction">
+            <strong style="color: #0deaea;">Hướng dẫn:</strong> 
+            <strong style="color: #0dea6d;">Nghe</strong> và 
+            <strong style="color: #0dea6d;">phát âm lại</strong> từ có trong video nhé!!!
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="question-container"></div>
+    
+    <div class="controls">
+      <button onclick="prevQuestion()">⟵</button>
+      <div id="dots-container" class="dots"></div>
+      <button onclick="nextQuestion()">⟶</button>
+    </div>
+
+    <div class="scoreboard">
+      <span class="score-text">Điểm: <span id="score" class="score-value">0</span></span>
+      <button class="retry-btn" onclick="retry()"><i class="fa-solid fa-rotate-left"></i> Làm lại</button>
+    </div>
+  </div>
+  <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
