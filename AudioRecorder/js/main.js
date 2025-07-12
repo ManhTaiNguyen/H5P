@@ -29,13 +29,23 @@ const modalBody = document.getElementById("modalBody");
 const cancelRetry = document.getElementById("cancelRetry");
 const confirmRetry = document.getElementById("confirmRetry");
 
+// Kiểm tra trình duyệt và thiết bị
+const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
 // Load localization content from JSON
+let l10n = {}; // Khai báo biến l10n
 fetch('content/content.json')
   .then(response => response.json())
   .then(data => {
     l10n = data.l10n;
     status.textContent = l10n.statusReadyToRecord || "Ready to record";
     status.classList.remove("hidden");
+    
+    // Hiển thị cảnh báo nếu là iOS/Safari
+    if (isIOS || isSafari) {
+      showMessage(l10n.iosWarning || "For best results on iOS, use Chrome or Firefox", "warning");
+    }
   })
   .catch(err => {
     console.error('Failed to load content.json:', err);
@@ -85,9 +95,26 @@ function stopMicAnimation() {
 // Recording functions
 async function startRecording() {
   try {
-    startMicAnimation();
+    // Yêu cầu quyền mic trước khi bắt đầu
     stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    mediaRecorder = new MediaRecorder(stream);
+    
+    // Kiểm tra xem MediaRecorder có sẵn sàng không
+    if (!MediaRecorder.isTypeSupported) {
+      throw new Error("MediaRecorder not supported");
+    }
+    
+    startMicAnimation();
+    
+    // Chọn định dạng phù hợp cho iOS
+    let options = {};
+    if (isIOS) {
+      // iOS thường hỗ trợ tốt hơn với AAC
+      options.mimeType = 'audio/mp4';
+    } else {
+      options.mimeType = 'audio/webm';
+    }
+    
+    mediaRecorder = new MediaRecorder(stream, options);
     audioChunks = [];
 
     mediaRecorder.ondataavailable = e => {
@@ -97,9 +124,8 @@ async function startRecording() {
     };
 
     mediaRecorder.onstop = () => {
-      audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
-      let mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4';
-      mediaRecorder = new MediaRecorder(stream, { mimeType });
+      const mimeType = isIOS ? 'audio/mp4' : 'audio/wav';
+      audioBlob = new Blob(audioChunks, { type: mimeType });
       audioUrl = URL.createObjectURL(audioBlob);
       audioPlayback.src = audioUrl;
       audioPlayback.classList.remove("hidden");
@@ -130,11 +156,11 @@ async function startRecording() {
       resetRecording();
     };
 
-    mediaRecorder.start(1000); // Collect data every second
+    // Trên iOS, không nên sử dụng timeslice vì có thể gây ra vấn đề
+    mediaRecorder.start(isIOS ? undefined : 1000);
     startTimer();
 
     recordBtn.classList.add("hidden");
-    
     recordBtn.disabled = true;
     pauseBtn.disabled = false;
     doneBtn.disabled = false;
@@ -149,11 +175,22 @@ async function startRecording() {
     status.classList.remove("paused");
     status.classList.add("recording");
   } catch (err) {
-    console.error(err);
+    console.error("Recording error:", err);
     status.textContent = l10n.microphoneInaccessible || "Microphone access denied or not supported";
     status.classList.remove("hidden");
-    showMessage(l10n.microphoneInaccessible || "Microphone access denied or not supported", "error");
+    showMessage(
+      l10n.microphoneInaccessible || "Microphone access denied or not supported", 
+      "error"
+    );
     stopMicAnimation();
+    
+    // Hướng dẫn cụ thể cho iOS
+    if (isIOS) {
+      showMessage(
+        l10n.iosMicHelp || "On iOS, make sure to allow microphone access in Settings > Safari > Microphone",
+        "info"
+      );
+    }
   }
 }
 
@@ -169,18 +206,29 @@ function pauseRecording() {
 
 function resumeRecording() {
   if (mediaRecorder && mediaRecorder.state === "paused") {
-    mediaRecorder.resume();
-    startTimer();
-    continueBtn.classList.add("hidden");
-    pauseBtn.classList.remove("hidden");
-    startMicAnimation();
+    // Trên iOS, cần tạo lại MediaRecorder khi resume
+    if (isIOS) {
+      const oldChunks = audioChunks;
+      stopRecording();
+      startRecording().then(() => {
+        audioChunks = oldChunks;
+      });
+    } else {
+      mediaRecorder.resume();
+      startTimer();
+      continueBtn.classList.add("hidden");
+      pauseBtn.classList.remove("hidden");
+      startMicAnimation();
+    }
   }
 }
 
 function stopRecording() {
   if (mediaRecorder && mediaRecorder.state !== "inactive") {
     mediaRecorder.stop();
-    stream.getTracks().forEach(track => track.stop());
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
     pauseTimer();
     stopMicAnimation();
     
@@ -199,7 +247,9 @@ function stopRecording() {
 function resetRecording() {
   if (mediaRecorder && mediaRecorder.state !== "inactive") {
     mediaRecorder.stop();
-    stream.getTracks().forEach(track => track.stop());
+    if (stream) {
+      stream.getTracks().forEach(track => track.stop());
+    }
   }
   
   resetTimer();
@@ -231,7 +281,7 @@ function showMessage(text, type) {
   
   setTimeout(() => {
     message.classList.add("hidden");
-  }, 3000);
+  }, 5000); // Tăng thời gian hiển thị cho iOS
 }
 
 function showRetryModal() {
@@ -246,7 +296,18 @@ function hideModal() {
 }
 
 // Event listeners
-recordBtn.addEventListener("click", startRecording);
+recordBtn.addEventListener("click", () => {
+  // Trên iOS, cần tương tác người dùng trực tiếp để bắt đầu ghi âm
+  if (isIOS) {
+    document.body.style.touchAction = "none"; // Tạm thời vô hiệu hóa touch
+  }
+  startRecording().finally(() => {
+    if (isIOS) {
+      document.body.style.touchAction = "";
+    }
+  });
+});
+
 pauseBtn.addEventListener("click", pauseRecording);
 continueBtn.addEventListener("click", resumeRecording);
 doneBtn.addEventListener("click", stopRecording);
@@ -255,7 +316,9 @@ downloadBtn.addEventListener("click", () => {
   const a = document.createElement("a");
   a.href = audioUrl;
   const dateStr = new Date().toLocaleDateString('vi-VN').replaceAll('/', '-');
-  a.download = `Cuộc hội thoại - ${dateStr}.wav`;
+  // Sử dụng đúng phần mở rộng file cho iOS
+  const extension = isIOS ? '.m4a' : '.wav';
+  a.download = `Cuộc hội thoại - ${dateStr}${extension}`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
@@ -266,6 +329,16 @@ cancelRetry.addEventListener("click", hideModal);
 confirmRetry.addEventListener("click", () => {
   hideModal();
   resetRecording();
+});
+
+// Thêm sự kiện pagehide để dọn dẹp khi rời khỏi trang (quan trọng cho iOS)
+window.addEventListener('pagehide', () => {
+  if (mediaRecorder && mediaRecorder.state !== "inactive") {
+    mediaRecorder.stop();
+  }
+  if (stream) {
+    stream.getTracks().forEach(track => track.stop());
+  }
 });
 
 // Initialize UI
