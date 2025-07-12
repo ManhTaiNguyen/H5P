@@ -97,7 +97,7 @@ async function startRecording() {
     };
 
     mediaRecorder.onstop = () => {
-      audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
       audioUrl = URL.createObjectURL(audioBlob);
       audioPlayback.src = audioUrl;
       audioPlayback.classList.remove("hidden");
@@ -253,7 +253,7 @@ downloadBtn.addEventListener("click", () => {
   const a = document.createElement("a");
   a.href = audioUrl;
   const dateStr = new Date().toLocaleDateString('vi-VN').replaceAll('/', '-');
-  a.download = `Cuộc hội thoại - ${dateStr}.webm`;
+  a.download = `Cuộc hội thoại - ${dateStr}.wav`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
