@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audio Recorder</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="recorder-container">
+    <div class="header-banner">
+      <div class="header-content">
+        <div class="header-instruction">
+          <strong>Hướng dẫn:</strong> 
+          2 bạn tạo cuộc hội thoại với những mẫu câu đã học
+        </div>
+      </div>
+      
+      <div class="header-logo">
+        <img src="assets/logo/bkt logo for video ios app.png" alt="Logo">
+      </div>
+    </div>
+
+    <div class="recorder-header">
+      <div class="mic-animation">
+        <div class="mic-icon">
+          <i class="fas fa-microphone"></i>
+        </div>
+        <div class="mic-waves"></div>
+        <div class="mic-waves"></div>
+        <div class="mic-waves"></div>
+      </div>
+    </div>
+
+    <div id="status" class="status-bar hidden"></div>
+
+    <div id="timer" class="timer">00:00</div>
+
+    <div class="controls">
+      <button id="recordBtn" class="btn record"><i class="fa-solid fa-record-vinyl"></i> <span class="btn-text">Record</span></button>
+      <button id="downloadBtn" class="btn download hidden"><i class="fas fa-download"></i> <span class="btn-text">Download</span></button>
+      <button id="retryBtn" class="btn retry hidden"><i class="fas fa-undo"></i> <span class="btn-text">Retry</span></button>
+      <button id="pauseBtn" class="btn pause hidden"><i class="fas fa-pause"></i> <span class="btn-text">Pause</span></button>
+      <button id="continueBtn" class="btn continue hidden"><i class="fas fa-play"></i> <span class="btn-text">Continue</span></button>
+      <button id="doneBtn" class="btn done hidden"><i class="fas fa-check"></i> <span class="btn-text">Done</span></button>
+    </div>
+    
+    <p id="afterDoneText" class="instruction hidden">Download this recording or retry.</p>
+    <div id="message" class="message hidden"></div>
+    <audio id="audioPlayback" controls class="hidden"></audio>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modalHeader"></h3>
+      <p id="modalBody"></p>
+      <div class="modal-actions">
+        <button id="cancelRetry" class="btn cancel"><span class="btn-text">Cancel</span></button>
+        <button id="confirmRetry" class="btn retry"><i class="fas fa-check"></i> <span class="btn-text">Retry</span></button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
