@@ -252,7 +252,8 @@ retryBtn.addEventListener("click", showRetryModal);
 downloadBtn.addEventListener("click", () => {
   const a = document.createElement("a");
   a.href = audioUrl;
-  a.download = `recording-${new Date().toISOString().slice(0, 10)}.wav`;
+  const dateStr = new Date().toLocaleDateString('vi-VN').replaceAll('/', '-');
+  a.download = `Cuộc hội thoại - ${dateStr}.wav`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);
