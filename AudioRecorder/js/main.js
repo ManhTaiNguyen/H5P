@@ -97,8 +97,9 @@ async function startRecording() {
     };
 
     mediaRecorder.onstop = () => {
+      audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
       let mimeType = MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : 'audio/mp4';
-      audioBlob = new Blob(audioChunks, { type: mimeType });
+      mediaRecorder = new MediaRecorder(stream, { mimeType });
       audioUrl = URL.createObjectURL(audioBlob);
       audioPlayback.src = audioUrl;
       audioPlayback.classList.remove("hidden");
