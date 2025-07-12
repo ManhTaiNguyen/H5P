@@ -29,14 +29,11 @@ const modalBody = document.getElementById("modalBody");
 const cancelRetry = document.getElementById("cancelRetry");
 const confirmRetry = document.getElementById("confirmRetry");
 
-let l10n = {};
-
 // Load localization content from JSON
 fetch('content/content.json')
   .then(response => response.json())
   .then(data => {
     l10n = data.l10n;
-    updateUIText();
     status.textContent = l10n.statusReadyToRecord || "Ready to record";
     status.classList.remove("hidden");
   })
@@ -45,15 +42,6 @@ fetch('content/content.json')
     status.textContent = "Failed to load language settings.";
     status.classList.remove("hidden");
   });
-
-function updateUIText() {
-  recordBtn.innerHTML = `<i class="fa-solid fa-record-vinyl"></i> <span class="btn-text">${l10n.recordAnswer || "Record"}</span>`;
-  pauseBtn.innerHTML = `<i class="fa fa-pause"></i> <span class="btn-text">${l10n.pause || "Pause"}</span>`;
-  continueBtn.innerHTML = `<i class="fa fa-play"></i> <span class="btn-text">${l10n.continue || "Continue"}</span>`;
-  doneBtn.innerHTML = `<i class="fa fa-check"></i> <span class="btn-text">${l10n.done || "Done"}</span>`;
-  retryBtn.innerHTML = `<i class="fa fa-undo"></i> <span class="btn-text">${l10n.retry || "Retry"}</span>`;
-  downloadBtn.innerHTML = `<i class="fa fa-download"></i> <span class="btn-text">${l10n.download || "Download"}</span>`;
-}
 
 // Timer functions
 function startTimer() {
@@ -109,7 +97,7 @@ async function startRecording() {
     };
 
     mediaRecorder.onstop = () => {
-      audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+      audioBlob = new Blob(audioChunks, { type: 'audio/wav' });
       audioUrl = URL.createObjectURL(audioBlob);
       audioPlayback.src = audioUrl;
       audioPlayback.classList.remove("hidden");
@@ -264,7 +252,7 @@ retryBtn.addEventListener("click", showRetryModal);
 downloadBtn.addEventListener("click", () => {
   const a = document.createElement("a");
   a.href = audioUrl;
-  a.download = `recording-${new Date().toISOString().slice(0, 10)}.webm`;
+  a.download = `recording-${new Date().toISOString().slice(0, 10)}.wav`;
   document.body.appendChild(a);
   a.click();
   document.body.removeChild(a);

@@ -114,10 +114,6 @@ body {
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.title i {
-  animation: pulse 2s infinite;
-}
-
 .mic-animation {
   position: relative;
   width: 80px;
@@ -356,12 +352,6 @@ body {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-@keyframes pulse {
-  0% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.2); opacity: 0.7; }
-  100% { transform: scale(1); opacity: 1; }
 }
 
 .message.success {
