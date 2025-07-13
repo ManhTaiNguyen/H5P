@@ -50,10 +50,11 @@ function renderQuestion() {
       resultHTML = `
         <div class="answered-result">
           <span style="color: var(--error-color);">✗ Đã trả lời sai</span>
-          <div id="resultText"></div>
+          <div id="resultText">Bạn nói: ${transcript}</div>
         </div>
       `;
-    } else {
+    }
+    else {
       resultHTML = '<div id="resultText"></div>';
     }
   }
