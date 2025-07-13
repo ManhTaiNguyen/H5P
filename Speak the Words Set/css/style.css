@@ -129,6 +129,14 @@ body {
   animation: textGlow 2s ease-in-out infinite alternate;
 }
 
+p {
+  font-size: 25px;
+  margin: 8px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  animation: textGlow 2s ease-in-out infinite alternate;
+  text-align: center;
+}
+
 @keyframes textGlow {
   from {
     text-shadow: 0 0 5px rgba(255,255,255,0.3);
@@ -398,7 +406,7 @@ button.listening {
   text-align: center;
   padding: 15px;
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.9);
+  background: rgba(187, 219, 235, 0.9);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(67, 97, 238, 0.1);
   transition: all 0.3s ease;
@@ -499,7 +507,7 @@ button.listening {
   }
   
   .quiz-header-instruction {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
   }
   
   .controls {
@@ -571,7 +579,7 @@ button.listening {
   }
   
   .quiz-header-instruction {
-    font-size: 1rem;
+    font-size: 1.4rem;
   }
 
   .quiz-header-logo {
@@ -850,4 +858,72 @@ button.listening {
     transform: scale(1);
     opacity: 1;
   }
+}
+
+.dot.answered {
+  background-color: var(--success-color);
+}
+
+.dot.answered-wrong {
+  background-color: var(--error-color);
+}
+
+.dot.current {
+  background-color: var(--primary-color);
+  transform: scale(1.3);
+  box-shadow: 0 0 10px rgba(67, 97, 238, 0.5);
+}
+
+.dot.current::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  border: 2px solid var(--primary-color);
+  border-radius: 50%;
+  animation: pulseDot 1.5s infinite;
+}
+
+.answered-result {
+  background: rgba(255, 255, 255, 0.9);
+  padding: 15px;
+  border-radius: 12px;
+  margin-top: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+
+.answered-result span {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.correct-answers {
+  background: rgba(74, 214, 109, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  border-left: 4px solid var(--success-color);
+}
+
+button[disabled] {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: #ccc !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+button[disabled]:hover {
+  background: #ccc !important;
+}
+
+button[disabled]::before,
+button[disabled]::after {
+  display: none !important;
 }

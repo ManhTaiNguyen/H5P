@@ -34,20 +34,23 @@
     <div class="scoreboard">
       <span class="score-text">Điểm: <span id="score" class="score-value">0</span></span>
       <button class="retry-btn" onclick="retry()"><i class="fa-solid fa-rotate-left"></i>Retry</button>
-      <!-- Thêm nút test này -->
+      <!-- Nút test -->
       <!-- <button class="test-btn" onclick="testCompletion()"><i class="fa-solid fa-check"></i>Test Hoàn Thành</button> -->
     </div>
   </div>
-  <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
-  <script src="js/main.js"></script>
+  
   <div id="notification" class="notification" style="display: none;"></div>
     <div id="completionModal" class="completion-modal">
     <div class="completion-content">
       <button class="close-modal-btn" onclick="closeCompletionModal()">×</button>
       <h2>🎉 Chúc mừng!</h2>
       <p>Bạn đã hoàn thành trò chơi với <strong id="finalScore">0/0</strong> điểm</p>
+      <p>Bấm <strong>Retry</strong> để chơi lại!!</p>
       <button class="celebration-btn" onclick="closeCompletionModal()">Đóng</button>
     </div>
   </div>
+
+  <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
