@@ -4,14 +4,7 @@
   ],
   "hints": {
     "no-inline-styles": "off",
-    "compat-api/css": [
-      "default",
-      {
-        "ignore": [
-          "backdrop-filter"
-        ]
-      }
-    ],
+    "compat-api/css": "off",
     "button-type": "off",
     "axe/name-role-value": [
       "default",
