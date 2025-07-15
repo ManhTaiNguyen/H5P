@@ -143,14 +143,22 @@ class ImageMultipleHotspotQuestion {
         const imageWrapper = document.querySelector('.image-wrapper');
         
         imageWrapper.addEventListener('mouseenter', (e) => {
-            if (e.target.classList.contains('image-hotspot') && !e.target.classList.contains('selected')) {
+            if (
+                e.target.classList.contains('image-hotspot') &&
+                !e.target.classList.contains('selected') &&
+                e.target.dataset.correct !== "true"
+            ) {
                 e.target.style.backgroundColor = 'rgba(255, 255, 255, 0.2)';
                 e.target.style.border = '2px solid rgba(255, 255, 255, 0.5)';
             }
         }, true);
         
         imageWrapper.addEventListener('mouseleave', (e) => {
-            if (e.target.classList.contains('image-hotspot') && !e.target.classList.contains('selected')) {
+            if (
+                e.target.classList.contains('image-hotspot') &&
+                !e.target.classList.contains('selected') &&
+                e.target.dataset.correct !== "true"
+            ) {
                 e.target.style.backgroundColor = 'rgba(0, 0, 0, 0)';
                 e.target.style.border = '2px solid transparent';
             }

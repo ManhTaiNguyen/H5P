@@ -148,7 +148,7 @@ body {
 .image-hotspot {
     position: absolute;
     background-color: rgba(0, 0, 0, 0);
-    cursor: pointer;
+    cursor: zoom-in;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 2px solid transparent;
     display: flex;
@@ -355,7 +355,6 @@ body {
     position: relative;
     z-index: 110;
     margin: 20px auto;
-    padding: 0 16px;
 }
 
 .button-container {

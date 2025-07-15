@@ -1,51 +1,31 @@
 // resize-controls.js
 document.addEventListener('DOMContentLoaded', function () {
-  // Constants
   const DEFAULT_FONT_SIZE = 20;
   const MIN_FONT_SIZE = 12;
   const MAX_FONT_SIZE = 32;
 
-  // Create UI elements
-  const resizeControls = document.createElement('div');
-  resizeControls.className = 'resize-controls-container';
-  resizeControls.innerHTML = `
-    <button class="resize-toggle-btn" aria-label="Adjust text size">
-        <i class="fas fa-text-height"></i>
-    </button>
-    <div class="resize-panel">Cỡ chữ:
-        <input type="range" id="fontSizeSlider" 
-               min="${MIN_FONT_SIZE}" max="${MAX_FONT_SIZE}" 
-               value="${DEFAULT_FONT_SIZE}" step="1"
-               aria-label="Font size slider">
-        <span id="fontSizeValue">${DEFAULT_FONT_SIZE}px</span>
-    </div>
+  // Tạo thanh điều chỉnh
+  const resizePanel = document.createElement('div');
+  resizePanel.className = 'resize-panel resize-centered';
+  resizePanel.innerHTML = `
+    <label for="fontSizeSlider" class="resize-label">Cỡ chữ:</label>
+    <input type="range" id="fontSizeSlider" 
+           min="${MIN_FONT_SIZE}" max="${MAX_FONT_SIZE}" 
+           value="${DEFAULT_FONT_SIZE}" step="1"
+           aria-label="Font size slider">
+    <span id="fontSizeValue">${DEFAULT_FONT_SIZE}px</span>
   `;
 
-  // Add to body
-  document.body.appendChild(resizeControls);
+  // Chèn vào ngay sau phần header
+  const header = document.querySelector('.h5p-question-introduction');
+  if (header && header.parentNode) {
+    header.parentNode.insertBefore(resizePanel, header.nextSibling);
+  }
 
-  // Get elements
-  const toggleBtn = document.querySelector('.resize-toggle-btn');
-  const resizePanel = document.querySelector('.resize-panel');
-  const fontSizeSlider = document.getElementById('fontSizeSlider');
-  const fontSizeValue = document.getElementById('fontSizeValue');
+  // Xử lý thay đổi cỡ chữ
+  const fontSizeSlider = resizePanel.querySelector('#fontSizeSlider');
+  const fontSizeValue = resizePanel.querySelector('#fontSizeValue');
 
-  // Toggle panel
-  let panelVisible = false;
-  toggleBtn.addEventListener('click', function () {
-    panelVisible = !panelVisible;
-    resizePanel.classList.toggle('visible', panelVisible);
-  });
-
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
-    if (panelVisible && !resizeControls.contains(e.target)) {
-      panelVisible = false;
-      resizePanel.classList.remove('visible');
-    }
-  });
-
-  // Apply font size
   function applyFontSize(size) {
     document.documentElement.style.transition = 'font-size 0.3s ease';
     document.documentElement.style.fontSize = `${size}px`;
@@ -54,152 +34,93 @@ document.addEventListener('DOMContentLoaded', function () {
     }, 300);
   }
 
-  // Handle slider
   fontSizeSlider.addEventListener('input', function () {
     const size = this.value;
     fontSizeValue.textContent = `${size}px`;
     applyFontSize(size);
   });
 
-  // Reset on double-click
   fontSizeSlider.addEventListener('dblclick', function () {
     this.value = DEFAULT_FONT_SIZE;
     fontSizeValue.textContent = `${DEFAULT_FONT_SIZE}px`;
     applyFontSize(DEFAULT_FONT_SIZE);
   });
 
-  // Apply default on load
+  // Áp dụng mặc định
   fontSizeSlider.value = DEFAULT_FONT_SIZE;
   fontSizeValue.textContent = `${DEFAULT_FONT_SIZE}px`;
   applyFontSize(DEFAULT_FONT_SIZE);
 
-  // Embedded CSS
+  // CSS nội tuyến
   const style = document.createElement('style');
   style.textContent = `
-    .resize-controls-container {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        z-index: 2000;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-end;
-        gap: 10px;
+    .resize-centered {
+      margin: 0 auto;
+      margin-top: -10px;
+      padding: 16px 24px;
+      background: #ffffff;
+      border-bottom: 1px solid #e0e0e0;
+      border-radius: 0 0 16px 16px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      max-width: 100%;
     }
 
-    .resize-toggle-btn {
-        background: linear-gradient(135deg, #6e8efb, #a777e3);
-        background-size: 200% 200%;
-        animation: gradientShift 4s ease infinite;
-        color: white;
-        border: none;
-        border-radius: 50%;
-        width: 56px;
-        height: 56px;
-        font-size: 24px;
-        cursor: pointer;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        transition: all 0.3s ease;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .resize-toggle-btn:hover,
-    .resize-toggle-btn:focus {
-        transform: scale(1.1) rotate(15deg);
-        box-shadow: 0 6px 20px rgba(0,0,0,0.3);
-        outline: none;
-    }
-
-    .resize-toggle-btn:active {
-        transform: scale(0.95) rotate(15deg);
-    }
-
-    .resize-panel {
-        background: rgba(255, 255, 255, 0.95);
-        padding: 15px 20px;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-        display: flex;
-        align-items: center;
-        gap: 15px;
-        backdrop-filter: blur(5px);
-        opacity: 0;
-        pointer-events: none;
-        transform: translateY(10px);
-        transition: opacity 0.3s ease, transform 0.3s ease;
-    }
-
-    .resize-panel.visible {
-        opacity: 1;
-        pointer-events: auto;
-        transform: translateY(0);
+    .resize-label {
+      font-weight: bold;
+      font-size: 1rem;
+      color: #444;
     }
 
     #fontSizeSlider {
-        width: 180px;
-        height: 8px;
-        -webkit-appearance: none;
-        background: linear-gradient(to right, #6e8efb, #a777e3);
-        border-radius: 4px;
-        outline: none;
-        transition: box-shadow 0.2s ease;
-    }
-
-    #fontSizeSlider:hover {
-        box-shadow: 0 0 0 2px rgba(110, 142, 251, 0.3);
+      width: 180px;
+      height: 8px;
+      -webkit-appearance: none;
+      background: linear-gradient(to right, #6e8efb, #a777e3);
+      border-radius: 4px;
+      outline: none;
+      transition: box-shadow 0.2s ease;
+      cursor: pointer;
     }
 
     #fontSizeSlider::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        width: 20px;
-        height: 20px;
-        background: #6e8efb;
-        border-radius: 50%;
-        cursor: pointer;
-        transition: all 0.2s ease;
+      -webkit-appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #6e8efb;
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.2s ease;
     }
 
     #fontSizeSlider::-webkit-slider-thumb:hover {
-        background: #a777e3;
-        transform: scale(1.1);
+      background: #a777e3;
     }
 
     #fontSizeValue {
-        font-weight: bold;
-        min-width: 45px;
-        text-align: center;
-        color: #333;
-        font-size: 16px;
-        transition: color 0.3s ease;
+      font-weight: bold;
+      font-size: 16px;
+      color: #333;
+      min-width: 50px;
+      text-align: center;
     }
 
-    @keyframes gradientShift {
-        0% { background-position: 0% 50%; }
-        50% { background-position: 100% 50%; }
-        100% { background-position: 0% 50%; }
-    }
+    @media (max-width: 768px) {
+      .resize-centered {
+        flex-direction: column;
+        align-items: center;
+        padding: 12px 16px;
+        gap: 12px;
+        border-radius: 0 0 12px 12px;
+      }
 
-    @media (max-width: 600px) {
-        .resize-controls-container {
-            top: 20px;
-            right: 15px;
-        }
-
-        .resize-toggle-btn {
-            width: 48px;
-            height: 48px;
-            font-size: 20px;
-        }
-
-        .resize-panel {
-            padding: 12px 15px;
-        }
-
-        #fontSizeSlider {
-            width: 140px;
-        }
+      #fontSizeSlider {
+        width: 140px;
+      }
     }
   `;
   document.head.appendChild(style);
