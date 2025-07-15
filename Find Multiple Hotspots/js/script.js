@@ -320,41 +320,32 @@ class ImageMultipleHotspotQuestion {
     createFeedback(event, type, message) {
         const imageWrapper = document.querySelector('.image-wrapper');
         const rect = imageWrapper.getBoundingClientRect();
-        
-        // Calculate click position relative to image wrapper
-        let x = event.clientX - rect.left;
-        let y = event.clientY - rect.top;
-        
-        // Create feedback element
+
+        const zoom = typeof window.getCurrentZoom === 'function' ? window.getCurrentZoom() : 1;
+
+        // Tính toán chính xác vị trí theo tỉ lệ zoom
+        let x = (event.clientX - rect.left) / zoom;
+        let y = (event.clientY - rect.top) / zoom;
+
+        // Tạo feedback element
         const feedback = document.createElement('div');
         feedback.className = `hotspot-feedback ${type}`;
-        
-        // Position feedback
-        feedback.style.left = (x - 16) + 'px'; // Center the 32px feedback
+        feedback.style.left = (x - 16) + 'px';
         feedback.style.top = (y - 16) + 'px';
-        
+
         imageWrapper.appendChild(feedback);
-        
-        // Store feedback data for resizing
+
         this.currentFeedback = {
             element: feedback,
             percentageX: (x / imageWrapper.offsetWidth) * 100,
             percentageY: (y / imageWrapper.offsetHeight) * 100
         };
-        
-        // Add fade-in animation
-        setTimeout(() => {
-            feedback.classList.add('fade-in');
-        }, 10);
-        
-        // Update feedback text
+
+        setTimeout(() => feedback.classList.add('fade-in'), 10);
         this.setFeedback(message);
-        
-        // Auto-remove all feedback after a delay
-        const delay = type === 'correct' ? 3000 : 2000; // Correct feedback stays longer
-        setTimeout(() => {
-            this.removeFeedback();
-        }, delay);
+
+        const delay = type === 'correct' ? 3000 : 2000;
+        setTimeout(() => this.removeFeedback(), delay);
     }
     
     removeFeedback() {
