@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Multiple Hotspots - Clothes</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="h5p-question">
+        <div class="h5p-question-introduction">
+            <div class="intro-logo">
+                <img src="bkt logo for video ios app.png" alt="BKT Logo">
+            </div>
+            <div class="intro-text-container">
+                <div class="intro-text">
+                <p>Loading...</p>
+                </div>
+                <div class="header-instruction">
+                <strong style="color: #0deaea;">Hướng dẫn:</strong> 
+                <strong style="color: #0dea6d;">Double click</strong> hoặc 
+                <strong style="color: #0dea6d;">chạm 2 lần</strong> để phóng to hình ảnh nhé!!
+                </div>
+            </div>
+        </div>
+        
+        <div class="h5p-question-content">
+            <div class="image-hotspot-question">
+                <div class="image-wrapper">
+                    <img class="hotspot-image" src="" alt="Find items">
+                    <!-- Hotspots will be dynamically created from content.json -->
+                </div>
+            </div>
+        </div>
+        
+        <div class="h5p-question-scorebar">
+            <div class="score-display">
+                <span class="score-text">Score: <span id="current-score">0</span> / <span id="max-score">0</span></span>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="h5p-question-feedback" id="feedback">
+            <div class="h5p-question-feedback-content">
+                <span class="feedback-text" id="feedback-text"></span>
+            </div>
+        </div>
+        
+        <div class="h5p-question-buttons">
+            <div class="button-container">
+                <button class="check-progress-button action-button" id="check-progress-button">
+                    <i class="fas fa-check-circle"></i> Check
+                </button>
+                <button class="retry-button action-button" id="retry-button">
+                    <i class="fas fa-redo"></i> Retry
+                </button>
+                <button class="show-solution-button action-button" id="show-solution-button">
+                    <i class="fas fa-lightbulb"></i> Show Solution
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div id="completionModal" class="completion-modal">
+        <div class="completion-content">
+            <h2>Chúc mừng bạn!</h2>
+            <p>Bạn đã hoàn thành tất cả các hotspot 🎯</p>
+            <p>Điểm: <span id="finalScore"></span></p>
+            <button id="closeModalBtn">Đóng</button>
+        </div>
+    </div>
+
+    <script src="js/celebration.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/resize-controls.js"></script>
+    <script src="js/zoom-image.js"></script>
+</body>
+</html>

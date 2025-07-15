@@ -1,0 +1,87 @@
+{
+    "imageMultipleHotspotQuestion": {
+        "backgroundImageSettings": {
+            "questionTitle": "Image hotspot question",
+            "backgroundImage": {
+                "path": "images\/backgroundImage-683d5e1d243a3.png",
+                "mime": "image\/png",
+                "copyright": {
+                    "license": "U"
+                },
+                "width": 1920,
+                "height": 1080
+            }
+        },
+        "hotspotSettings": {
+            "hotspot": [
+                {
+                    "userSettings": {
+                        "correct": true,
+                        "feedbackText": ""
+                    },
+                    "computedSettings": {
+                        "x": 2.291786123853211,
+                        "y": 4.074286442405708,
+                        "width": 11.467889908256879,
+                        "height": 18.34862385321101,
+                        "figure": "rectangle"
+                    }
+                },
+                {
+                    "userSettings": {
+                        "correct": true,
+                        "feedbackText": ""
+                    },
+                    "computedSettings": {
+                        "x": 52.752293577981646,
+                        "y": 4.074286442405708,
+                        "width": 16.05504587155963,
+                        "height": 28.54230377166157,
+                        "figure": "rectangle"
+                    }
+                },
+                {
+                    "userSettings": {
+                        "correct": true,
+                        "feedbackText": ""
+                    },
+                    "computedSettings": {
+                        "x": 25.229357798165136,
+                        "y": 63.200815494393474,
+                        "width": 14.908256880733944,
+                        "height": 32.61651376146789,
+                        "figure": "rectangle"
+                    }
+                },
+                {
+                    "userSettings": {
+                        "correct": true,
+                        "feedbackText": ""
+                    },
+                    "computedSettings": {
+                        "x": 83.71559633027522,
+                        "y": 73.39449541284404,
+                        "width": 11.467889908256879,
+                        "height": 20.38735983690112,
+                        "figure": "rectangle"
+                    }
+                },
+                {
+                    "userSettings": {
+                        "correct": true,
+                        "feedbackText": ""
+                    },
+                    "computedSettings": {
+                        "x": 83.71559633027522,
+                        "y": 6.116207951070336,
+                        "width": 12.614678899082568,
+                        "height": 18.34862385321101,
+                        "figure": "rectangle"
+                    }
+                }
+            ],
+            "taskDescription": "Ch\u1ecdn nh\u1eefng h\u00ecnh trong ch\u1ee7 \u0111\u1ec1 &quot;Clothes&quot;",
+            "numberHotspots": 5
+        }
+    }
+}

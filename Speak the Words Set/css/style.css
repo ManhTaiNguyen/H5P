@@ -743,7 +743,6 @@ button.listening {
   background-color: #e74c3c;
 }
 
-/* Thêm vào cuối file style.css */
 .completion-modal {
   position: fixed;
   top: 0;
