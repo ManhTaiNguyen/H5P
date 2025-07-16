@@ -1,0 +1,386 @@
+{
+    "scoreShow": "Check",
+    "submit": "Submit",
+    "tryAgain": "Retry",
+    "scoreExplanation": "Correct answers give +1 point. Incorrect answers give -1 point. The lowest possible score is 0.",
+    "question": {
+        "settings": {
+            "size": {
+                "width": 800,
+                "height": 450
+            },
+            "background": {
+                "path": "images\/background-682d59d5620ca.png",
+                "mime": "image\/png",
+                "copyright": {
+                    "license": "U"
+                },
+                "width": 1920,
+                "height": 1080
+            }
+        },
+        "task": {
+            "elements": [
+                {
+                    "x": 22.626451919455157,
+                    "y": 73.35281521006115,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Mommy<\/p>"
+                        },
+                        "subContentId": "bd7c2c39-1c5e-4160-923b-a77fbc3fbd86",
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        }
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 65.21742023842957,
+                    "y": 73.35281521006115,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Sister<\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "b5b810bd-d4e4-4b58-a6c3-c3246454c60f"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 43.92193607894236,
+                    "y": 73.35281521006115,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Brother<\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "e3fd076a-23cf-4bb9-97ef-a02db22859be"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 33.27419399919876,
+                    "y": 87.55013428297622,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Family<\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "b364559f-7390-444b-9676-38c5cd6afed2"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 54.56967815868596,
+                    "y": 87.55013428297622,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Grandmother<\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "38719100-e587-4a65-9f32-672f38d47ab7"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 75.86516231817316,
+                    "y": 87.55013428297622,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Grandfather<\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "d965a38e-5230-48bb-a36d-6508d02e59b7"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 11.978709839711552,
+                    "y": 87.55013428297622,
+                    "width": 7.208022083652333,
+                    "height": 1.8841512352046297,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p>Daddy<\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "52f72673-8b61-4b9f-9e5c-80be8c41542b"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                }
+            ],
+            "dropZones": [
+                {
+                    "x": 18.633548639551304,
+                    "y": 0,
+                    "width": 7.985806559807702,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "0"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Mommy<\/div>"
+                },
+                {
+                    "x": 39.92903241619031,
+                    "y": -2.4859172989851803e-6,
+                    "width": 10.647742079743603,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "3"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Family<\/div>"
+                },
+                {
+                    "x": 67.87935575836546,
+                    "y": 0,
+                    "width": 7.985806559807702,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "6"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Daddy<\/div>"
+                },
+                {
+                    "x": 6.25,
+                    "y": 35.55555555555556,
+                    "width": 7.985806559807702,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "4"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Grandmother<\/div>"
+                },
+                {
+                    "x": 29.28129071929491,
+                    "y": 35.493297682287654,
+                    "width": 9.316774319775652,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "5"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Grandfather<\/div>"
+                },
+                {
+                    "x": 57.23161367862186,
+                    "y": 35.493297682287654,
+                    "width": 7.985806559807702,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "2"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Brother<\/div>"
+                },
+                {
+                    "x": 78.52709783810907,
+                    "y": 35.493297682287654,
+                    "width": 7.985806559807702,
+                    "height": 8.651290439791676,
+                    "correctElements": [
+                        "1"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Sister<\/div>"
+                }
+            ]
+        }
+    },
+    "overallFeedback": [
+        {
+            "from": 0,
+            "to": 100
+        }
+    ],
+    "behaviour": {
+        "enableRetry": true,
+        "enableCheckButton": true,
+        "singlePoint": false,
+        "applyPenalties": true,
+        "enableScoreExplanation": true,
+        "dropZoneHighlighting": "dragging",
+        "autoAlignSpacing": 2,
+        "enableFullScreen": false,
+        "showScorePoints": true,
+        "showTitle": true
+    },
+    "grabbablePrefix": "Grabbable {num} of {total}.",
+    "grabbableSuffix": "Placed in dropzone {num}.",
+    "dropzonePrefix": "Dropzone {num} of {total}.",
+    "noDropzone": "No dropzone.",
+    "tipLabel": "Show tip.",
+    "tipAvailable": "Tip available",
+    "correctAnswer": "Correct answer",
+    "wrongAnswer": "Wrong answer",
+    "feedbackHeader": "Feedback",
+    "scoreBarLabel": "You got :num out of :total points",
+    "scoreExplanationButtonLabel": "Show score explanation",
+    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+    "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+    "localize": {
+        "fullscreen": "Fullscreen",
+        "exitFullscreen": "Exit fullscreen"
+    }
+}

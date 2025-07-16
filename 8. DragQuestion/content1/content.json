@@ -6,11 +6,11 @@
     "question": {
         "settings": {
             "size": {
-                "width": 600,
-                "height": 340
+                "width": 620,
+                "height": 350
             },
             "background": {
-                "path": "images\/background-681c8a32ea0b1.png",
+                "path": "images\/background-682700ba32636.png",
                 "mime": "image\/png",
                 "copyright": {
                     "license": "U"
@@ -22,10 +22,10 @@
         "task": {
             "elements": [
                 {
-                    "x": 10,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 80.64516129032258,
+                    "y": 2.857142857142857,
+                    "width": 6.161363625,
+                    "height": 2.41121875,
                     "dropZones": [
                         "0",
                         "1",
@@ -35,9 +35,9 @@
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Carrot&nbsp;&nbsp;&nbsp;&nbsp;<\/p>"
+                            "text": "<p>Elephant<\/p>"
                         },
-                        "subContentId": "d92aef20-4f35-4177-ac85-23ef3be5dcb4",
+                        "subContentId": "95fad875-5f24-4e23-ab88-0da57d7c1f15",
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
@@ -48,10 +48,10 @@
                     "multiple": false
                 },
                 {
-                    "x": 33.333333333333336,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 61.29032258064516,
+                    "y": 2.857142857142857,
+                    "width": 6.161363625,
+                    "height": 2.41121875,
                     "dropZones": [
                         "0",
                         "1",
@@ -61,23 +61,23 @@
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Tomato<\/p>"
+                            "text": "<p>Tiger<\/p>"
                         },
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
                             "title": "Untitled Text"
                         },
-                        "subContentId": "fa2e4f9d-79ea-414d-9b55-c13f77ff3583"
+                        "subContentId": "6872b154-7804-4b35-8e2a-58d6ec991ce0"
                     },
                     "backgroundOpacity": 100,
                     "multiple": false
                 },
                 {
-                    "x": 56.666666666666664,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 61.29032258064516,
+                    "y": 20,
+                    "width": 6.161363625,
+                    "height": 2.41121875,
                     "dropZones": [
                         "0",
                         "1",
@@ -87,23 +87,23 @@
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Pumpkin<\/p>"
+                            "text": "<p>Monkey<\/p>"
                         },
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
                             "title": "Untitled Text"
                         },
-                        "subContentId": "b329a6b7-8a7c-42ce-8794-ca97ea27109a"
+                        "subContentId": "36c7b221-b2fd-4ec4-a503-c866166fc506"
                     },
                     "backgroundOpacity": 100,
                     "multiple": false
                 },
                 {
-                    "x": 78.33333333333333,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 80.64516129032258,
+                    "y": 20,
+                    "width": 6.161363625,
+                    "height": 2.41121875,
                     "dropZones": [
                         "0",
                         "1",
@@ -113,14 +113,14 @@
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Eggplant<\/p>"
+                            "text": "<p>Lion<\/p>"
                         },
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
                             "title": "Untitled Text"
                         },
-                        "subContentId": "4cb22b95-0b3b-4982-9ccc-ed71537f6a42"
+                        "subContentId": "2b17a38b-22d4-4e7d-b922-5d857c58d817"
                     },
                     "backgroundOpacity": 100,
                     "multiple": false
@@ -128,27 +128,10 @@
             ],
             "dropZones": [
                 {
-                    "x": 31.666666666666668,
-                    "y": 55.88235294117647,
-                    "width": 7.5,
-                    "height": 6.875,
-                    "correctElements": [
-                        "3"
-                    ],
-                    "showLabel": false,
-                    "backgroundOpacity": 0,
-                    "tipsAndFeedback": {
-                        "tip": ""
-                    },
-                    "single": false,
-                    "autoAlign": true,
-                    "label": "<div>\ud83c\udf46 C\u00e0 t\u00edm<\/div>"
-                },
-                {
-                    "x": 5,
-                    "y": 50,
-                    "width": 9.375,
-                    "height": 8.125,
+                    "x": 0,
+                    "y": 0,
+                    "width": 11.875,
+                    "height": 7.5,
                     "correctElements": [
                         "2"
                     ],
@@ -159,13 +142,13 @@
                     },
                     "single": false,
                     "autoAlign": true,
-                    "label": "<div>\ud83c\udf83 B\u00ed ng\u00f4<\/div>"
+                    "label": "<div>monkey<\/div>"
                 },
                 {
-                    "x": 55,
-                    "y": 52.94117647058824,
-                    "width": 6.875,
-                    "height": 7.5,
+                    "x": 0,
+                    "y": 34.285714285714285,
+                    "width": 16.875,
+                    "height": 14.37499791357422,
                     "correctElements": [
                         "0"
                     ],
@@ -176,13 +159,30 @@
                     },
                     "single": false,
                     "autoAlign": true,
-                    "label": "<div>\ud83e\udd55 C\u00e0 r\u1ed1t<\/div>"
+                    "label": "<div>Elephant<\/div>"
                 },
                 {
-                    "x": 75,
-                    "y": 52.94117647058824,
-                    "width": 8.125,
-                    "height": 7.5,
+                    "x": 45.16129032258064,
+                    "y": 34.285714285714285,
+                    "width": 8.75,
+                    "height": 14.3720625,
+                    "correctElements": [
+                        "3"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Lion<\/div>"
+                },
+                {
+                    "x": 67.74193548387096,
+                    "y": 34.285714285714285,
+                    "width": 9.375,
+                    "height": 14.3730625,
                     "correctElements": [
                         "1"
                     ],
@@ -193,7 +193,7 @@
                     },
                     "single": false,
                     "autoAlign": true,
-                    "label": "<div>\ud83c\udf45 C\u00e0 chua<\/div>"
+                    "label": "<div>Tiger<\/div>"
                 }
             ]
         }

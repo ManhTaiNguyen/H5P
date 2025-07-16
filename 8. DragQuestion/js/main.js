@@ -1,358 +1,522 @@
-document.addEventListener("DOMContentLoaded", function () {
-  fetch("content/content.json")
-    .then((response) => response.json())
+let jsonData;
+let draggedItem = null;
+let originalPosition = {};
+let offset = { x: 0, y: 0 };
+let isDragging = false;
+let startTime = 0;
+let containerRect = null;
+let animationFrameId = null;
+
+// Touch event helpers
+let touchStartX = 0;
+let touchStartY = 0;
+let touchMoved = false;
+
+function loadGame() {
+  fetch("content1/content.json")
+    .then((res) => res.json())
     .then((data) => {
-      initializeDragDrop(data);
+      jsonData = data;
+      renderTask(data);
+      setupFontSizeControl();
     })
     .catch((error) => {
-      console.error("Error loading content:", error);
-      document.getElementById("question-text").textContent =
-        "Error loading content. Please try again.";
+      console.error("Error loading game:", error);
     });
+}
 
-  // Font size control
-  const fontSizeRange = document.getElementById("fontSizeRange");
-  const fontSizeValue = document.getElementById("fontSizeValue");
+function renderTask(data) {
+  const bgPath = data.question.settings.background.path;
+  const bgEl = document.getElementById("task-background");
+  bgEl.style.backgroundImage = `url(content1/${bgPath})`;
 
-  // Khởi tạo giá trị ban đầu từ CSS
-  const initialFontSize = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue(
-      "--base-font-size"
-    )
-  );
-  fontSizeRange.value = initialFontSize;
-  fontSizeValue.textContent = initialFontSize + "px";
+  const draggables = document.getElementById("draggables-container");
+  const dropzones = document.getElementById("dropzones-container");
+  draggables.innerHTML = "";
+  dropzones.innerHTML = "";
 
-  fontSizeRange.addEventListener("input", function () {
-    const newSize = this.value;
-    fontSizeValue.textContent = newSize + "px";
+  const elements = data.question.task.elements;
+  const zones = data.question.task.dropZones;
 
-    // Cập nhật biến CSS root
-    document.documentElement.style.setProperty(
-      "--base-font-size",
-      newSize + "px"
-    );
+  // Create draggable items
+  elements.forEach((el, i) => {
+    const item = document.createElement("div");
+    item.className = "draggable-item";
+    item.style.left = `${el.x}%`;
+    item.style.top = `${el.y}%`;
+    item.style.width = `${el.width}%`;
+    item.style.height = `${el.height}%`;
+    item.setAttribute("draggable", "true");
+    item.dataset.index = i;
 
-    // Cập nhật các phần tử text (trừ button)
-    updateTextElementsSize(newSize);
+    const textSpan = document.createElement("span");
+    textSpan.className = "draggable-text";
+    textSpan.innerHTML = el.type.params.text;
+    item.appendChild(textSpan);
+
+    originalPosition[i] = {
+      left: `${el.x}%`,
+      top: `${el.y}%`,
+      width: `${el.width}%`,
+      height: `${el.height}%`,
+    };
+
+    addDragEvents(item);
+    draggables.appendChild(item);
   });
 
-  // Kích hoạt sự kiện input ban đầu
-  fontSizeRange.dispatchEvent(new Event("input"));
+  // Create dropzones
+  zones.forEach((zone, idx) => {
+    const dz = document.createElement("div");
+    dz.className = "dropzone";
+    dz.style.left = `${zone.x}%`;
+    dz.style.top = `${zone.y}%`;
+    dz.style.width = `${zone.width}%`;
+    dz.style.height = `${zone.height}%`;
+    dz.dataset.correct = zone.correctElements.join(",");
+    dz.dataset.zoneIndex = idx;
+    addDropZoneEvents(dz);
+    dropzones.appendChild(dz);
+  });
+
+  updateContainerRect();
+}
+
+function updateContainerRect() {
+  containerRect = document
+    .getElementById("task-background")
+    .getBoundingClientRect();
+}
+
+function addDragEvents(item) {
+  // Desktop drag events
+  item.addEventListener("dragstart", (e) => {
+    e.preventDefault();
+    draggedItem = e.target;
+    isDragging = true;
+    startTime = Date.now();
+    e.target.classList.add("dragging");
+    e.dataTransfer.setData("text/plain", "");
+    e.dataTransfer.effectAllowed = "move";
+
+    const rect = e.target.getBoundingClientRect();
+    offset.x = e.clientX - rect.left;
+    offset.y = e.clientY - rect.top;
+  });
+
+  item.addEventListener("dragend", (e) => {
+    e.preventDefault();
+    cleanupDrag();
+  });
+
+  // Mobile touch events
+  item.addEventListener("touchstart", handleTouchStart, { passive: false });
+  item.addEventListener("touchmove", handleTouchMove, { passive: false });
+  item.addEventListener("touchend", handleTouchEnd, { passive: false });
+  item.addEventListener("touchcancel", handleTouchEnd, { passive: false });
+}
+
+function addDropZoneEvents(zone) {
+  zone.addEventListener("dragover", (e) => {
+    e.preventDefault();
+    e.dataTransfer.dropEffect = "move";
+    zone.classList.add("hovered");
+  });
+
+  zone.addEventListener("dragleave", (e) => {
+    zone.classList.remove("hovered");
+  });
+
+  zone.addEventListener("drop", (e) => {
+    e.preventDefault();
+    handleDrop(zone);
+  });
+}
+
+function handleTouchStart(e) {
+  e.preventDefault();
+  cancelAnimationFrame(animationFrameId);
+
+  const touch = e.touches[0];
+  draggedItem = e.target;
+  isDragging = true;
+  touchMoved = false;
+  startTime = Date.now();
+
+  touchStartX = touch.clientX;
+  touchStartY = touch.clientY;
+
+  updateContainerRect();
+
+  const rect = draggedItem.getBoundingClientRect();
+  offset.x = touch.clientX - rect.left;
+  offset.y = touch.clientY - rect.top;
+
+  // Style changes for dragging
+  draggedItem.classList.add("dragging");
+  draggedItem.style.zIndex = "1000";
+  draggedItem.style.position = "absolute";
+  draggedItem.style.transform = "translate3d(0, 0, 0)"; // Enable hardware acceleration
+  draggedItem.style.willChange = "transform"; // Optimize for animation
+
+  // Haptic feedback
+  if (navigator.vibrate) navigator.vibrate(50);
+}
+
+function handleTouchMove(e) {
+  if (!draggedItem || !isDragging) return;
+  e.preventDefault();
+
+  const touch = e.touches[0];
+  const deltaX = Math.abs(touch.clientX - touchStartX);
+  const deltaY = Math.abs(touch.clientY - touchStartY);
+
+  // Check if it's a real drag
+  if (!touchMoved && (deltaX > 5 || deltaY > 5)) {
+    touchMoved = true;
+  }
+
+  if (touchMoved) {
+    // Use requestAnimationFrame for smoother movement
+    animationFrameId = requestAnimationFrame(() => {
+      const x = touch.clientX - containerRect.left - offset.x;
+      const y = touch.clientY - containerRect.top - offset.y;
+
+      // Convert to percentage for responsive behavior
+      const percentX = (x / containerRect.width) * 100;
+      const percentY = (y / containerRect.height) * 100;
+
+      // Apply movement with transform for better performance
+      draggedItem.style.left = `${percentX}%`;
+      draggedItem.style.top = `${percentY}%`;
+      draggedItem.style.transform = `translate3d(0, 0, 0)`;
+    });
+
+    // Highlight dropzones on hover
+    highlightDropZones(touch.clientX, touch.clientY);
+  }
+}
+
+function handleTouchEnd(e) {
+  if (!draggedItem || !isDragging) return;
+  e.preventDefault();
+  cancelAnimationFrame(animationFrameId);
+
+  const touch = e.changedTouches[0];
+  let dropped = false;
+
+  if (touchMoved) {
+    const zones = document.querySelectorAll(".dropzone");
+
+    zones.forEach((zone) => {
+      const rect = zone.getBoundingClientRect();
+      if (
+        touch.clientX >= rect.left &&
+        touch.clientX <= rect.right &&
+        touch.clientY >= rect.top &&
+        touch.clientY <= rect.bottom
+      ) {
+        handleDrop(zone);
+        dropped = true;
+      }
+    });
+  }
+
+  if (!dropped) {
+    returnToOriginalPosition();
+  }
+
+  cleanupDrag();
+  clearDropZoneHighlights();
+}
+
+function handleDrop(zone) {
+  if (!draggedItem) return;
+
+  zone.classList.remove("hovered");
+
+  // Calculate position within dropzone
+  const dzRect = zone.getBoundingClientRect();
+  const itemRect = draggedItem.getBoundingClientRect();
+
+  // Center the item in the dropzone
+  const centerX = dzRect.width / 2 - itemRect.width / 2;
+  const centerY = dzRect.height / 2 - itemRect.height / 2;
+
+  // Move item to dropzone
+  zone.appendChild(draggedItem);
+  draggedItem.style.position = "absolute";
+  draggedItem.style.left = `${centerX}px`;
+  draggedItem.style.top = `${centerY}px`;
+  draggedItem.style.width = `${itemRect.width}px`;
+  draggedItem.style.height = `${itemRect.height}px`;
+  draggedItem.dataset.placedIn = zone.dataset.zoneIndex;
+
+  // Add smooth transition
+  draggedItem.style.transition = "all 0.2s ease-out";
+  setTimeout(() => {
+    draggedItem.style.transition = "";
+  }, 200);
+
+  // Haptic feedback
+  if (navigator.vibrate) navigator.vibrate(100);
+}
+
+function returnToOriginalPosition() {
+  if (!draggedItem) return;
+
+  const idx = draggedItem.dataset.index;
+  const original = originalPosition[idx];
+
+  // Animate back with transform for smoother movement
+  draggedItem.style.transition =
+    "all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)";
+  draggedItem.style.left = original.left;
+  draggedItem.style.top = original.top;
+  draggedItem.style.width = original.width;
+  draggedItem.style.height = original.height;
+
+  setTimeout(() => {
+    document.getElementById("draggables-container").appendChild(draggedItem);
+    draggedItem.style.transition = "";
+  }, 300);
+}
+
+function cleanupDrag() {
+  if (draggedItem) {
+    draggedItem.classList.remove("dragging");
+    draggedItem.style.zIndex = "5";
+    draggedItem.style.transform = "";
+    draggedItem.style.willChange = "";
+  }
+
+  isDragging = false;
+  draggedItem = null;
+  touchMoved = false;
+}
+
+function highlightDropZones(x, y) {
+  const zones = document.querySelectorAll(".dropzone");
+
+  zones.forEach((zone) => {
+    const rect = zone.getBoundingClientRect();
+    const isHovered =
+      x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom;
+
+    // Only update if state changed
+    if (isHovered && !zone.classList.contains("hovered")) {
+      zone.classList.add("hovered");
+    } else if (!isHovered && zone.classList.contains("hovered")) {
+      zone.classList.remove("hovered");
+    }
+  });
+}
+
+function clearDropZoneHighlights() {
+  document.querySelectorAll(".dropzone.hovered").forEach((zone) => {
+    zone.classList.remove("hovered");
+  });
+}
+
+// Button event listeners
+document.getElementById("checkBtn").addEventListener("click", checkAnswers);
+document.getElementById("resetBtn").addEventListener("click", resetGame);
+document
+  .getElementById("showAnswersBtn")
+  .addEventListener("click", showAnswers);
+
+function checkAnswers() {
+  if (!jsonData) return;
+
+  const zones = jsonData.question.task.dropZones;
+  let allCorrect = true;
+  let correctCount = 0;
+  let totalItems = 0;
+
+  document.querySelectorAll(".dropzone").forEach((zone) => {
+    const correct = zone.dataset.correct.split(",");
+    const child = zone.querySelector(".draggable-item");
+
+    zone.classList.remove("correct-feedback", "incorrect-feedback");
+
+    if (child) {
+      totalItems++;
+      const index = child.dataset.index;
+      if (correct.includes(index)) {
+        zone.classList.add("correct-feedback");
+        correctCount++;
+      } else {
+        zone.classList.add("incorrect-feedback");
+        allCorrect = false;
+      }
+    }
+  });
+
+  // Show feedback
+  showFeedback(allCorrect, correctCount, totalItems);
+
+  // Haptic feedback
+  if (navigator.vibrate) {
+    navigator.vibrate(allCorrect ? [100, 50, 100] : [200]);
+  }
+}
+
+function resetGame() {
+  // Clear feedback
+  document.querySelectorAll(".dropzone").forEach((zone) => {
+    zone.classList.remove("correct-feedback", "incorrect-feedback", "hovered");
+  });
+
+  // Reset all draggable items
+  document.querySelectorAll(".draggable-item").forEach((item) => {
+    const idx = item.dataset.index;
+    const original = originalPosition[idx];
+
+    item.style.position = "absolute";
+    item.style.left = original.left;
+    item.style.top = original.top;
+    item.style.width = original.width;
+    item.style.height = original.height;
+    item.style.zIndex = "5";
+    item.style.opacity = "1";
+    item.style.background = "linear-gradient(145deg, #f0f8ff, #e6f3ff)";
+    item.classList.remove("dragging");
+
+    document.getElementById("draggables-container").appendChild(item);
+    delete item.dataset.placedIn;
+  });
+
+  // Hide feedback
+  hideFeedback();
+
+  // Haptic feedback
+  if (navigator.vibrate) {
+    navigator.vibrate(50);
+  }
+}
+
+function showAnswers() {
+  if (!jsonData) return;
+
+  const zones = jsonData.question.task.dropZones;
+
+  zones.forEach((zone, dzIndex) => {
+    const correctIndex = parseInt(zone.correctElements[0]);
+    const item = document.querySelector(
+      `.draggable-item[data-index='${correctIndex}']`
+    );
+    const dzEl = document.querySelector(
+      `.dropzone[data-zone-index='${dzIndex}']`
+    );
+
+    if (item && dzEl) {
+      dzEl.appendChild(item);
+      item.style.position = "relative";
+      item.style.left = "0";
+      item.style.top = "0";
+      item.style.width = "auto";
+      item.style.height = "auto";
+      item.dataset.placedIn = dzIndex;
+
+      // Add animation
+      item.style.animation = "dropAnimation 0.3s ease-out";
+      setTimeout(() => {
+        item.style.animation = "";
+      }, 300);
+    }
+  });
+
+  // Mark all as correct
+  document.querySelectorAll(".dropzone").forEach((zone) => {
+    zone.classList.add("correct-feedback");
+    zone.classList.remove("incorrect-feedback");
+  });
+
+  // Show success feedback
+  showFeedback(true, zones.length, zones.length);
+
+  // Haptic feedback
+  if (navigator.vibrate) {
+    navigator.vibrate([100, 50, 100, 50, 100]);
+  }
+}
+
+function showFeedback(success, correct, total) {
+  const container = document.getElementById("feedback-container");
+  if (!container) return;
+
+  container.className = "feedback-container";
+  container.classList.add(success ? "success" : "error");
+
+  if (success) {
+    container.innerHTML = `
+      <i class="fas fa-check-circle"></i>
+      <strong>Chúc mừng!</strong> Bạn đã hoàn thành đúng tất cả câu hỏi!
+    `;
+  } else {
+    container.innerHTML = `
+      <i class="fas fa-exclamation-triangle"></i>
+      <strong>Gần đúng rồi!</strong> Bạn đã làm đúng ${correct}/${total} câu. Hãy thử lại!
+    `;
+  }
+
+  container.style.display = "block";
+}
+
+function hideFeedback() {
+  const container = document.getElementById("feedback-container");
+  if (container) {
+    container.style.display = "none";
+  }
+}
+
+// Prevent default touch behaviors that might interfere with drag
+document.addEventListener(
+  "touchstart",
+  (e) => {
+    if (e.target.classList.contains("draggable-item")) {
+      e.preventDefault();
+    }
+  },
+  { passive: false }
+);
+
+document.addEventListener(
+  "touchmove",
+  (e) => {
+    if (isDragging) {
+      e.preventDefault();
+    }
+  },
+  { passive: false }
+);
+
+// Handle orientation changes
+window.addEventListener("orientationchange", () => {
+  setTimeout(() => {
+    containerRect = document
+      .getElementById("task-background")
+      .getBoundingClientRect();
+  }, 100);
 });
 
-// Hàm cập nhật kích thước cho các phần tử text (trừ button)
-function updateTextElementsSize(baseSize) {
-  const textElements = [
-    ...document.querySelectorAll(".question-introduction"),
-    ...document.querySelectorAll(".draggable-item"),
-    ...document.querySelectorAll(".dropzone-label"),
-    ...document.querySelectorAll(".feedback-item"),
-    ...document.querySelectorAll(".control-group label"),
-    document.getElementById("fontSizeValue"),
-  ];
+// Handle resize
+window.addEventListener("resize", () => {
+  containerRect = document
+    .getElementById("task-background")
+    .getBoundingClientRect();
+});
 
-  textElements.forEach((el) => {
-    if (el.classList.contains("draggable-item")) {
-      el.style.fontSize = `${baseSize - 2}px`;
-    } else if (el.classList.contains("dropzone-label")) {
-      el.style.fontSize = `${baseSize - 3}px`;
-    } else {
-      el.style.fontSize = `${baseSize}px`;
-    }
-  });
-}
-
-function initializeDragDrop(data) {
-  const questionText = document.getElementById("question-text");
-  const draggablesContainer = document.getElementById("draggables-container");
-  const dropzonesContainer = document.getElementById("dropzones-container");
-  const taskBackground = document.getElementById("task-background");
-  const checkBtn = document.getElementById("checkBtn");
-  const resetBtn = document.getElementById("resetBtn");
-  const showAnswersBtn = document.getElementById("showAnswersBtn");
-  const feedbackContainer = document.getElementById("feedback-container");
-
-  // Set background image
-  const backgroundImagePath =
-    "content/" + data.question.settings.background.path;
-  taskBackground.style.backgroundImage = `url(${backgroundImagePath})`;
-
-  // Set question text if any
-  if (data.question.introduction) {
-    questionText.innerHTML = data.question.introduction;
+// Add CSS animation keyframes dynamically
+const style = document.createElement("style");
+style.textContent = `
+  @keyframes dropAnimation {
+    0% { transform: scale(1.1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 0.9; }
+    100% { transform: scale(1); opacity: 1; }
   }
+`;
+document.head.appendChild(style);
 
-  // Create draggable elements
-  const draggableElements = data.question.task.elements.map(
-    (element, index) => {
-      const draggable = document.createElement("div");
-      draggable.className = "draggable-item";
-
-      const tempDiv = document.createElement("div");
-      tempDiv.innerHTML = element.type.params.text;
-      const plainText = tempDiv.textContent || tempDiv.innerText || "";
-
-      draggable.textContent = plainText;
-      draggable.dataset.label = plainText;
-
-      draggable.setAttribute("draggable", "true");
-      draggable.dataset.id = index;
-      draggable.dataset.dropZones = element.dropZones.join(",");
-
-      // Positioning
-      draggable.style.position = "absolute";
-      draggable.style.left = `${element.x}%`;
-      draggable.style.top = `${element.y}%`;
-      draggable.style.width = `min(${element.width + 10}%, 100px)`;
-      draggable.style.height = `${element.height}%`;
-
-      // Drag events
-      draggable.addEventListener("dragstart", dragStart);
-      draggable.addEventListener("dragend", dragEnd);
-
-      return draggable;
-    }
-  );
-
-  draggableElements.forEach((draggable) => {
-    draggablesContainer.appendChild(draggable);
-  });
-
-  // Create drop zones
-  const dropZones = data.question.task.dropZones.map((zone, index) => {
-    const dropzone = document.createElement("div");
-    dropzone.className = "dropzone";
-    dropzone.dataset.id = index;
-    dropzone.dataset.correctElements = zone.correctElements.join(",");
-
-    // Positioning
-    dropzone.style.position = "absolute";
-    dropzone.style.left = `${zone.x}%`;
-    dropzone.style.top = `${zone.y}%`;
-
-    // Lấy đúng kích thước của quả tương ứng
-    const correctElement = data.question.task.elements.find((el, idx) =>
-      zone.correctElements.includes(idx.toString())
-    );
-    if (correctElement) {
-      dropzone.style.width = `min(${correctElement.width}%, 80px)`;
-      dropzone.style.height = `${correctElement.height}%`;
-    }
-
-    // Optional label
-    if (zone.showLabel && zone.label) {
-      const label = document.createElement("div");
-      label.className = "dropzone-label";
-      label.innerHTML = zone.label;
-      dropzone.appendChild(label);
-    }
-
-    dropzone.addEventListener("dragover", dragOver);
-    dropzone.addEventListener("dragenter", dragEnter);
-    dropzone.addEventListener("dragleave", dragLeave);
-    dropzone.addEventListener("drop", drop);
-
-    return dropzone;
-  });
-
-  dropZones.forEach((dropzone) => {
-    dropzonesContainer.appendChild(dropzone);
-  });
-
-  // Drag state
-  let draggedItem = null;
-
-  function dragStart(e) {
-    draggedItem = this;
-    this.classList.add("dragging");
-    e.dataTransfer.effectAllowed = "move";
-    e.dataTransfer.setData("text/html", this.innerHTML);
-
-    const compatibleDropZones = this.dataset.dropZones.split(",");
-    document.querySelectorAll(".dropzone").forEach((dz) => {
-      if (compatibleDropZones.includes(dz.dataset.id)) {
-        dz.classList.add("highlight");
-      }
-    });
-  }
-
-  function dragEnd() {
-    this.classList.remove("dragging");
-    document.querySelectorAll(".dropzone").forEach((dz) => {
-      dz.classList.remove("highlight");
-    });
-  }
-
-  function dragOver(e) {
-    e.preventDefault();
-  }
-
-  function dragEnter(e) {
-    e.preventDefault();
-    this.classList.add("active");
-  }
-
-  function dragLeave() {
-    this.classList.remove("active");
-  }
-
-  function drop(e) {
-    e.preventDefault();
-    this.classList.remove("highlight", "active");
-
-    const compatibleDropZones = draggedItem.dataset.dropZones.split(",");
-    if (!compatibleDropZones.includes(this.dataset.id)) return;
-
-    if (draggedItem.parentElement.classList.contains("dropzone")) {
-      draggedItem.parentElement.classList.remove("filled");
-    }
-
-    this.appendChild(draggedItem);
-    this.classList.add("filled");
-  }
-
-  // Check answers
-  checkBtn.addEventListener("click", () => {
-    let score = 0;
-    const maxScore = dropZones.length;
-    feedbackContainer.innerHTML = "";
-
-    document.querySelectorAll(".dropzone").forEach((dz) => {
-      const correct = dz.dataset.correctElements.split(",");
-      const item = dz.querySelector(".draggable-item");
-
-      const feedbackItem = document.createElement("div");
-      feedbackItem.className = "feedback-item";
-
-      if (item) {
-        const isCorrect = correct.includes(item.dataset.id);
-        feedbackItem.classList.add(isCorrect ? "correct" : "incorrect");
-
-        feedbackItem.innerHTML = `<i class="fas ${
-          isCorrect ? "fa-check-circle" : "fa-times-circle"
-        }"></i>
-          <span>${item.textContent} is ${
-          isCorrect ? "correct" : "incorrect"
-        }.</span>`;
-        if (isCorrect) {
-          score++;
-          dz.classList.add("correct-feedback");
-        } else {
-          dz.classList.add("incorrect-feedback");
-        }
-      } else {
-        feedbackItem.classList.add("incorrect");
-        feedbackItem.innerHTML = `<i class="fas fa-times-circle"></i><span>No answer given.</span>`;
-        dz.classList.add("incorrect-feedback");
-      }
-
-      feedbackContainer.appendChild(feedbackItem);
-    });
-
-    const scoreText = document.createElement("div");
-    scoreText.className = "score-display";
-    scoreText.innerHTML = `<strong>Score: ${score}/${maxScore}</strong> - ${data.scoreExplanation}`;
-    feedbackContainer.prepend(scoreText);
-    feedbackContainer.style.display = "block";
-  });
-
-  // Reset activity
-  resetBtn.addEventListener("click", () => {
-    draggablesContainer.innerHTML = "";
-    dropzonesContainer.innerHTML = "";
-    feedbackContainer.innerHTML = "";
-    feedbackContainer.style.display = "none";
-    initializeDragDrop(data);
-  });
-
-  // Show correct answers
-  showAnswersBtn.addEventListener("click", () => {
-    resetBtn.click();
-
-    dropZones.forEach((zone, index) => {
-      const correctId = zone.dataset.correctElements.split(",")[0];
-      const element = draggableElements[correctId];
-      const dz = document.querySelector(`.dropzone[data-id="${index}"]`);
-      if (element && dz) {
-        dz.appendChild(element);
-        dz.classList.add("filled", "correct-feedback");
-      }
-    });
-
-    feedbackContainer.innerHTML = `<div class="feedback-item correct"><i class="fas fa-lightbulb"></i> <span>This is the correct solution</span></div>`;
-    feedbackContainer.style.display = "block";
-  });
-
-  // Touch support
-  draggableElements.forEach((item) => {
-    item.addEventListener("touchstart", touchStart, { passive: false });
-    item.addEventListener("touchmove", touchMove, { passive: false });
-    item.addEventListener("touchend", touchEnd, { passive: false });
-  });
-
-  dropZones.forEach((dz) => {
-    dz.addEventListener("touchmove", (e) => e.preventDefault(), {
-      passive: false,
-    });
-    dz.addEventListener("touchend", touchDrop, { passive: false });
-  });
-
-  let touchElement = null;
-  let touchStartX = 0;
-  let touchStartY = 0;
-
-  function touchStart(e) {
-    touchElement = this;
-    touchStartX = e.touches[0].clientX;
-    touchStartY = e.touches[0].clientY;
-    this.classList.add("dragging");
-    e.preventDefault();
-  }
-
-  function touchMove(e) {
-    if (!touchElement) return;
-    const dx = e.touches[0].clientX - touchStartX;
-    const dy = e.touches[0].clientY - touchStartY;
-    touchElement.style.transform = `translate(${dx}px, ${dy}px)`;
-    e.preventDefault();
-  }
-
-  function touchEnd(e) {
-    if (!touchElement) return;
-    touchElement.style.transform = "";
-    touchElement.classList.remove("dragging");
-    document
-      .querySelectorAll(".dropzone")
-      .forEach((dz) => dz.classList.remove("highlight"));
-    touchElement = null;
-    e.preventDefault();
-  }
-
-  function touchDrop(e) {
-    if (!touchElement) return;
-    const dz = this;
-    const rect = dz.getBoundingClientRect();
-    const touch = e.changedTouches[0];
-
-    if (
-      touch.clientX >= rect.left &&
-      touch.clientX <= rect.right &&
-      touch.clientY >= rect.top &&
-      touch.clientY <= rect.bottom
-    ) {
-      const compatible = touchElement.dataset.dropZones.split(",");
-      if (!compatible.includes(dz.dataset.id)) return;
-
-      if (touchElement.parentElement.classList.contains("dropzone")) {
-        touchElement.parentElement.classList.remove("filled");
-      }
-
-      dz.appendChild(touchElement);
-      dz.classList.add("filled");
-    }
-
-    touchElement = null;
-    e.preventDefault();
-  }
-}
+// Initialize game
+loadGame();

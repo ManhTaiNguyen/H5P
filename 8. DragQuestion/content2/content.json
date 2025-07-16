@@ -1,0 +1,440 @@
+{
+    "scoreShow": "Check",
+    "submit": "Submit",
+    "tryAgain": "Retry",
+    "scoreExplanation": "Correct answers give +1 point. Incorrect answers give -1 point. The lowest possible score is 0.",
+    "question": {
+        "settings": {
+            "size": {
+                "width": 1000,
+                "height": 600
+            },
+            "background": {
+                "path": "images\/background-682c04f6f020a.png",
+                "mime": "image\/png",
+                "copyright": {
+                    "license": "U"
+                },
+                "width": 1920,
+                "height": 1080
+            }
+        },
+        "task": {
+            "elements": [
+                {
+                    "x": 79.90867579908677,
+                    "y": 74.20176029406727,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Monkey<\/strong><\/p>"
+                        },
+                        "subContentId": "b56b5d6d-a35c-4e67-9ed7-2601ed10c553",
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        }
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 78.76712328767124,
+                    "y": 13.31826466816592,
+                    "width": 4.85833375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Elephant<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "78e3f479-dbd9-46be-beca-7edbed46e089"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 73.05936073059361,
+                    "y": 28.53913857464126,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Tiger<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "5e367407-4ead-42a3-9ca3-f98f598f0cdc"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 86.7579908675799,
+                    "y": 28.53913857464126,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Lion<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "f1acca57-ed46-4e56-8688-693c499d11ff"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 73.05936073059361,
+                    "y": 43.7600124811166,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Table<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "25103946-28d4-4d43-bd87-9b0f1ac2fb18"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 86.7579908675799,
+                    "y": 43.7600124811166,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Book<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "31339177-8a82-4e95-b866-6c330c23f679"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 73.05936073059361,
+                    "y": 58.98088638759194,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Pencil<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "0f99b77b-3826-47a0-8673-3c883250cf8e"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                },
+                {
+                    "x": 86.7579908675799,
+                    "y": 58.98088638759194,
+                    "width": 4.23333375,
+                    "height": 1.733075,
+                    "dropZones": [
+                        "0",
+                        "1",
+                        "2",
+                        "3",
+                        "4",
+                        "5",
+                        "6",
+                        "7"
+                    ],
+                    "type": {
+                        "library": "H5P.AdvancedText 1.1",
+                        "params": {
+                            "text": "<p><strong>Crayon<\/strong><\/p>"
+                        },
+                        "metadata": {
+                            "contentType": "Text",
+                            "license": "U",
+                            "title": "Untitled Text"
+                        },
+                        "subContentId": "f36b6ab5-c7d4-47cb-b859-ccde43e0c029"
+                    },
+                    "backgroundOpacity": 100,
+                    "multiple": false
+                }
+            ],
+            "dropZones": [
+                {
+                    "x": 0,
+                    "y": 0,
+                    "width": 13.849127782534246,
+                    "height": 12.842465753424657,
+                    "correctElements": [
+                        "2"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Tiger<\/div>"
+                },
+                {
+                    "x": 22.831050228310502,
+                    "y": 0,
+                    "width": 12.842465753424657,
+                    "height": 12.128995433789955,
+                    "correctElements": [
+                        "5"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Book<\/div>"
+                },
+                {
+                    "x": 45.662100456621005,
+                    "y": 0,
+                    "width": 12.128995433789955,
+                    "height": 12.842465753424657,
+                    "correctElements": [
+                        "3"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Lion<\/div>"
+                },
+                {
+                    "x": 0,
+                    "y": 34.243993462634656,
+                    "width": 11.415525114155251,
+                    "height": 11.415525114155251,
+                    "correctElements": [
+                        "7"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Crayon<\/div>"
+                },
+                {
+                    "x": 5.707762557077626,
+                    "y": 64.68276844865046,
+                    "width": 14.269406392694064,
+                    "height": 10.702054794520548,
+                    "correctElements": [
+                        "4"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Table<\/div>"
+                },
+                {
+                    "x": 28.538812785388128,
+                    "y": 34.243993462634656,
+                    "width": 12.842465753424657,
+                    "height": 13.55593607305936,
+                    "correctElements": [
+                        "1"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Elephant<\/div>"
+                },
+                {
+                    "x": 51.369863013698634,
+                    "y": 39.996413581585784,
+                    "width": 10.728809931506849,
+                    "height": 9.275114155251142,
+                    "correctElements": [
+                        "6"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Pencil<\/div>"
+                },
+                {
+                    "x": 41.09589041095891,
+                    "y": 70.39654181744844,
+                    "width": 9.988584474885844,
+                    "height": 8.55941424086758,
+                    "correctElements": [
+                        "0"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>Monkey<\/div>"
+                }
+            ]
+        }
+    },
+    "overallFeedback": [
+        {
+            "from": 0,
+            "to": 100
+        }
+    ],
+    "behaviour": {
+        "enableRetry": true,
+        "enableCheckButton": true,
+        "singlePoint": false,
+        "applyPenalties": true,
+        "enableScoreExplanation": true,
+        "dropZoneHighlighting": "dragging",
+        "autoAlignSpacing": 2,
+        "enableFullScreen": false,
+        "showScorePoints": true,
+        "showTitle": true
+    },
+    "grabbablePrefix": "Grabbable {num} of {total}.",
+    "grabbableSuffix": "Placed in dropzone {num}.",
+    "dropzonePrefix": "Dropzone {num} of {total}.",
+    "noDropzone": "No dropzone.",
+    "tipLabel": "Show tip.",
+    "tipAvailable": "Tip available",
+    "correctAnswer": "Correct answer",
+    "wrongAnswer": "Wrong answer",
+    "feedbackHeader": "Feedback",
+    "scoreBarLabel": "You got :num out of :total points",
+    "scoreExplanationButtonLabel": "Show score explanation",
+    "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+    "a11yRetry": "Retry the task. Reset all responses and start the task over again.",
+    "localize": {
+        "fullscreen": "Fullscreen",
+        "exitFullscreen": "Exit fullscreen"
+    }
+}

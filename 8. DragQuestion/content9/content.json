@@ -6,11 +6,11 @@
     "question": {
         "settings": {
             "size": {
-                "width": 600,
-                "height": 340
+                "width": 1000,
+                "height": 550
             },
             "background": {
-                "path": "images\/background-681c8a32ea0b1.png",
+                "path": "images\/background-6864dae3efbd3.png",
                 "mime": "image\/png",
                 "copyright": {
                     "license": "U"
@@ -22,22 +22,21 @@
         "task": {
             "elements": [
                 {
-                    "x": 10,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 36.585351911070155,
+                    "y": 8.314936536246886,
+                    "width": 16.35743945981728,
+                    "height": 3.496797924238596,
                     "dropZones": [
                         "0",
                         "1",
-                        "2",
-                        "3"
+                        "2"
                     ],
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Carrot&nbsp;&nbsp;&nbsp;&nbsp;<\/p>"
+                            "text": "<p><span style=\"font-size:1.5em;\"><strong>STARS<\/strong><\/span><\/p>"
                         },
-                        "subContentId": "d92aef20-4f35-4177-ac85-23ef3be5dcb4",
+                        "subContentId": "44bcece4-0d6d-41c5-82dc-ccaf0a9c2d5f",
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
@@ -48,79 +47,51 @@
                     "multiple": false
                 },
                 {
-                    "x": 33.333333333333336,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 69.74082708047749,
+                    "y": 8.314936536246886,
+                    "width": 16.35743945981728,
+                    "height": 3.496797924238596,
                     "dropZones": [
                         "0",
                         "1",
-                        "2",
-                        "3"
+                        "2"
                     ],
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Tomato<\/p>"
+                            "text": "<p><span style=\"font-size:1.5em;\"><strong>RAIN<\/strong><\/span><\/p>"
                         },
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
                             "title": "Untitled Text"
                         },
-                        "subContentId": "fa2e4f9d-79ea-414d-9b55-c13f77ff3583"
+                        "subContentId": "d3699f3a-f4c0-43c3-8bba-3ec5e1b3a51c"
                     },
                     "backgroundOpacity": 100,
                     "multiple": false
                 },
                 {
-                    "x": 56.666666666666664,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
+                    "x": 3.4298767416628273,
+                    "y": 8.314936536246886,
+                    "width": 16.35743945981728,
+                    "height": 3.496797924238596,
                     "dropZones": [
                         "0",
                         "1",
-                        "2",
-                        "3"
+                        "2"
                     ],
                     "type": {
                         "library": "H5P.AdvancedText 1.1",
                         "params": {
-                            "text": "<p>Pumpkin<\/p>"
+                            "text": "<p><span style=\"font-size:1.5em;\"><strong>CLOUDS<\/strong><\/span><\/p>"
                         },
                         "metadata": {
                             "contentType": "Text",
                             "license": "U",
                             "title": "Untitled Text"
                         },
-                        "subContentId": "b329a6b7-8a7c-42ce-8794-ca97ea27109a"
-                    },
-                    "backgroundOpacity": 100,
-                    "multiple": false
-                },
-                {
-                    "x": 78.33333333333333,
-                    "y": 17.647058823529413,
-                    "width": 4.8994125,
-                    "height": 1.775,
-                    "dropZones": [
-                        "0",
-                        "1",
-                        "2",
-                        "3"
-                    ],
-                    "type": {
-                        "library": "H5P.AdvancedText 1.1",
-                        "params": {
-                            "text": "<p>Eggplant<\/p>"
-                        },
-                        "metadata": {
-                            "contentType": "Text",
-                            "license": "U",
-                            "title": "Untitled Text"
-                        },
-                        "subContentId": "4cb22b95-0b3b-4982-9ccc-ed71537f6a42"
+                        "subContentId": "fa25d41d-f4ed-4f36-be82-4707ce2f1e3b"
                     },
                     "backgroundOpacity": 100,
                     "multiple": false
@@ -128,27 +99,10 @@
             ],
             "dropZones": [
                 {
-                    "x": 31.666666666666668,
-                    "y": 55.88235294117647,
-                    "width": 7.5,
-                    "height": 6.875,
-                    "correctElements": [
-                        "3"
-                    ],
-                    "showLabel": false,
-                    "backgroundOpacity": 0,
-                    "tipsAndFeedback": {
-                        "tip": ""
-                    },
-                    "single": false,
-                    "autoAlign": true,
-                    "label": "<div>\ud83c\udf46 C\u00e0 t\u00edm<\/div>"
-                },
-                {
-                    "x": 5,
-                    "y": 50,
-                    "width": 9.375,
-                    "height": 8.125,
+                    "x": 36.582972613976104,
+                    "y": 31.181008474641782,
+                    "width": 17.149383708314133,
+                    "height": 20.00761432636649,
                     "correctElements": [
                         "2"
                     ],
@@ -159,30 +113,13 @@
                     },
                     "single": false,
                     "autoAlign": true,
-                    "label": "<div>\ud83c\udf83 B\u00ed ng\u00f4<\/div>"
+                    "label": "<div>cloud<\/div>"
                 },
                 {
-                    "x": 55,
-                    "y": 52.94117647058824,
-                    "width": 6.875,
-                    "height": 7.5,
-                    "correctElements": [
-                        "0"
-                    ],
-                    "showLabel": false,
-                    "backgroundOpacity": 0,
-                    "tipsAndFeedback": {
-                        "tip": ""
-                    },
-                    "single": false,
-                    "autoAlign": true,
-                    "label": "<div>\ud83e\udd55 C\u00e0 r\u1ed1t<\/div>"
-                },
-                {
-                    "x": 75,
-                    "y": 52.94117647058824,
-                    "width": 8.125,
-                    "height": 7.5,
+                    "x": 3.4298767416628273,
+                    "y": 31.181012010925826,
+                    "width": 17.14789664763035,
+                    "height": 20.00761432636649,
                     "correctElements": [
                         "1"
                     ],
@@ -193,7 +130,24 @@
                     },
                     "single": false,
                     "autoAlign": true,
-                    "label": "<div>\ud83c\udf45 C\u00e0 chua<\/div>"
+                    "label": "<div>rain<\/div>"
+                },
+                {
+                    "x": 69.74082708047749,
+                    "y": 31.181012010925826,
+                    "width": 17.147896647630347,
+                    "height": 20.00761432636649,
+                    "correctElements": [
+                        "0"
+                    ],
+                    "showLabel": false,
+                    "backgroundOpacity": 0,
+                    "tipsAndFeedback": {
+                        "tip": ""
+                    },
+                    "single": false,
+                    "autoAlign": true,
+                    "label": "<div>star<\/div>"
                 }
             ]
         }
