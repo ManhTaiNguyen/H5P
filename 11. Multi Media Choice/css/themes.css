@@ -1,0 +1,222 @@
+/* Theme Variations */
+
+/* Dark Theme */
+body.dark-theme {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+}
+
+body.dark-theme .h5p-container {
+    background: rgba(44, 62, 80, 0.95);
+    color: white;
+}
+
+body.dark-theme .h5p-question {
+    background: rgba(52, 73, 94, 0.9);
+}
+
+body.dark-theme .settings-menu {
+    background: rgba(44, 62, 80, 0.95);
+    color: white;
+}
+
+body.dark-theme .settings-menu h3 {
+    color: #ecf0f1;
+}
+
+body.dark-theme .setting-item label {
+    color: #bdc3c7;
+}
+
+body.dark-theme .setting-item select {
+    background: rgba(52, 73, 94, 0.9);
+    color: white;
+    border-color: #7f8c8d;
+}
+
+body.dark-theme .instruction-text {
+    background: linear-gradient(45deg, #34495e, #2c3e50);
+    color: #ecf0f1;
+}
+
+body.dark-theme .media-container {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+}
+
+body.dark-theme .h5p-question-feedback-content {
+    background: linear-gradient(135deg, #34495e 0%, #2c3e50 100%);
+    color: #ecf0f1;
+}
+
+body.dark-theme .progress-text {
+    color: #bdc3c7;
+}
+
+/* Colorful Theme */
+body.colorful-theme {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+}
+
+body.colorful-theme .h5p-container {
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid rgba(255, 182, 193, 0.5);
+}
+
+body.colorful-theme .h5p-header {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+}
+
+body.colorful-theme .control-panel-btn {
+    background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+    animation: pulse 2s infinite, rotate 3s linear infinite;
+}
+
+body.colorful-theme .bkt-logo img {
+    border: 3px solid #ff9a9e;
+}
+
+body.colorful-theme .h5p-joubelui-button {
+    background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+}
+
+body.colorful-theme .h5p-multi-media-choice-option {
+    border: 4px solid #ffb6c1;
+}
+
+body.colorful-theme .h5p-multi-media-choice-enabled:hover:not(.h5p-multi-media-choice-selected) {
+    border-color: #ff69b4;
+    box-shadow: 0 15px 40px rgba(255, 105, 180, 0.3);
+}
+
+body.colorful-theme .h5p-multi-media-choice-selected {
+    border-color: #ff1493 !important;
+    background: linear-gradient(135deg, #ffe4e1 0%, #ffd1dc 100%) !important;
+    box-shadow: 0 20px 50px rgba(255, 20, 147, 0.4), inset 0 0 0 3px #ffffff !important;
+}
+
+body.colorful-theme .instruction-text {
+    background: linear-gradient(45deg, #ffe4e1, #ffd1dc);
+    border-left: 5px solid #ff69b4;
+}
+
+body.colorful-theme .progress-fill {
+    background: linear-gradient(90deg, #ff9a9e 0%, #fad0c4 100%);
+}
+
+body.colorful-theme .h5p-joubelui-score-bar {
+    background: linear-gradient(135deg, #ffe4e1 0%, #ffd1dc 100%);
+    border: 2px solid #ff69b4;
+}
+
+/* High Contrast Theme */
+body.high-contrast-theme {
+    background: #000000;
+    color: #ffffff;
+}
+
+body.high-contrast-theme .h5p-container {
+    background: #000000;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+}
+
+body.high-contrast-theme .h5p-question {
+    background: #000000;
+}
+
+body.high-contrast-theme .h5p-multi-media-choice-option {
+    border: 6px solid #ffffff;
+    background: #000000;
+}
+
+body.high-contrast-theme .h5p-multi-media-choice-enabled:hover:not(.h5p-multi-media-choice-selected) {
+    border-color: #ffff00;
+    background: #000000;
+}
+
+body.high-contrast-theme .h5p-multi-media-choice-selected {
+    border-color: #ffff00 !important;
+    background: #000000 !important;
+}
+
+body.high-contrast-theme .h5p-joubelui-button {
+    background: #ffffff;
+    color: #000000;
+    border: 3px solid #000000;
+}
+
+body.high-contrast-theme .h5p-joubelui-button:hover {
+    background: #ffff00;
+    color: #000000;
+}
+
+body.high-contrast-theme .instruction-text {
+    background: #000000;
+    color: #ffffff;
+    border: 3px solid #ffffff;
+}
+
+body.high-contrast-theme .media-container {
+    background: #000000;
+    border: 3px solid #ffffff;
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* High contrast mode */
+@media (prefers-contrast: high) {
+    .h5p-multi-media-choice-option {
+        border-width: 6px;
+    }
+    
+    .h5p-joubelui-button {
+        border: 2px solid #000;
+    }
+}
+
+/* Theme transition effects */
+body {
+    transition: background 0.5s ease;
+}
+
+.h5p-container {
+    transition: background 0.5s ease, border-color 0.5s ease;
+}
+
+.h5p-question {
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.h5p-multi-media-choice-option {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.5s ease;
+}
+
+.h5p-joubelui-button {
+    transition: all 0.3s ease, background 0.5s ease;
+}
+
+.settings-menu {
+    transition: all 0.3s ease, background 0.5s ease, color 0.5s ease;
+}
+
+.instruction-text {
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.media-container {
+    transition: background 0.5s ease;
+}
+
+.progress-fill {
+    transition: width 0.8s ease, background 0.5s ease;
+}
+
+.h5p-question-feedback-content {
+    transition: background 0.5s ease, color 0.5s ease;
+} 

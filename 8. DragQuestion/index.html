@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Drag and Drop</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <div id="dragquestion" class="dragquestion">
+                <div class="header-banner">
+                    <img src="bkt logo for video ios app.png" alt="Logo" class="header-logo">
+
+                    <div class="header-content">
+                        <h1 class="title" style="text-align: center;">Trò chơi kéo thả</h1>
+                        <div class="header-instruction">
+                            <strong>Hướng dẫn:</strong> Kéo các hình ảnh vào đúng vị trí, sau đó nhấn <b>Check</b> để kiểm tra. <br>
+                            <!-- <span style="color:#27ae60; font-weight: 500;">Cuộn chuột để phóng to hình ảnh nhé!!</span> -->
+                        </div>
+                    </div>
+                </div>
+                <div class="question-content">
+                    <div class="controls">
+                        <div class="control-group">
+                            <label for="fontSizeRange"><i class="fas fa-text-height"></i> Font size:</label>
+                            <input type="range" min="15" max="30" value="19" id="fontSizeRange">
+                            <span id="fontSizeValue">19px</span>
+                        </div>
+                    </div>
+                    <div class="question-introduction">
+                        <div id="question-text"></div>
+                    </div>
+                    <div class="question-task">
+                        <div id="task-background" class="task-background">
+                            <div id="draggables-container" class="draggables-container"></div>
+                            <div id="dropzones-container" class="dropzones-container"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="buttons-container" class="question-buttons">
+                    <div class="center-actions">
+                        <button id="checkBtn" class="action-btn check-btn">
+                            <i class="fas fa-check"></i> Check
+                        </button>
+                        <button id="resetBtn" class="action-btn reset-btn">
+                            <i class="fas fa-sync-alt"></i> Retry
+                        </button>
+                        <button id="showAnswersBtn" class="action-btn show-answers-btn">
+                            <i class="fas fa-lightbulb"></i> Show Solution
+                        </button>
+                    </div>
+                </div>
+
+                <div id="feedback-container" class="feedback-container"></div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

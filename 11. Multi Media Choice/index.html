@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multimedia Choice - H5P Interactive</title>
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/control-panel.css">
+    <link rel="stylesheet" href="css/h5p-styles.css">
+    <link rel="stylesheet" href="css/themes.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    
+    <!-- Nunito Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Control Panel -->
+    <div class="control-panel">
+        <button class="control-panel-btn" id="settingsBtn">
+            <span class="material-icons">settings</span>
+        </button>
+        <!-- Settings Menu -->
+        <div class="settings-menu" id="settingsMenu">
+            <h3>Cài đặt hiển thị</h3>
+            <div class="setting-item">
+                <label for="fontSizeRange">Kích thước chữ:</label>
+                <input type="range" id="fontSizeRange" min="12" max="24" value="16">
+                <span id="fontSizeValue">16px</span>
+            </div>
+            <div class="setting-item">
+                <label for="contentSizeRange">Kích thước nội dung:</label>
+                <input type="range" id="contentSizeRange" min="70" max="120" value="100">
+                <span id="contentSizeValue">100%</span>
+            </div>
+            <div class="setting-item">
+                <label for="themeSelect">Chủ đề:</label>
+                <select id="themeSelect">
+                    <option value="default">Mặc định</option>
+                    <option value="dark">Tối</option>
+                    <option value="colorful">Nhiều màu sắc</option>
+                </select>
+            </div>
+            <button class="reset-btn" id="resetBtn">Đặt lại</button>
+        </div>
+    </div>
+
+    <!-- BKT Logo -->
+    <div class="bkt-logo">
+        <img src="images/bkt_logo.png" alt="BKT Logo" />
+    </div>
+
+    <div class="h5p-container">
+        <!-- Header -->
+        <!-- <div class="h5p-header">
+            <div class="h5p-title">
+                <h1>🎯 Multimedia Choice Interactive</h1>
+                <p>Chọn đáp án đúng nhất từ các tùy chọn dưới đây</p>
+            </div>
+        </div> -->
+
+        <div class="h5p-question">
+            <!-- Audio/Media Section -->
+            <div class="h5p-question-audio">
+                <div class="media-container">
+                    <!-- Media content will be rendered here by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Question Content -->
+            <div class="h5p-question-content">
+                <div class="h5p-multi-media-choice">
+                    <div class="instruction-text">
+                        <p>💡<strong>Hướng dẫn:</strong> <strong style="color: #32af21;">Double click</strong> để phóng to ảnh</p>
+                    </div>
+                    <ul class="h5p-multi-media-choice-option-list">
+                        <!-- Options will be rendered here dynamically by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Question Buttons -->
+            <div class="h5p-question-buttons">
+                <button class="h5p-joubelui-button h5p-question-check-answer" type="button">
+                    <span class="material-icons">check_circle</span>
+                    <span class="h5p-joubelui-button-content">Kiểm tra</span>
+                </button>
+                <button class="h5p-joubelui-button h5p-question-show-solution" type="button" style="display: none;">
+                    <span class="material-icons">lightbulb</span>
+                    <span class="h5p-joubelui-button-content">Xem đáp án</span>
+                </button>
+                <button class="h5p-joubelui-button h5p-question-try-again" type="button" style="display: none;">
+                    <span class="material-icons">refresh</span>
+                    <span class="h5p-joubelui-button-content">Thử lại</span>
+                </button>
+            </div>
+
+            <!-- Score Bar -->
+            <div class="h5p-question-scorebar">
+                <div class="h5p-joubelui-score-bar">
+                    <div class="h5p-joubelui-score-bar-star">🌟</div>
+                    <div class="h5p-joubelui-score-bar-text">
+                        <span class="h5p-joubelui-score-bar-text-score">0</span> / 
+                        <span class="h5p-joubelui-score-bar-text-max-score">1</span>
+                        <span class="score-label">điểm</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Feedback -->
+            <div class="h5p-question-feedback">
+                <div class="h5p-question-feedback-content">
+                    <div class="h5p-question-feedback-content-text"></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Floating elements for decoration -->
+    <div class="floating-elements">
+        <div class="floating-element" style="--delay: 0s;">📚</div>
+        <div class="floating-element" style="--delay: 2s;">✨</div>
+        <div class="floating-element" style="--delay: 4s;">🎵</div>
+        <div class="floating-element" style="--delay: 6s;">🎯</div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/notifications.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script src="js/settings.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/image-zoom.js"></script>
+</body>
+</html>

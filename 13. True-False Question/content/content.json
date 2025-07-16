@@ -1,0 +1,66 @@
+{
+    "media": {
+        "type": {
+            "params": {
+                "decorative": false,
+                "contentName": "H\u00ecnh",
+                "expandImage": "Expand Image",
+                "minimizeImage": "Minimize Image",
+                "file": {
+                    "path": "images\/file-687625e035c62.png",
+                    "mime": "image\/png",
+                    "copyright": {
+                        "license": "U"
+                    },
+                    "width": 1000,
+                    "height": 1000
+                }
+            },
+            "library": "H5P.Image 1.1",
+            "metadata": {
+                "contentType": "Image",
+                "license": "U",
+                "title": "Untitled Image"
+            },
+            "subContentId": "67601818-c058-4eee-9eba-ba539b47d54a"
+        },
+        "disableImageZooming": false
+    },
+    "correct": "true",
+    "behaviour": {
+        "enableRetry": true,
+        "enableSolutionsButton": true,
+        "enableCheckButton": true,
+        "confirmCheckDialog": false,
+        "confirmRetryDialog": false,
+        "autoCheck": false
+    },
+    "l10n": {
+        "trueText": "True",
+        "falseText": "False",
+        "score": "You got @score of @total points",
+        "checkAnswer": "Check",
+        "submitAnswer": "Submit",
+        "showSolutionButton": "Show solution",
+        "tryAgain": "Retry",
+        "wrongAnswerMessage": "Wrong answer",
+        "correctAnswerMessage": "Correct answer",
+        "scoreBarLabel": "You got :num out of :total points",
+        "a11yCheck": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+        "a11yShowSolution": "Show the solution. The task will be marked with its correct solution.",
+        "a11yRetry": "Retry the task. Reset all responses and start the task over again."
+    },
+    "confirmCheck": {
+        "header": "Finish ?",
+        "body": "Are you sure you wish to finish ?",
+        "cancelLabel": "Cancel",
+        "confirmLabel": "Finish"
+    },
+    "confirmRetry": {
+        "header": "Retry ?",
+        "body": "Are you sure you wish to retry ?",
+        "cancelLabel": "Cancel",
+        "confirmLabel": "Confirm"
+    },
+    "question": "<p><strong>This is the sun<\/strong><\/p><p>&nbsp;<\/p>"
+}

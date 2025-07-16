@@ -1,0 +1,163 @@
+{
+    "media": {
+        "type": {
+            "params": {
+                "playerMode": "full",
+                "fitToWrapper": false,
+                "controls": true,
+                "autoplay": true,
+                "playAudio": "Ph\u00e1t \u00e2m thanh",
+                "pauseAudio": "D\u1eebng \u00e2m thanh",
+                "contentName": "\u00c2m thanh",
+                "audioNotSupported": "Tr\u00ecnh duy\u1ec7t c\u1ee7a b\u1ea1n kh\u00f4ng th\u1ec3 ph\u00e1t \u00e2m thanh n\u00e0y",
+                "files": [
+                    {
+                        "path": "audios\/files-685a1bbf351cd.mp3",
+                        "mime": "audio\/mpeg",
+                        "copyright": {
+                            "license": "U"
+                        }
+                    }
+                ]
+            },
+            "library": "H5P.Audio 1.5",
+            "metadata": {
+                "contentType": "Audio",
+                "license": "U",
+                "title": "Untitled Audio"
+            },
+            "subContentId": "c7433328-f972-4d91-8fd9-95e381732a3f"
+        },
+        "disableImageZooming": false
+    },
+    "options": [
+        {
+            "media": {
+                "params": {
+                    "decorative": false,
+                    "contentName": "H\u00ecnh",
+                    "expandImage": "Expand Image",
+                    "minimizeImage": "Minimize Image",
+                    "file": {
+                        "path": "images\/file-685a1bc79255d.png",
+                        "mime": "image\/png",
+                        "copyright": {
+                            "license": "U"
+                        },
+                        "width": 1920,
+                        "height": 1080
+                    }
+                },
+                "library": "H5P.Image 1.1",
+                "metadata": {
+                    "contentType": "Image",
+                    "license": "U",
+                    "title": "Untitled Image"
+                },
+                "subContentId": "70515676-b52e-473c-ab32-39ba0972d8d9"
+            },
+            "correct": false
+        },
+        {
+            "media": {
+                "params": {
+                    "decorative": false,
+                    "contentName": "H\u00ecnh",
+                    "expandImage": "Expand Image",
+                    "minimizeImage": "Minimize Image",
+                    "file": {
+                        "path": "images\/file-685a1bcba72a5.png",
+                        "mime": "image\/png",
+                        "copyright": {
+                            "license": "U"
+                        },
+                        "width": 1920,
+                        "height": 1080
+                    }
+                },
+                "library": "H5P.Image 1.1",
+                "metadata": {
+                    "contentType": "Image",
+                    "license": "U",
+                    "title": "Untitled Image"
+                },
+                "subContentId": "39fd83d7-0551-4bc2-a241-27e6661755b6"
+            },
+            "correct": true
+        },
+        {
+            "media": {
+                "params": {
+                    "decorative": false,
+                    "contentName": "H\u00ecnh",
+                    "expandImage": "Expand Image",
+                    "minimizeImage": "Minimize Image",
+                    "file": {
+                        "path": "images\/file-685a1bcf9c605.png",
+                        "mime": "image\/png",
+                        "copyright": {
+                            "license": "U"
+                        },
+                        "width": 1920,
+                        "height": 1080
+                    }
+                },
+                "library": "H5P.Image 1.1",
+                "metadata": {
+                    "contentType": "Image",
+                    "license": "U",
+                    "title": "Untitled Image"
+                },
+                "subContentId": "3b7c55cd-5813-4752-95ac-59e378c1ba4b"
+            },
+            "correct": false
+        }
+    ],
+    "overallFeedback": [
+        {
+            "from": 0,
+            "to": 100
+        }
+    ],
+    "behaviour": {
+        "enableRetry": true,
+        "enableSolutionsButton": true,
+        "confirmCheckDialog": false,
+        "confirmRetryDialog": false,
+        "singlePoint": false,
+        "showSolutionsRequiresInput": true,
+        "questionType": "auto",
+        "aspectRatio": "auto",
+        "maxAlternativesPerRow": "4",
+        "passPercentage": 100
+    },
+    "l10n": {
+        "checkAnswerButtonText": "Check",
+        "submitAnswerButtonText": "Submit",
+        "checkAnswer": "Check the answers. The responses will be marked as correct, incorrect, or unanswered.",
+        "showSolutionButtonText": "Show solution",
+        "showSolution": "Show the solution. The correct options will be marked.",
+        "correctAnswer": "Correct answer",
+        "wrongAnswer": "Wrong answer",
+        "shouldCheck": "Should have been checked",
+        "shouldNotCheck": "Should not have been checked",
+        "noAnswer": "Please answer before viewing the solution",
+        "retryText": "Retry",
+        "retry": "Retry the task. Reset all responses and start the task over again.",
+        "result": "You got :num out of :total points",
+        "missingAltText": "Alt text missing",
+        "closeModalText": "Close modal",
+        "confirmCheck": {
+            "header": "Finish?",
+            "body": "Are you sure you want to finish?",
+            "cancelLabel": "Cancel",
+            "confirmLabel": "Finish"
+        },
+        "confirmRetry": {
+            "header": "Retry?",
+            "body": "Are you sure you wish to retry?",
+            "cancelLabel": "Cancel",
+            "confirmLabel": "Retry"
+        }
+    }
+}

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Demo - Multimedia Choice Responsive</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .demo-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .demo-header {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+        }
+
+        .demo-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .demo-header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .device-frame {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .device-frame:hover {
+            transform: translateY(-5px);
+        }
+
+        .device-title {
+            text-align: center;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+            font-size: 1.1rem;
+        }
+
+        .device-specs {
+            text-align: center;
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .iframe-container {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Desktop 16:9 */
+        .desktop-16-9 .iframe-container {
+            aspect-ratio: 16/9;
+        }
+
+        /* Laptop 16:10 */
+        .laptop-16-10 .iframe-container {
+            aspect-ratio: 16/10;
+        }
+
+        /* Tablet Portrait */
+        .tablet-portrait .iframe-container {
+            aspect-ratio: 3/4;
+        }
+
+        /* Tablet Landscape */
+        .tablet-landscape .iframe-container {
+            aspect-ratio: 4/3;
+        }
+
+        /* Mobile Portrait */
+        .mobile-portrait .iframe-container {
+            aspect-ratio: 9/16;
+        }
+
+        /* Mobile Landscape */
+        .mobile-landscape .iframe-container {
+            aspect-ratio: 16/9;
+        }
+
+        .device-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            background: white;
+        }
+
+        .fullscreen-section {
+            margin-top: 40px;
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .fullscreen-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .fullscreen-iframe {
+            width: 100%;
+            height: 70vh;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .controls {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        .control-button {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 25px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .control-button:hover {
+            background: #5a6fd8;
+            transform: translateY(-2px);
+        }
+
+        .control-button.active {
+            background: #764ba2;
+        }
+
+        @media (max-width: 768px) {
+            .devices-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .demo-header h1 {
+                font-size: 2rem;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+
+        .info-panel {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 30px;
+            color: white;
+        }
+
+        .info-panel h3 {
+            margin-bottom: 10px;
+        }
+
+        .info-panel ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-panel li {
+            margin-bottom: 5px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-panel li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🎯 Find Multiple Hotspots - Demo Responsive</h1>
+            <p>Xem trước giao diện trên các thiết bị khác nhau</p>
+        </div>
+
+        <div class="info-panel">
+            <h3>📱 Các tỉ lệ màn hình được hỗ trợ:</h3>
+            <ul>
+                <li><strong>Desktop 16:9</strong> - Màn hình máy tính tiêu chuẩn (1920x1080)</li>
+                <li><strong>Laptop 16:10</strong> - Màn hình laptop (1440x900)</li>
+                <li><strong>Tablet Portrait</strong> - Máy tính bảng dọc (768x1024)</li>
+                <li><strong>Tablet Landscape</strong> - Máy tình bảng ngang (1024x768)</li>
+                <li><strong>Mobile Portrait</strong> - Điện thoại dọc (375x667)</li>
+                <li><strong>Mobile Landscape</strong> - Điện thoại ngang (667x375)</li>
+            </ul>
+        </div>
+
+        <div class="devices-grid">
+            <!-- Desktop 16:9 -->
+            <div class="device-frame desktop-16-9">
+                <div class="device-title">🖥️ Desktop 16:9</div>
+                <div class="device-specs">1920 x 1080px</div>
+                <div class="iframe-container">
+                    <iframe class="device-iframe" src="index.html"></iframe>
+                </div>
+            </div>
+
+            <!-- Laptop 16:10 -->
+            <div class="device-frame laptop-16-10">
+                <div class="device-title">💻 Laptop 16:10</div>
+                <div class="device-specs">1440 x 900px</div>
+                <div class="iframe-container">
+                    <iframe class="device-iframe" src="index.html"></iframe>
+                </div>
+            </div>
+
+            <!-- Tablet Portrait -->
+            <div class="device-frame tablet-portrait">
+                <div class="device-title">📱 Tablet Portrait</div>
+                <div class="device-specs">768 x 1024px</div>
+                <div class="iframe-container">
+                    <iframe class="device-iframe" src="index.html"></iframe>
+                </div>
+            </div>
+
+            <!-- Tablet Landscape -->
+            <div class="device-frame tablet-landscape">
+                <div class="device-title">📱 Tablet Landscape</div>
+                <div class="device-specs">1024 x 768px</div>
+                <div class="iframe-container">
+                    <iframe class="device-iframe" src="index.html"></iframe>
+                </div>
+            </div>
+
+            <!-- Mobile Portrait -->
+            <div class="device-frame mobile-portrait">
+                <div class="device-title">📱 Mobile Portrait</div>
+                <div class="device-specs">375 x 667px</div>
+                <div class="iframe-container">
+                    <iframe class="device-iframe" src="index.html"></iframe>
+                </div>
+            </div>
+
+            <!-- Mobile Landscape -->
+            <div class="device-frame mobile-landscape">
+                <div class="device-title">📱 Mobile Landscape</div>
+                <div class="device-specs">667 x 375px</div>
+                <div class="iframe-container">
+                    <iframe class="device-iframe" src="index.html"></iframe>
+                </div>
+            </div>
+        </div>
+
+        <!-- Fullscreen Section -->
+        <div class="fullscreen-section">
+            <div class="fullscreen-title">🔍 Xem toàn màn hình</div>
+            <div class="controls">
+                <button class="control-button active" onclick="setFullscreenSize('100%', '70vh')">Tự động</button>
+                <button class="control-button" onclick="setFullscreenSize('1920px', '1080px')">Desktop 16:9</button>
+                <button class="control-button" onclick="setFullscreenSize('1440px', '900px')">Laptop 16:10</button>
+                <button class="control-button" onclick="setFullscreenSize('1024px', '768px')">Tablet</button>
+                <button class="control-button" onclick="setFullscreenSize('375px', '667px')">Mobile</button>
+            </div>
+            <iframe id="fullscreen-iframe" class="fullscreen-iframe" src="index.html"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function setFullscreenSize(width, height) {
+            const iframe = document.getElementById('fullscreen-iframe');
+            const container = iframe.parentElement;
+            
+            // Remove active class from all buttons
+            document.querySelectorAll('.control-button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            if (width === '100%') {
+                iframe.style.width = '100%';
+                iframe.style.height = '70vh';
+                iframe.style.maxWidth = 'none';
+                iframe.style.margin = '0';
+            } else {
+                iframe.style.width = width;
+                iframe.style.height = height;
+                iframe.style.maxWidth = '100%';
+                iframe.style.margin = '0 auto';
+                iframe.style.display = 'block';
+            }
+        }
+
+        // Auto-refresh iframes every 30 seconds to sync with main content
+        setInterval(() => {
+            const iframes = document.querySelectorAll('iframe');
+            iframes.forEach(iframe => {
+                const src = iframe.src;
+                iframe.src = '';
+                setTimeout(() => {
+                    iframe.src = src;
+                }, 100);
+            });
+        }, 30000);
+
+        // Add loading animation
+        document.addEventListener('DOMContentLoaded', () => {
+            const frames = document.querySelectorAll('.device-frame');
+            frames.forEach((frame, index) => {
+                setTimeout(() => {
+                    frame.style.opacity = '0';
+                    frame.style.transform = 'translateY(20px)';
+                    frame.style.transition = 'all 0.5s ease';
+                    
+                    setTimeout(() => {
+                        frame.style.opacity = '1';
+                        frame.style.transform = 'translateY(0)';
+                    }, 100);
+                }, index * 100);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+:root {
+  --base-font-size: 19px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: var(--base-font-size);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  background-color: #f8f8f8;
+}
+
+.container {
+  max-width: 100%;
+  padding: 0 10px;
+}
+
+.header-banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.header-logo {
+  width: 100px;
+  max-width: 30vw;
+  margin: 10px 0;
+}
+
+.header-instruction {
+  font-size: 0.9em;
+  margin-top: 5px;
+}
+
+.question-task {
+  position: relative;
+  width: 100%;
+  height: 65vh;
+  overflow: hidden;
+  background: #f4f4f4;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+}
+
+.task-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.draggables-container,
+.dropzones-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.draggable-item {
+  background-color: #ffffffcc;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  padding: 2px;
+  text-align: center;
+  cursor: grab;
+  font-size: calc(var(--base-font-size) - 2px);
+  overflow: hidden;
+  min-width: 70px;
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.dropzone {
+  border: 2px dashed #aaa;
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.4);
+  min-width: 70px;
+  min-height: 70px;
+}
+
+.dropzone-label {
+  font-size: calc(var(--base-font-size) - 3px);
+  text-align: center;
+}
+
+.question-buttons {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.action-btn {
+  margin: 5px;
+  padding: 8px 12px;
+  font-size: 0.9em;
+  border-radius: 8px;
+  border: none;
+  background-color: #3498db;
+  color: white;
+}
+
+.feedback-container {
+  margin-top: 15px;
+  font-size: 0.95em;
+  padding: 5px;
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+  .header-logo {
+    width: 80px;
+  }
+
+  .action-btn {
+    font-size: 0.85em;
+    padding: 6px 10px;
+  }
+
+  .question-task {
+    height: 55vh;
+  }
+
+  .draggable-item,
+  .dropzone {
+    min-width: 60px;
+    min-height: 60px;
+    font-size: 0.8em;
+  }
+
+  .question-introduction {
+    font-size: 1em;
+  }
+
+  .dropzone {
+    min-width: 70px;
+    min-height: 70px;
+  }
+
+  .dropzone-label {
+    font-size: 0.8em;
+  }
+}
+
+/* Tablet responsive */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .header-logo {
+    width: 90px;
+  }
+
+  .question-task {
+    height: 60vh;
+  }
+
+  .draggable-item,
+  .dropzone {
+    min-width: 75px;
+    min-height: 75px;
+    font-size: 0.9em;
+  }
+
+  .action-btn {
+    font-size: 0.95em;
+    padding: 8px 12px;
+  }
+
+  .question-introduction {
+    font-size: 1.05em;
+  }
+}
+
+/* Desktop responsive */
+@media (min-width: 1025px) {
+  .container {
+    max-width: 1152px;
+    margin: 0 auto;
+  }
+
+  .question-task {
+    height: 65vh;
+  }
+
+  .draggable-item,
+  .dropzone {
+    min-width: 80px;
+    min-height: 80px;
+    font-size: 1em;
+  }
+
+  .question-introduction {
+    font-size: 1.1em;
+  }
+
+  .action-btn {
+    font-size: 1em;
+    padding: 10px 16px;
+  }
+
+  .header-logo {
+    width: 100px;
+  }
+}
