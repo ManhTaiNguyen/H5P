@@ -4,7 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop Game</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/draggable.css">
+    <link rel="stylesheet" href="css/dropzone.css">
+    <link rel="stylesheet" href="css/buttons.css">
+    <link rel="stylesheet" href="css/feedback.css">
+    <link rel="stylesheet" href="css/responsive.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
@@ -17,20 +23,20 @@
                     <div class="header-content">
                         <h1 class="title">Trò chơi kéo thả</h1>
                         <div class="header-instruction">
-                            <strong>Hướng dẫn:</strong> Kéo các hình ảnh vào đúng vị trí, sau đó nhấn <b>Check</b> để kiểm tra kết quả.
+                            <strong>Hướng dẫn:</strong> Kéo chữ vào các hình ảnh phù hợp, sau đó nhấn <b style="color: limegreen;">"Check"</b> để kiểm tra kết quả.
                         </div>
                     </div>
 
                     <img src="bkt logo for video ios app.png" alt="Logo" class="header-logo animate__animated animate__pulse">
                 </div>
                 <div class="question-content">
-                    <!-- <div class="controls">
+                    <div class="controls">
                         <div class="control-group">
                             <label for="fontSizeRange"><i class="fas fa-text-height"></i> Font size:</label>
-                            <input type="range" min="15" max="30" value="19" id="fontSizeRange">
-                            <span id="fontSizeValue">19px</span>
+                            <input type="range" min="8" max="16" value="10" id="fontSizeRange">
+                            <span id="fontSizeValue">10px</span>
                         </div>
-                    </div> -->
+                    </div>
                     <div class="question-task">
                         <div id="task-background" class="task-background">
                             <div id="draggables-container" class="draggables-container"></div>
@@ -55,6 +61,18 @@
             </div>
         </div>
     </div>
+
+    <div id="completionModal" class="completion-modal">
+        <div class="completion-content">
+            <h2>Chúc mừng bạn!</h2>
+            <p>Bạn đã hoàn thành tất cả các hotspot 🎯</p>
+            <p>Điểm: <span id="finalScore"></span></p>
+            <button id="closeModalBtn">Đóng</button>
+        </div>
+    </div>
+    
     <script src="js/main.js"></script>
+    <script src="js/fontResize.js"></script>
+    <script src="js/celebration.js"></script>
 </body>
 </html>

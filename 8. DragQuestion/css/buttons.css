@@ -1,0 +1,71 @@
+.question-buttons {
+  display: flex;
+  gap: 1.2rem; /* Khoảng cách giữa các nút */
+  margin-top: 2rem; /* Khoảng cách trên */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.action-btn {
+  padding: 1rem 2rem; /* Tăng padding */
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600; /* Font dày hơn */
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Khoảng cách giữa icon và text */
+  min-height: 48px; /* Đảm bảo kích thước bấm tối thiểu */
+  font-size: 1.1rem; /* Kích thước font nút */
+  text-transform: uppercase; /* Chữ hoa */
+  letter-spacing: 0.05em; /* Khoảng cách chữ */
+  box-shadow: var(--box-shadow);
+  transform: translateY(0); /* Đảm bảo không có dịch chuyển ban đầu */
+}
+
+.action-btn i {
+  font-size: 1.2em; /* Kích thước icon tương đối với font chữ */
+}
+
+.action-btn:hover {
+  transform: translateY(-4px); /* Nâng lên khi hover */
+  box-shadow: var(--hover-shadow); /* Đổ bóng sâu hơn */
+  opacity: 0.9;
+}
+
+.check-btn {
+  background: linear-gradient(135deg, var(--success-color), #45a049);
+  color: white;
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, var(--warning-color), #f57c00);
+  color: white;
+}
+
+.show-answers-btn {
+  background: linear-gradient(135deg, var(--info-color), #1976d2);
+  color: white;
+}
+
+/* Hiệu ứng pulse cho nút check */
+.check-btn.animate__animated.animate__pulse {
+  --animate-duration: 1.5s;
+  --animate-delay: 0.5s;
+}
+
+/* Media queries cho nút */
+@media (max-width: 479px) {
+  .action-btn {
+    width: 100%; /* Chiếm toàn bộ chiều rộng trên di động nhỏ */
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .question-buttons {
+    gap: 0.8rem;
+  }
+}
