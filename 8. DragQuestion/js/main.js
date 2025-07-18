@@ -77,6 +77,11 @@ function createDraggableItem(el, index) {
   item.setAttribute("draggable", "true");
   item.dataset.index = index;
   item.dataset.originalWidth = el.width;
+  // Add correct drop zone information to each item
+  item.dataset.correctZones = jsonData.question.task.dropZones
+    .map((zone, idx) => (zone.correctElements.includes(index) ? idx : null))
+    .filter((val) => val !== null)
+    .join(",");
 
   const textSpan = document.createElement("span");
   textSpan.className = "draggable-text";
@@ -259,6 +264,12 @@ function createDragClone(item, { clientX, clientY }) {
   const rect = item.getBoundingClientRect();
   const clone = item.cloneNode(true);
   clone.classList.add(DRAG_CLONE_CLASS);
+
+  // Copy all relevant data attributes
+  clone.dataset.index = item.dataset.index;
+  clone.dataset.originalWidth = item.dataset.originalWidth;
+  clone.dataset.correctZones = item.dataset.correctZones;
+
   clone.style.position = "fixed";
   clone.style.zIndex = "10000";
   clone.style.width = `${rect.width}px`;
@@ -282,28 +293,21 @@ function createDragClone(item, { clientX, clientY }) {
 function updateDragPosition(x, y) {
   if (!containerRect) return;
 
-  // Tính toán vị trí mới dựa trên container
-  const currentX_px = x - containerRect.left - offset.x;
-  const currentY_px = y - containerRect.top - offset.y;
+  // Tính toán vị trí mới trực tiếp bằng pixel
+  const newLeft = x - containerRect.left - offset.x;
+  const newTop = y - containerRect.top - offset.y;
 
-  // Chuyển đổi từ pixel sang phần trăm
-  const currentX_percent = (currentX_px / containerRect.width) * 100;
-  const currentY_percent = (currentY_px / containerRect.height) * 100;
+  // Giới hạn vị trí trong phạm vi container
+  const maxLeft = containerRect.width - draggedItem.offsetWidth;
+  const maxTop = containerRect.height - draggedItem.offsetHeight;
 
-  // Lấy vị trí ban đầu từ dataset hoặc originalPosition
-  const originalLeftPercent = parseFloat(
-    originalPosition[draggedItem.dataset.index].left
-  );
-  const originalTopPercent = parseFloat(
-    originalPosition[draggedItem.dataset.index].top
-  );
+  // Áp dụng vị trí mới
+  draggedItem.style.left = `${Math.max(0, Math.min(newLeft, maxLeft))}px`;
+  draggedItem.style.top = `${Math.max(0, Math.min(newTop, maxTop))}px`;
 
-  // Tính toán khoảng cách di chuyển từ vị trí ban đầu
-  const moveX = currentX_percent - originalLeftPercent;
-  const moveY = currentY_percent - originalTopPercent;
-
-  // Áp dụng transform thay vì thay đổi left/top trực tiếp
-  draggedItem.style.transform = `translate3d(${moveX}%, ${moveY}%, 0)`;
+  // Đảm bảo item luôn hiển thị đầy đủ trong container
+  draggedItem.style.right = "auto";
+  draggedItem.style.bottom = "auto";
 }
 
 // ========== DROP HELPERS ==========
@@ -314,6 +318,10 @@ function handleDrop(zone) {
   if (textElement) {
     textElement.style.fontSize = `${FONT_SIZE_RANGES.default}px`;
   }
+
+  // Check if this drop is correct before proceeding
+  const correctZones = draggedItem.dataset.correctZones.split(",").map(Number);
+  const isCorrect = correctZones.includes(parseInt(zone.dataset.zoneIndex));
 
   draggedItem.style.minWidth = `${draggedItem.dataset.originalWidth}%`;
   draggedItem.style.position = "relative";
@@ -452,63 +460,64 @@ function checkAnswers() {
   const totalDraggables = jsonData.question.task.elements.length;
   let allPlaced = true;
 
-  document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.classList.remove("correct-feedback", "incorrect-feedback");
-  });
-
+  // Reset all feedback classes first
   document.querySelectorAll(".draggable-item").forEach((item) => {
-    const itemIndex = item.dataset.index;
-    const placedInZoneIndex = item.dataset.placedIn;
-
-    if (placedInZoneIndex !== undefined) {
-      const targetDropzoneData =
-        jsonData.question.task.dropZones[parseInt(placedInZoneIndex)];
-      const isCorrectlyPlaced =
-        targetDropzoneData?.correctElements.includes(itemIndex);
-
-      const currentDropzoneEl = document.querySelector(
-        `.dropzone[data-zone-index="${placedInZoneIndex}"]`
-      );
-      if (currentDropzoneEl) {
-        currentDropzoneEl.classList.add(
-          isCorrectlyPlaced ? "correct-feedback" : "incorrect-feedback"
-        );
-        if (isCorrectlyPlaced) correctCount++;
-      }
-    } else {
-      allPlaced = false;
-    }
+    item.classList.remove("correct", "incorrect");
   });
 
-  const unplacedItems =
-    totalDraggables -
-    document.querySelectorAll(".draggable-item[data-placed-in]").length;
+  const checkedItems = new Set();
+
+  document.querySelectorAll(".dropzone").forEach((zone) => {
+    const zoneIndex = parseInt(zone.dataset.zoneIndex);
+    const correctElements =
+      jsonData.question.task.dropZones[zoneIndex].correctElements;
+
+    const itemsInZone = Array.from(zone.querySelectorAll(".draggable-item"));
+
+    itemsInZone.forEach((item) => {
+      const itemIndex = item.dataset.index;
+      const isCorrect = correctElements.includes(itemIndex);
+
+      if (isCorrect) {
+        correctCount++;
+        checkedItems.add(itemIndex);
+        item.classList.add("correct");
+      } else {
+        item.classList.add("incorrect");
+      }
+    });
+  });
+
+  const unplacedItems = totalDraggables - checkedItems.size;
   if (unplacedItems > 0) allPlaced = false;
 
   const allCorrectAndPlaced = correctCount === totalDraggables && allPlaced;
-  showFeedback(allCorrectAndPlaced, correctCount, totalDraggables);
 
   if (allCorrectAndPlaced) {
     createConfetti();
+    showFeedback(
+      true,
+      jsonData.question.task.dropZones.length,
+      jsonData.question.task.dropZones.length
+    );
+    showCompletionNotification(
+      jsonData.question.task.dropZones.length,
+      jsonData.question.task.dropZones.length
+    );
     showNotification(
-      "Hoàn hảo! Tất cả các câu trả lời đều đúng! 🎉",
+      "Chúc mừng! Bạn đã hoàn thành đúng tất cả câu hỏi! 🎉",
       "success"
     );
-    showCompletionNotification(correctCount, totalDraggables);
-  } else if (!allPlaced) {
-    showNotification(
-      "Một số item chưa được đặt. Vui lòng hoàn thành nhiệm vụ.",
-      "warning"
-    );
+
+    // Disable check and show answers buttons
+    document.getElementById("checkBtn").disabled = true;
+    document.getElementById("showAnswersBtn").disabled = true;
   } else {
-    showNotification(
-      `Hãy cố gắng lên! Bạn đã làm đúng ${correctCount} trên ${totalDraggables} câu.`,
-      "error"
-    );
+    showFeedback(allCorrectAndPlaced, correctCount, totalDraggables);
   }
 
   if (navigator.vibrate) {
-    navigator.vibrate(allCorrectAndPlaced ? [100, 50, 100] : [200]);
+    navigator.vibrate(allCorrectAndPlaced ? [100, 50, 100, 50, 100] : [200]);
   }
 }
 
@@ -523,8 +532,15 @@ function resetGame() {
       window.fontResizer.setFontSize(FONT_SIZE_RANGES.default);
   }
 
+  // Re-enable all buttons
+  document.getElementById("checkBtn").disabled = false;
+  document.getElementById("showAnswersBtn").disabled = false;
+
+  document.querySelectorAll(".draggable-item").forEach((item) => {
+    item.classList.remove("correct", "incorrect");
+  });
+
   document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.classList.remove("correct-feedback", "incorrect-feedback", "hovered");
     zone.style.opacity = "1";
     zone.style.width = `${zone.dataset.originalWidth}%`;
     zone.style.height = `${zone.dataset.originalHeight}%`;
@@ -568,11 +584,19 @@ function resetGame() {
     }, 500);
   });
 
-  hideFeedback();
+  // Thêm dòng này để xóa nội dung feedback container
+  document.getElementById("feedback-container").innerHTML = "";
+  document.getElementById("feedback-container").style.display = "none";
+
   cancelAnimationFrame(animationFrameId);
   isDragging = false;
   draggedItem = null;
   touchMoved = false;
+
+  const overflowContainer = document.getElementById("overflow-draggables");
+  while (overflowContainer.firstChild) {
+    overflowContainer.removeChild(overflowContainer.firstChild);
+  }
 
   showNotification("Quiz reset! 🔄", "info");
   if (navigator.vibrate) navigator.vibrate(50);
@@ -580,6 +604,11 @@ function resetGame() {
 
 function showAnswers() {
   if (!jsonData) return;
+
+  // Reset all items first
+  document.querySelectorAll(".draggable-item").forEach((item) => {
+    item.classList.remove("correct", "incorrect");
+  });
 
   jsonData.question.task.dropZones.forEach((zone, dzIndex) => {
     const correctIndex = parseInt(zone.correctElements[0]);
@@ -592,6 +621,7 @@ function showAnswers() {
 
     if (item && dzEl) {
       dzEl.appendChild(item);
+      item.classList.add("correct");
       item.style.position = "relative";
       item.style.left = "0";
       item.style.top = "0";
@@ -607,11 +637,6 @@ function showAnswers() {
     }
   });
 
-  document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.classList.add("correct-feedback");
-    zone.classList.remove("incorrect-feedback");
-  });
-
   showFeedback(
     true,
     jsonData.question.task.dropZones.length,
@@ -623,6 +648,10 @@ function showAnswers() {
     jsonData.question.task.dropZones.length,
     jsonData.question.task.dropZones.length
   );
+
+  // Disable check and show answers buttons
+  document.getElementById("checkBtn").disabled = true;
+  document.getElementById("showAnswersBtn").disabled = true;
 
   if (navigator.vibrate) navigator.vibrate([100, 50, 100, 50, 100]);
 }
