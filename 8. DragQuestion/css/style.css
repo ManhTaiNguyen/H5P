@@ -1,0 +1,1004 @@
+/* style.css */
+
+:root {
+  --primary-color: #667eea;
+  --secondary-color: #764ba2;
+  --success-color: #4caf50;
+  --warning-color: #ff9800;
+  --info-color: #2196f3;
+  --danger-color: #f44336;
+  --text-color: #2c3e50;
+  --light-bg: #f8f9fa;
+  --border-radius: 12px;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --transition: all 0.3s ease;
+  --return-animation: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+* {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+html {
+  -webkit-overflow-scrolling: touch;
+  -ms-overflow-style: touch;
+  font-size: 10px;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background: linear-gradient(135deg, #f5c6f7 0%, #fff9c4 100%);
+  min-height: 100vh;
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.container {
+  padding: 1rem;
+  margin: auto;
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+/* Shared interactive elements styles */
+.draggable-item,
+.dropzone,
+.task-background {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Task background */
+.task-background {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16/9;
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--border-radius);
+  border: 2px solid #e0e0e0;
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+  margin: 0 auto;
+}
+
+.draggables-container,
+.dropzones-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.draggable-text {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  pointer-events: none;
+}
+
+.notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-100%);
+  padding: 12px 24px;
+  border-radius: 8px;
+  color: white;
+  font-weight: 500;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.notification.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+.notification.success {
+  background-color: #4caf50;
+}
+
+.notification.error {
+  background-color: #f44336;
+}
+
+.notification.info {
+  background-color: #2196f3;
+}
+
+.notification.warning {
+  background-color: #ff9800;
+}
+
+/* ===== COMPLETION MODAL ===== */
+.completion-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.completion-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.completion-content {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  text-align: center;
+  max-width: 500px;
+  width: 90%;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  position: relative;
+  pointer-events: auto;
+}
+
+.completion-modal.active .completion-content {
+  transform: scale(1);
+}
+
+.completion-content h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  color: var(--primary-color);
+}
+
+.completion-content p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: var(--text-color);
+}
+
+#closeModalBtn {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+#closeModalBtn:hover {
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  transform: scale(1.05);
+}
+
+.confetti-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 9999;
+}
+
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0.8;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) rotate(360deg);
+  }
+}
+
+.overflow-draggables-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px dashed #ccc;
+  min-height: 50px;
+  justify-content: center;
+  align-items: flex-start;
+  background-color: rgba(255, 255, 255, 0.7);
+  border-radius: var(--border-radius);
+  transition: all 0.3s ease;
+  max-width: 100%;
+  overflow: auto;
+}
+
+.overflow-draggables-container .draggable-item {
+  position: static !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 5px !important;
+  transform: none !important;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* Đảm bảo draggable items vẫn có thể tương tác khi ở overflow container */
+.overflow-draggables-container .draggable-item,
+.overflow-draggables-container .draggable-item * {
+  pointer-events: auto !important;
+}
+
+.dropzone {
+  position: absolute;
+  border: 3px dashed #8e44ad;
+  border-radius: var(--border-radius);
+  background-color: rgba(255, 255, 255, 0);
+  text-align: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.1em;
+  padding: 0.1em;
+  box-sizing: border-box;
+  font-weight: 500;
+  pointer-events: auto;
+  line-height: 1.2;
+  min-width: 120px;
+  min-height: 60px;
+  will-change: transform, background-color;
+  transition: var(--transition);
+  overflow: visible;
+  align-content: center;
+}
+
+.dropzone .draggable-item {
+  width: 100% !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0;
+  transform: none !important;
+  box-sizing: border-box;
+}
+
+.dropzone.hovered {
+  background-color: rgba(52, 152, 219, 0.2);
+  border-color: var(--primary-color);
+  border-width: 4px;
+  transform: scale(1.03);
+  box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
+}
+
+.dropzone.correct-feedback {
+  background-color: rgba(46, 204, 113, 0.2);
+  border-color: var(--success-color);
+  border-width: 4px;
+  animation: correctPulse 0.6s ease-in-out;
+  box-shadow: 0 4px 12px rgba(46, 204, 113, 0.3);
+}
+
+.dropzone.incorrect-feedback {
+  background-color: rgba(231, 76, 60, 0.2);
+  border-color: var(--danger-color);
+  border-width: 4px;
+  animation: incorrectShake 0.6s ease-in-out;
+  box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+}
+
+.dropzone .draggable-item {
+  width: auto !important;
+  height: auto !important;
+  min-width: auto !important;
+  min-height: auto !important;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
+  margin: 0.2em 0;
+  transform: none !important;
+  flex-shrink: 0; /* Ngăn không cho item co lại */
+}
+
+.dropzone {
+  transform-origin: center center;
+  transition: all 0.3s ease;
+  will-change: transform, width, height;
+}
+
+.draggable-item {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  background: linear-gradient(145deg, #f0f8ff, #e6f3ff);
+  padding: 0.1em 0.3em;
+  border-radius: 5px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  border: 1px solid #d0d8e0;
+  cursor: grab;
+  text-align: center;
+  z-index: 5;
+  pointer-events: auto;
+  font-weight: 500;
+  color: var(--text-color);
+  line-height: 0;
+  min-width: 50px;
+  min-height: auto;
+  touch-action: none;
+  will-change: transform;
+  backface-visibility: hidden;
+  transition: var(--transition);
+}
+
+.draggable-item.dragging {
+  animation: none;
+  z-index: 1000;
+  opacity: 0.9;
+  transform: scale(1.08) rotate(2deg);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
+  transition: none;
+  border-color: var(--primary-color);
+}
+
+.dragging {
+  opacity: 0.9;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+.draggable-item.returning {
+  transition: var(--return-animation);
+  z-index: 10;
+}
+
+.question-buttons {
+  display: flex;
+  gap: 1.2rem; /* Khoảng cách giữa các nút */
+  margin-top: 2rem; /* Khoảng cách trên */
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.action-btn {
+  padding: 1rem 2rem; /* Tăng padding */
+  border: none;
+  border-radius: var(--border-radius);
+  font-weight: 600; /* Font dày hơn */
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Khoảng cách giữa icon và text */
+  min-height: 48px; /* Đảm bảo kích thước bấm tối thiểu */
+  font-size: 1.1rem; /* Kích thước font nút */
+  text-transform: uppercase; /* Chữ hoa */
+  letter-spacing: 0.05em; /* Khoảng cách chữ */
+  box-shadow: var(--box-shadow);
+  transform: translateY(0); /* Đảm bảo không có dịch chuyển ban đầu */
+}
+
+.action-btn i {
+  font-size: 1.2em; /* Kích thước icon tương đối với font chữ */
+}
+
+.action-btn:hover {
+  transform: translateY(-4px); /* Nâng lên khi hover */
+  box-shadow: var(--hover-shadow); /* Đổ bóng sâu hơn */
+  opacity: 0.9;
+}
+
+.check-btn {
+  background: linear-gradient(135deg, var(--success-color), #45a049);
+  color: white;
+}
+
+.reset-btn {
+  background: linear-gradient(135deg, var(--warning-color), #f57c00);
+  color: white;
+}
+
+.show-answers-btn {
+  background: linear-gradient(135deg, var(--info-color), #1976d2);
+  color: white;
+}
+
+/* Hiệu ứng pulse cho nút check */
+.check-btn.animate__animated.animate__pulse {
+  --animate-duration: 1.5s;
+  --animate-delay: 0.5s;
+}
+
+.header-banner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 100%
+  );
+  border-radius: var(--border-radius);
+  color: white;
+  box-shadow: var(--box-shadow);
+  justify-self: center;
+  width: 80%;
+}
+
+.header-content {
+  flex: 1;
+  justify-self: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.title {
+  margin: 0 0 0.5rem 0;
+  font-weight: 700;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  justify-items: center;
+  justify-self: center;
+  justify-content: center;
+}
+
+.header-instruction {
+  opacity: 0.9;
+  line-height: 1.4;
+  text-align: start;
+}
+
+.header-logo {
+  border-radius: 20%;
+  box-shadow: var(--box-shadow);
+}
+
+.controls {
+  justify-self: center;
+  justify-content: center;
+  justify-items: center;
+}
+
+.feedback-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  display: none;
+}
+
+.feedback-container.success {
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  color: #155724;
+  display: block;
+}
+
+.feedback-container.error {
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  color: #721c24;
+  display: block;
+}
+
+/* Animations */
+@keyframes correctPulse {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.08);
+  }
+  60% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes incorrectShake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-8px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(8px);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Hover effects for non-touch devices */
+@media (hover: hover) {
+  .draggable-item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    border-color: var(--primary-color);
+  }
+
+  .action-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  }
+
+  .check-btn:hover {
+    background: linear-gradient(135deg, #45a049, #3d8b40);
+    box-shadow: 0 6px 18px rgba(76, 175, 80, 0.4);
+  }
+
+  .reset-btn:hover {
+    background: linear-gradient(135deg, #f57c00, #ef6c00);
+    box-shadow: 0 6px 18px rgba(255, 152, 0, 0.4);
+  }
+
+  .show-answers-btn:hover {
+    background: linear-gradient(135deg, #1976d2, #1565c0);
+    box-shadow: 0 6px 18px rgba(33, 150, 243, 0.4);
+  }
+}
+
+/* Toast Notification */
+#toast-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #0984e3;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  font-size: 16px;
+  font-weight: 500;
+  z-index: 2000;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#toast-notification.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+#toast-notification.success {
+  background: #00b894;
+}
+
+#toast-notification.error {
+  background: #d63031;
+}
+
+#toast-notification.warning {
+  background: #fdcb6e;
+  color: #2d3436;
+}
+
+#toast-notification.info {
+  background: #0984e3;
+}
+
+/* New style for the dragging clone */
+.dragging-clone {
+  background: linear-gradient(145deg, #f0f8ff, #e6f3ff) !important;
+  border: 1px solid #d0d8e0 !important;
+  border-radius: 5px !important;
+  padding: 0.1em 0.3em !important;
+  pointer-events: none !important; /* Ensures the clone doesn't interfere with dropzone detection */
+  box-sizing: border-box; /* Maintain consistent box model */
+  display: inline-flex; /* Match original display */
+  justify-content: center;
+  align-items: center;
+}
+
+/* Ensure original item becomes slightly transparent when a clone is dragged */
+.draggable-item.dragging-original {
+  opacity: 0.5;
+  transform: scale(0.95);
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.overflow-draggables-container .draggable-item {
+  transition: all 0.3s ease !important;
+}
+
+.overflow-draggables-container .draggable-item:active {
+  transform: scale(0.95) !important;
+  opacity: 0.8 !important;
+}
+
+/* Mobile First (320px - 479px) */
+@media (max-width: 479px) {
+  .container {
+    padding: 0.5rem;
+  }
+
+  .header-banner {
+    padding: 0.8rem;
+    margin-bottom: 0.8rem;
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
+  }
+
+  .title {
+    font-size: 1.3rem;
+  }
+
+  .header-instruction {
+    font-size: 0.75rem;
+  }
+
+  .header-logo {
+    width: 45px;
+    height: 45px;
+  }
+
+  .draggable-item {
+    min-width: auto !important;
+    min-height: 20px !important;
+    padding: 0.1em 0.3em;
+    font-size: 9px;
+    border-radius: 8px;
+    white-space: nowrap;
+  }
+
+  .draggable-text {
+    padding: 0.1em 0.2em;
+  }
+
+  .dropzone {
+    grid-template-columns: 1fr;
+    min-width: 60px;
+    min-height: 35px;
+    padding: 0.3em;
+    gap: 0.3em;
+    font-size: 10px;
+    border-radius: 10px;
+  }
+
+  .dropzone .draggable-item {
+    margin: 0.1em 0;
+    font-size: 9px;
+  }
+
+  .action-btn {
+    padding: 0.6rem 0.8rem;
+    font-size: 0.85rem;
+    min-height: 40px;
+  }
+
+  .question-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .action-btn {
+    width: 100%; /* Chiếm toàn bộ chiều rộng trên di động nhỏ */
+    justify-content: center;
+    font-size: 1rem;
+    padding: 0.8rem 1.5rem;
+  }
+  .question-buttons {
+    gap: 0.8rem;
+  }
+}
+
+/* Large phones (480px - 767px) */
+@media (min-width: 480px) and (max-width: 767px) {
+  .container {
+    padding: 0.8rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+
+  .header-instruction {
+    font-size: 0.85rem;
+  }
+
+  .header-logo {
+    width: 55px;
+    height: 55px;
+  }
+
+  .draggable-item {
+    min-width: 40px;
+    min-height: 22px;
+    padding: 0.25em 0.5em;
+    font-size: 10px;
+    border-radius: 10px;
+  }
+
+  .dropzone {
+    min-width: 50px;
+    min-height: 40px;
+    padding: 0.4em;
+    font-size: 12px;
+  }
+
+  .action-btn {
+    padding: 0.7rem 1rem;
+    font-size: 0.9rem;
+    min-height: 42px;
+  }
+
+  .question-buttons {
+    flex-direction: column;
+    gap: 0.8rem;
+  }
+}
+
+/* Tablet portrait (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .header-banner {
+    padding: 1.2rem;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .header-instruction {
+    font-size: 0.9rem;
+    max-width: 90%;
+  }
+
+  .header-logo {
+    width: 70px;
+    height: 70px;
+  }
+
+  .draggable-item {
+    font-size: 1rem;
+    padding: 0.5em 0.8em;
+    border-radius: 12px;
+    min-width: auto !important;
+    min-height: auto !important;
+  }
+
+  .draggable-text {
+    font-size: inherit;
+  }
+
+  .dropzone {
+    min-width: 90px;
+    min-height: 60px;
+    padding: 0.6em;
+    font-size: 1rem;
+  }
+
+  .action-btn {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
+    gap: 0.6rem;
+  }
+
+  .task-background {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+}
+
+/* Tablet landscape & small desktop (1024px - 1279px) */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .header-banner {
+    padding: 1.5rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+  }
+
+  .header-instruction {
+    font-size: 1rem;
+    max-width: 80%;
+  }
+
+  .header-logo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .draggable-item {
+    font-size: 1.1rem;
+    padding: 0.6em 1em;
+    border-radius: 14px;
+  }
+
+  .dropzone {
+    min-width: 100px;
+    min-height: 70px;
+    padding: 0.8em;
+    font-size: 1.1rem;
+  }
+
+  .action-btn {
+    padding: 1.1rem 1.8rem;
+    font-size: 1.1rem;
+    gap: 0.8rem;
+  }
+
+  .task-background {
+    max-width: 800px;
+  }
+}
+
+/* Medium desktop (1280px - 1439px) */
+@media (min-width: 1280px) and (max-width: 1439px) {
+  .container {
+    max-width: 1200px;
+  }
+
+  .header-banner {
+    padding: 1.8rem;
+  }
+
+  .title {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+  }
+
+  .header-instruction {
+    font-size: 1.1rem;
+    max-width: 85%;
+  }
+
+  .header-logo {
+    width: 90px;
+    height: 90px;
+  }
+
+  .draggable-item {
+    font-size: 1.2rem;
+    padding: 0.7em 1.1em;
+    border-radius: 16px;
+  }
+
+  .dropzone {
+    min-width: 110px;
+    min-height: 80px;
+    padding: 1em;
+    font-size: 1.2rem;
+  }
+
+  .action-btn {
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+    gap: 1rem;
+  }
+
+  .task-background {
+    max-width: 900px;
+  }
+}
+
+/* Large desktop (1440px+) */
+@media (min-width: 1440px) {
+  .container {
+    max-width: 1400px;
+    padding: 2rem;
+  }
+
+  .header-banner {
+    padding: 2rem;
+  }
+
+  .title {
+    font-size: 2.4rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .header-instruction {
+    font-size: 1.2rem;
+    max-width: 90%;
+  }
+
+  .header-logo {
+    width: 100px;
+    height: 100px;
+  }
+
+  .draggable-item {
+    font-size: 1.3rem;
+    padding: 0.8em 1.2em;
+    border-radius: 18px;
+  }
+
+  .dropzone {
+    min-width: 120px;
+    min-height: 90px;
+    padding: 1.2em;
+    font-size: 1.3rem;
+  }
+
+  .action-btn {
+    padding: 1.3rem 2.2rem;
+    font-size: 1.3rem;
+    gap: 1.1rem;
+  }
+
+  .task-background {
+    max-width: 1000px;
+  }
+}
+
+/* Thêm vào cuối file */
+.dragging-clone {
+  background: linear-gradient(145deg, #f0f8ff, #e6f3ff) !important;
+  border: 1px solid #d0d8e0 !important;
+  border-radius: 5px !important;
+  padding: 0.1em 0.3em !important;
+  pointer-events: none !important;
+  box-sizing: border-box;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.2s ease-out, opacity 0.2s ease-out;
+}
+
+.overflow-draggables-container .draggable-item {
+  transition: all 0.3s ease !important;
+  cursor: grab;
+}
+
+.overflow-draggables-container .draggable-item:active {
+  transform: scale(0.95) !important;
+  opacity: 0.8 !important;
+}
+
+.draggable-item.dragging-from-overflow {
+  opacity: 0.5;
+  transform: scale(0.95);
+}

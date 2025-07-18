@@ -4,13 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Drag and Drop Game</title>
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/header.css">
-    <link rel="stylesheet" href="css/draggable.css">
-    <link rel="stylesheet" href="css/dropzone.css">
-    <link rel="stylesheet" href="css/buttons.css">
-    <link rel="stylesheet" href="css/feedback.css">
-    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <script src="https://kit.fontawesome.com/0236bf0649.js" crossorigin="anonymous"></script>
@@ -33,7 +27,7 @@
                     <div class="controls">
                         <div class="control-group">
                             <label for="fontSizeRange"><i class="fas fa-text-height"></i> Font size:</label>
-                            <input type="range" min="8" max="16" value="10" id="fontSizeRange">
+                            <input type="range" min="8" max="20" value="10" id="fontSizeRange">
                             <span id="fontSizeValue">10px</span>
                         </div>
                     </div>
@@ -44,6 +38,8 @@
                         </div>
                     </div>
                 </div>
+
+                <div id="overflow-draggables" class="overflow-draggables-container"></div>
 
                 <div id="buttons-container" class="question-buttons">
                     <button id="checkBtn" class="action-btn check-btn animate__animated animate__pulse">
@@ -70,7 +66,7 @@
             <button id="closeModalBtn">Đóng</button>
         </div>
     </div>
-    
+
     <script src="js/main.js"></script>
     <script src="js/fontResize.js"></script>
     <script src="js/celebration.js"></script>
