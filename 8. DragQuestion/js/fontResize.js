@@ -1,5 +1,3 @@
-// fontResize.js
-
 const FONT_SIZE_RANGES = {
   min: 8,
   max: 20,
