@@ -47,6 +47,9 @@ function renderTask(data) {
       height: "auto",
       minWidth: `${el.width}%`,
     };
+
+    // Thêm thuộc tính data-original-order để lưu thứ tự ban đầu
+    item.dataset.originalOrder = i;
     draggables.appendChild(item);
   });
 
@@ -57,6 +60,25 @@ function renderTask(data) {
   });
 
   updateContainerRect();
+}
+
+function sortOverflowContainer() {
+  const overflowContainer = document.getElementById("overflow-draggables");
+  if (!overflowContainer) return;
+
+  const items = Array.from(
+    overflowContainer.querySelectorAll(".draggable-item")
+  );
+  items.sort((a, b) => {
+    return (
+      parseInt(a.dataset.originalOrder) - parseInt(b.dataset.originalOrder)
+    );
+  });
+
+  // Xóa và thêm lại các phần tử theo đúng thứ tự
+  items.forEach((item) => {
+    overflowContainer.appendChild(item);
+  });
 }
 
 function updateContainerRect() {
@@ -387,7 +409,13 @@ function returnToOverflowContainer() {
   draggedItem.style.transform = "none";
   draggedItem.style.transition = "all 0.3s ease-out";
 
-  document.getElementById("overflow-draggables").appendChild(draggedItem);
+  const overflowContainer = document.getElementById("overflow-draggables");
+  overflowContainer.appendChild(draggedItem);
+
+  // Chỉ sắp xếp nếu item thuộc overflow container
+  if (isFromOverflow) {
+    sortOverflowContainer();
+  }
 
   setTimeout(() => {
     draggedItem.style.transition = "";
@@ -406,6 +434,7 @@ function cleanupDrag(dropped = false) {
       if (isFromOverflow) {
         returnToOverflowContainer();
       } else {
+        // Giữ nguyên logic trở về vị trí ban đầu
         returnToOriginalPosition();
       }
     }
@@ -470,12 +499,12 @@ function checkAnswers() {
   document.querySelectorAll(".dropzone").forEach((zone) => {
     const zoneIndex = parseInt(zone.dataset.zoneIndex);
     const correctElements =
-      jsonData.question.task.dropZones[zoneIndex].correctElements;
+      jsonData.question.task.dropZones[zoneIndex].correctElements.map(Number);
 
     const itemsInZone = Array.from(zone.querySelectorAll(".draggable-item"));
 
     itemsInZone.forEach((item) => {
-      const itemIndex = item.dataset.index;
+      const itemIndex = parseInt(item.dataset.index);
       const isCorrect = correctElements.includes(itemIndex);
 
       if (isCorrect) {
@@ -487,6 +516,20 @@ function checkAnswers() {
       }
     });
   });
+
+  // Check items in overflow container (if any)
+  const overflowContainer = document.getElementById("overflow-draggables");
+  if (overflowContainer) {
+    const overflowItems = Array.from(
+      overflowContainer.querySelectorAll(".draggable-item")
+    );
+    overflowItems.forEach((item) => {
+      const itemIndex = parseInt(item.dataset.index);
+      if (!checkedItems.has(itemIndex)) {
+        item.classList.add("incorrect");
+      }
+    });
+  }
 
   const unplacedItems = totalDraggables - checkedItems.size;
   if (unplacedItems > 0) allPlaced = false;
@@ -509,7 +552,6 @@ function checkAnswers() {
       "success"
     );
 
-    // Disable check and show answers buttons
     document.getElementById("checkBtn").disabled = true;
     document.getElementById("showAnswersBtn").disabled = true;
   } else {
@@ -522,84 +564,68 @@ function checkAnswers() {
 }
 
 function resetGame() {
+  // Reset font size if font resizer is used
   const fontSizeRange = document.getElementById("fontSizeRange");
   const fontSizeValue = document.getElementById("fontSizeValue");
 
   if (fontSizeRange && fontSizeValue) {
     fontSizeRange.value = FONT_SIZE_RANGES.default;
     fontSizeValue.textContent = `${FONT_SIZE_RANGES.default}px`;
-    if (window.fontResizer)
+    if (window.fontResizer) {
       window.fontResizer.setFontSize(FONT_SIZE_RANGES.default);
+    }
   }
 
   // Re-enable all buttons
   document.getElementById("checkBtn").disabled = false;
   document.getElementById("showAnswersBtn").disabled = false;
 
-  document.querySelectorAll(".draggable-item").forEach((item) => {
-    item.classList.remove("correct", "incorrect");
-  });
-
-  document.querySelectorAll(".dropzone").forEach((zone) => {
-    zone.style.opacity = "1";
-    zone.style.width = `${zone.dataset.originalWidth}%`;
-    zone.style.height = `${zone.dataset.originalHeight}%`;
-  });
-
-  document.querySelectorAll(".draggable-item").forEach((item) => {
-    const idx = item.dataset.index;
-    const original = originalPosition[idx];
-
-    item.style.position = "absolute";
-    item.style.left = original.left;
-    item.style.top = original.top;
-    item.style.width = original.width;
-    item.style.height = original.height;
-    item.style.minWidth = original.minWidth;
-    item.style.zIndex = "5";
-    item.style.opacity = "1";
-    item.style.background = "linear-gradient(145deg, #f0f8ff, #e6f3ff)";
-    item.style.transform = "";
-    item.style.transition = "all 0.4s ease-out";
-    item.style.margin = "0";
-    item.classList.remove("dragging");
-
-    const textSpan = item.querySelector(".draggable-text");
-    if (textSpan) {
-      textSpan.style.fontSize = "";
-      textSpan.style.whiteSpace = "nowrap";
-      textSpan.style.transform = "";
-    }
-
-    item.style.animation = "none";
-    void item.offsetWidth;
-    item.style.animation = "bounceBack 0.5s ease-out";
-
-    document.getElementById("draggables-container").appendChild(item);
-    delete item.dataset.placedIn;
-
-    setTimeout(() => {
-      item.style.transition = "";
-      item.style.animation = "";
-    }, 500);
-  });
-
-  // Thêm dòng này để xóa nội dung feedback container
-  document.getElementById("feedback-container").innerHTML = "";
-  document.getElementById("feedback-container").style.display = "none";
-
+  // Clear any active drag operations
   cancelAnimationFrame(animationFrameId);
   isDragging = false;
   draggedItem = null;
   touchMoved = false;
 
-  const overflowContainer = document.getElementById("overflow-draggables");
-  while (overflowContainer.firstChild) {
-    overflowContainer.removeChild(overflowContainer.firstChild);
+  // Remove drag clone if exists
+  if (dragClone) {
+    dragClone.remove();
+    dragClone = null;
   }
 
-  showNotification("Quiz reset! 🔄", "info");
+  // Clear feedback and notifications
+  document.getElementById("feedback-container").innerHTML = "";
+  document.getElementById("feedback-container").style.display = "none";
+
+  // Clear all drop zones
+  const dropzones = document.getElementById("dropzones-container");
+  dropzones.innerHTML = "";
+
+  // Clear draggables container
+  const draggables = document.getElementById("draggables-container");
+  draggables.innerHTML = "";
+
+  // Clear overflow container
+  const overflowContainer = document.getElementById("overflow-draggables");
+  overflowContainer.innerHTML = "";
+
+  // Re-render the game from scratch using the original data
+  if (jsonData) {
+    renderTask(jsonData);
+  } else {
+    // If data is not loaded, reload the game
+    loadGame();
+  }
+
+  // Reset original positions
+  originalPosition = {};
+
+  // Show reset notification
+  showNotification("Đã tải lại! 🔄", "info");
+
+  // Optional haptic feedback
   if (navigator.vibrate) navigator.vibrate(50);
+
+  sortOverflowContainer();
 }
 
 function showAnswers() {
