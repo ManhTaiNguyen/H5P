@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Pair Matching Game</title>
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/image-pair.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+
+<body cz-shortcut-listen="true">
+    <div class="image-pair-container">
+      <div class="image-pair-header">
+        <img src="bkt_logo.png" alt="BKT Logo" class="bkt-logo">
+        <h1 class="image-pair-title">Image Pair Matching</h1>
+        <div class="image-pair-description" id="task-description">Drag images from the left to match them with corresponding images on the right</div>
+        <div class="game-instructions">
+          <p>
+            <strong>Hướng dẫn:</strong> Kéo thả hình ảnh để ghép cặp.
+            <em>Double-click vào hình ảnh để xem phóng to.</em>
+          </p>
+        </div>
+      </div>
+
+      <div class="image-pair-game" id="game-container" style="position: relative;">
+        <div class="cards-section">
+          <h3>Drag from here:</h3>
+          <div class="cards-container" id="cards-container"><div class="image-pair-card" data-index="2" data-type="image" draggable="true" tabindex="0" role="button" aria-label="Card 3" aria-disabled="false" aria-selected="false" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/image-683d5cd124aaf.png" alt="Card 3" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="card-status"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div><div class="image-pair-card" data-index="0" data-type="image" draggable="true" tabindex="0" role="button" aria-label="Card 1" aria-disabled="false" aria-selected="false" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/image-683d5cccef3ed.png" alt="Card 1" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="card-status"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div><div class="image-pair-card" data-index="3" data-type="image" draggable="true" tabindex="0" role="button" aria-label="Card 4" aria-disabled="false" aria-selected="false" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/image-683d5cd309b15.png" alt="Card 4" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="card-status"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div><div class="image-pair-card" data-index="1" data-type="image" draggable="true" tabindex="0" role="button" aria-label="Card 2" aria-disabled="false" aria-selected="false" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/image-683d5ccf3373c.png" alt="Card 2" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="card-status"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div><div class="image-pair-card" data-index="4" data-type="image" draggable="true" tabindex="0" role="button" aria-label="Card 5" aria-disabled="false" aria-selected="false" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/image-683d5cd52b2b7.png" alt="Card 5" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="card-status"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div></div>
+        </div>
+
+        <div class="matches-section">
+          <h3>Drop here to match:</h3>
+          <div class="matches-container" id="matches-container"><div class="drop-zone" data-index="0" role="button" tabindex="0" aria-label="Drop zone 1"><div class="image-pair-card match-card" data-index="0" data-type="match" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/match-683d5cd859081.png" alt="Match 1" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div></div><div class="drop-zone" data-index="1" role="button" tabindex="0" aria-label="Drop zone 2"><div class="image-pair-card match-card" data-index="1" data-type="match" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/match-683d5cdaa8549.png" alt="Match 2" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div></div><div class="drop-zone" data-index="2" role="button" tabindex="0" aria-label="Drop zone 3"><div class="image-pair-card match-card" data-index="2" data-type="match" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/match-683d5ce05beb8.png" alt="Match 3" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div></div><div class="drop-zone" data-index="3" role="button" tabindex="0" aria-label="Drop zone 4"><div class="image-pair-card match-card" data-index="3" data-type="match" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/match-683d5ce261ed0.png" alt="Match 4" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div></div><div class="drop-zone" data-index="4" role="button" tabindex="0" aria-label="Drop zone 5"><div class="image-pair-card match-card" data-index="4" data-type="match" style="position: relative;"><div class="card-image-container"><img class="card-image" src="content/images/match-683d5ce4509de.png" alt="Match 5" loading="lazy" style="cursor: pointer; transition: opacity 0.1s;"></div><div class="double-click-instruction">Double-click/tap to zoom</div></div></div></div>
+        </div>
+      </div>
+
+      <div class="image-pair-controls">
+        <button class="btn btn-check" id="check-btn">Check</button>
+        <button class="btn btn-retry" id="retry-btn">Retry</button>
+        <button class="btn btn-solution" id="solution-btn">Show Solution</button>
+      </div>
+
+      <div class="image-pair-score" id="score-container">
+        <div class="score-text" id="score-text">You got 0 of 5 points</div>
+      </div>
+    </div>
+
+    <!-- Image Zoom Dialog -->
+    <div class="image-zoom-overlay" id="image-zoom-overlay">
+      <div class="image-zoom-dialog">
+        <button class="image-zoom-close" id="image-zoom-close">×</button>
+        <div class="image-zoom-content">
+          <h3 class="image-zoom-title" id="image-zoom-title">Image Preview</h3>
+          <img class="image-zoom-image" id="image-zoom-image" src="" alt="">
+        </div>
+      </div>
+    </div>
+
+    <script src="js/utils.js"></script>
+    <script src="js/image-zoom.js"></script>
+    <script src="js/card.js"></script>
+    <script src="js/drag-drop.js"></script>
+    <script src="js/game-logic.js"></script>
+    <script src="js/main.js"></script>
+    
+<script>
+	// <![CDATA[  <-- For SVG support
+	if ('WebSocket' in window) {
+		(function () {
+			function refreshCSS() {
+				var sheets = [].slice.call(document.getElementsByTagName("link"));
+				var head = document.getElementsByTagName("head")[0];
+				for (var i = 0; i < sheets.length; ++i) {
+					var elem = sheets[i];
+					var parent = elem.parentElement || head;
+					parent.removeChild(elem);
+					var rel = elem.rel;
+					if (elem.href && typeof rel != "string" || rel.length == 0 || rel.toLowerCase() == "stylesheet") {
+						var url = elem.href.replace(/(&|\?)_cacheOverride=\d+/, '');
+						elem.href = url + (url.indexOf('?') >= 0 ? '&' : '?') + '_cacheOverride=' + (new Date().valueOf());
+					}
+					parent.appendChild(elem);
+				}
+			}
+			var protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+			var address = protocol + window.location.host + window.location.pathname + '/ws';
+			var socket = new WebSocket(address);
+			socket.onmessage = function (msg) {
+				if (msg.data == 'reload') window.location.reload();
+				else if (msg.data == 'refreshcss') refreshCSS();
+			};
+			if (sessionStorage && !sessionStorage.getItem('IsThisFirstTime_Log_From_LiveServer')) {
+				console.log('Live reload enabled.');
+				sessionStorage.setItem('IsThisFirstTime_Log_From_LiveServer', true);
+			}
+		})();
+	}
+	else {
+		console.error('Upgrade your browser. This Browser is NOT supported WebSocket for Live-Reloading.');
+	}
+	// ]]>
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,396 @@
+/* Responsive Design for Image Pair Game */
+
+/* Logo styles - positioning at top right */
+.bkt-logo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 60px;
+  height: auto;
+  z-index: 10;
+  object-fit: contain;
+}
+
+/* Make sure header has relative positioning for absolute logo */
+.image-pair-header {
+  position: relative;
+}
+
+/* Tablet styles */
+@media (max-width: 768px) {
+  .bkt-logo {
+    width: 40px;
+    top: 10px;
+    right: 10px;
+  }
+
+  body {
+    padding: 10px;
+  }
+
+  .image-pair-game {
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+  }
+
+  .cards-container,
+  .matches-container {
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: 10px;
+  }
+
+  .image-pair-card,
+  .drop-zone {
+    width: 100px;
+    height: 100px;
+  }
+
+  .image-pair-title {
+    font-size: 24px;
+  }
+
+  .image-pair-header {
+    padding: 15px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 13px;
+    margin: 0 3px;
+  }
+}
+
+/* Mobile styles */
+@media (max-width: 480px) {
+  .bkt-logo {
+    width: 40px;
+    top: 8px;
+    right: 8px;
+  }
+
+  body {
+    padding: 5px;
+    /* Improve touch scrolling */
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .image-pair-container {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  .image-pair-game {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .cards-container,
+  .matches-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    justify-items: center;
+  }
+
+  .image-pair-card,
+  .drop-zone {
+    width: 80px;
+    height: 80px;
+    /* Better touch targets */
+    min-width: 44px;
+    min-height: 44px;
+    /* Smooth touch interactions */
+    touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    user-select: none;
+  }
+
+  /* Enhanced touch drag styles for mobile */
+  .image-pair-card.touch-dragging {
+    transform: scale(0.9);
+    opacity: 0.4;
+    transition: transform 0.15s ease, opacity 0.15s ease;
+  }
+
+  .drop-zone.touch-hover {
+    transform: scale(1.1);
+    background: linear-gradient(135deg, #f0f8ff, #e6f3ff);
+    box-shadow: 0 0 20px rgba(26, 115, 217, 0.5);
+    border-width: 3px;
+    animation: pulse-glow 0.6s ease-in-out infinite alternate;
+  }
+
+  /* Drag ghost enhanced for mobile */
+  .drag-ghost {
+    transition: none !important;
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+
+  .card-image-container {
+    padding: 4px;
+  }
+
+  .image-pair-title {
+    font-size: 20px;
+  }
+
+  .image-pair-description {
+    font-size: 14px;
+  }
+
+  .cards-section h3,
+  .matches-section h3 {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+
+  .btn {
+    padding: 8px 16px;
+    font-size: 12px;
+    margin: 2px;
+  }
+
+  .image-pair-controls {
+    padding: 15px;
+  }
+
+  .drop-zone-placeholder {
+    font-size: 10px;
+  }
+
+  .card-status {
+    width: 16px;
+    height: 16px;
+    font-size: 10px;
+    top: 3px;
+    right: 3px;
+  }
+
+  .score-text {
+    font-size: 16px;
+  }
+
+  /* Performance optimizations for mobile */
+  /* Use GPU acceleration for better performance */
+  .image-pair-card,
+  .drop-zone,
+  .drag-ghost {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+    -webkit-transform: translateZ(0);
+  }
+
+  /* Optimize touch interactions */
+  .image-pair-card {
+    -webkit-tap-highlight-color: rgba(26, 115, 217, 0.2);
+  }
+
+  /* Disable context menu on touch devices to prevent interference */
+  .image-pair-card img,
+  .drop-zone img {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    /* Remove pointer-events: none to allow touch events for zoom functionality */
+  }
+
+  /* Better spacing for touch targets */
+  .image-pair-controls .btn {
+    min-height: 44px;
+    margin: 5px 2px;
+  }
+}
+
+/* Very small mobile styles */
+@media (max-width: 360px) {
+  .bkt-logo {
+    width: 35px;
+    top: 5px;
+    right: 5px;
+  }
+
+  .cards-container,
+  .matches-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .image-pair-card,
+  .drop-zone {
+    width: 70px;
+    height: 70px;
+  }
+
+  .image-pair-title {
+    font-size: 18px;
+  }
+
+  .btn {
+    padding: 6px 12px;
+    font-size: 11px;
+    display: block;
+    width: 100%;
+    margin: 3px 0;
+  }
+
+  .image-pair-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+}
+
+/* Large desktop styles */
+@media (min-width: 1200px) {
+  .bkt-logo {
+    width: 80px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .image-pair-container {
+    max-width: 1400px;
+  }
+
+  .image-pair-game {
+    padding: 40px;
+    gap: 40px;
+  }
+
+  .cards-container,
+  .matches-container {
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 20px;
+  }
+
+  .image-pair-card,
+  .drop-zone {
+    width: 140px;
+    height: 140px;
+  }
+
+  .image-pair-title {
+    font-size: 32px;
+  }
+
+  .image-pair-description {
+    font-size: 18px;
+  }
+}
+
+/* Touch device enhancements */
+@media (hover: none) and (pointer: coarse) {
+  .image-pair-card:hover {
+    transform: none;
+  }
+
+  .image-pair-card:active {
+    transform: scale(0.95);
+  }
+
+  .btn:hover {
+    transform: none;
+  }
+
+  .btn:active {
+    transform: scale(0.95);
+  }
+
+  /* Larger touch targets */
+  .image-pair-card,
+  .drop-zone {
+    min-height: 80px;
+    min-width: 80px;
+  }
+
+  .btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* Landscape orientation on mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+  .bkt-logo {
+    width: 35px;
+    top: 5px;
+    right: 10px;
+  }
+
+  .image-pair-game {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .cards-container,
+  .matches-container {
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    max-height: 300px;
+    overflow-y: auto;
+  }
+
+  .image-pair-header {
+    padding: 10px 15px;
+  }
+
+  .image-pair-title {
+    font-size: 18px;
+    margin-bottom: 5px;
+  }
+
+  .image-pair-description {
+    font-size: 12px;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .image-pair-card {
+    border-width: 3px;
+  }
+
+  .drop-zone {
+    border-width: 3px;
+  }
+
+  .btn {
+    border: 2px solid transparent;
+  }
+
+  .btn:focus {
+    outline: 3px solid currentColor;
+    outline-offset: 2px;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .image-pair-card:hover {
+    transform: none;
+  }
+
+  .image-pair-card.dragging {
+    transform: scale(0.95);
+  }
+}
+
+/* Animations for mobile touch interactions */
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 0 20px rgba(26, 115, 217, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(26, 115, 217, 0.8);
+  }
+}

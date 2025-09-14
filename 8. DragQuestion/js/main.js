@@ -16,7 +16,7 @@ let dragClone = null;
 
 // ========== CORE FUNCTIONS ==========
 function loadGame() {
-  fetch("content2/content.json")
+  fetch("content3/content.json")
     .then((res) => res.json())
     .then((data) => {
       jsonData = data;
@@ -30,7 +30,7 @@ function loadGame() {
 function renderTask(data) {
   const bgPath = data.question.settings.background.path;
   const bgEl = document.getElementById("task-background");
-  bgEl.style.backgroundImage = `url(content2/${bgPath})`;
+  bgEl.style.backgroundImage = `url(content3/${bgPath})`;
 
   const draggables = document.getElementById("draggables-container");
   const dropzones = document.getElementById("dropzones-container");

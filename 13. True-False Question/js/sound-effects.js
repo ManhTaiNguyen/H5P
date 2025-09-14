@@ -35,11 +35,11 @@ export function playClickSound() {
 }
 
 export function playSuccessSound() {
-  const audio = new Audio("content/sounds/correct-6033.mp3");
+  const audio = new Audio("sounds/correct-6033.mp3");
   audio.play().catch((e) => console.warn("Cannot play success sound", e));
 }
 
 export function playErrorSound() {
-  const audio = new Audio("content/sounds/amthanhsai2.mp3");
+  const audio = new Audio("sounds/amthanhsai2.mp3");
   audio.play().catch((e) => console.warn("Cannot play error sound", e));
 }
